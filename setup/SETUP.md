@@ -1,4 +1,4 @@
-# 1 DOWNLOAD IntelliJ IDEA
+# DOWNLOAD IntelliJ IDEA
 link: https://www.jetbrains.com/idea/download/
 Selecione seu OS e baixe a versão da comunidade do IntelliJ IDEA
 
