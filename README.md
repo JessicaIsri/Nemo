@@ -1,3 +1,6 @@
+<img src="https://img.shields.io/badge/licence-MIT-blue"> <img src="https://img.shields.io/badge/language-java-orange"> <img src="https://img.shields.io/badge/REST-API-green"> <img src="https://img.shields.io/badge/FATEC-BancoDados-success">
+
+
 # Projeto NEMO
 
 ## Apresentação do Projeto
@@ -70,42 +73,15 @@ Nesta [Wiki](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/home) voc�
 
 ## 5. Equipe
 
-* André Lars da Cunha - [linkedIn](https://www.linkedin.com/in/andre-lars-da-cunha/)
+* André Lars da Cunha | Scrum Developer | [linkedIn](https://www.linkedin.com/in/andre-lars-da-cunha/)
 
-* Alex
+* Alex | Product Owner | [linkedIn]()
 
-* Daniel
+* Daniel | Scrum Developer | [linkedIn]()
 
-* Felipe Gustavo Braga - [linkedIn](https://www.linkedin.com/in/felipegbraga/)
+* Felipe Gustavo Braga | Scrum Master | [linkedIn](https://www.linkedin.com/in/felipegbraga/)
 
-* Giovanni Guidace Marassi - [linkedIn](https://www.linkedin.com/in/giovanni-guidace-61982812a/)
+* Giovanni Guidace Marassi | Scrum Developer  | [linkedIn](https://www.linkedin.com/in/giovanni-guidace-61982812a/)
 
-* Jéssica Isri Dias - [linkedIn](https://www.linkedin.com/in/jessica-dias1/)
+* Jéssica Isri Dias | Scrum Developer | [linkedIn](https://www.linkedin.com/in/jessica-dias1/)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#### 3.1.1 Sprint 1
