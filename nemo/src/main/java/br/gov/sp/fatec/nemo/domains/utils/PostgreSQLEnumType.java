@@ -1,4 +1,4 @@
-package br.gov.sp.fatec.nemo.domain.utils;
+package br.gov.sp.fatec.nemo.domains.utils;
 
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
