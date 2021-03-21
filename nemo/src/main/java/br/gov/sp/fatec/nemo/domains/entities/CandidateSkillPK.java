@@ -1,10 +1,17 @@
 package br.gov.sp.fatec.nemo.domains.entities;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 
 @Embeddable
+@Getter
+@Setter
+@AllArgsConstructor
 public class CandidateSkillPK implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -14,25 +21,6 @@ public class CandidateSkillPK implements Serializable {
 
     @Column(name = "fk_skill_id")
     private Long skillId;
-
-    public CandidateSkillPK() {
-    }
-
-    public Long getCandidateId() {
-        return candidateId;
-    }
-
-    public void setCandidateId(Long candidateId) {
-        this.candidateId = candidateId;
-    }
-
-    public Long getSkillId() {
-        return skillId;
-    }
-
-    public void setSkillId(Long skillId) {
-        this.skillId = skillId;
-    }
 
     @Override
     public boolean equals(Object o) {

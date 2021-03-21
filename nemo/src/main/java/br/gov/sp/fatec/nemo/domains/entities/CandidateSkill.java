@@ -3,6 +3,9 @@ package br.gov.sp.fatec.nemo.domains.entities;
 import br.gov.sp.fatec.nemo.domains.enums.SkillLevel;
 import br.gov.sp.fatec.nemo.domains.utils.PostgreSQLEnumType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 
@@ -10,6 +13,9 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
 @Table(name = "candidate_skill")
 @TypeDef(
         name = "pgsql_enum",
@@ -38,41 +44,6 @@ public class CandidateSkill implements Serializable {
     @Column(name = "skill_level", columnDefinition = "skill_level")
     @Type(type = "pgsql_enum")
     private SkillLevel skillLevel;
-
-    public CandidateSkill() {
-    }
-
-    public CandidateSkillPK getId() {
-        return id;
-    }
-
-    public void setId(CandidateSkillPK id) {
-        this.id = id;
-    }
-
-    public Candidate getCandidate() {
-        return candidate;
-    }
-
-    public void setCandidate(Candidate candidate) {
-        this.candidate = candidate;
-    }
-
-    public Skill getSkill() {
-        return skill;
-    }
-
-    public void setSkill(Skill skill) {
-        this.skill = skill;
-    }
-
-    public SkillLevel getSkillLevel() {
-        return skillLevel;
-    }
-
-    public void setSkillLevel(SkillLevel skillLevel) {
-        this.skillLevel = skillLevel;
-    }
 
     @Override
     public boolean equals(Object o) {

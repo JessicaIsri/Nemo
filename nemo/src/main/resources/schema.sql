@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS "candidate_skill";
 DROP TYPE IF EXISTS "skill_level";
 DROP TABLE  IF EXISTS "skill";
 DROP TABLE  IF EXISTS "candidate";
+DROP TABLE  IF EXISTS "client";
 
 /* Table 'candidate' */
 CREATE TABLE "candidate" (
@@ -45,3 +46,8 @@ CONSTRAINT fk_can_id FOREIGN KEY(fk_can_id) REFERENCES "candidate"(can_id),
 CONSTRAINT fk_skill_id FOREIGN KEY(fk_skill_id) REFERENCES "skill"(skill_id)
 );
 
+/* Table 'client' */
+CREATE TABLE "client" (
+client_id varchar(50),
+client_secret varchar(100) NOT NULL,
+PRIMARY KEY(client_id));

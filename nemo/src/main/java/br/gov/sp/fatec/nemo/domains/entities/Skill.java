@@ -1,6 +1,9 @@
 package br.gov.sp.fatec.nemo.domains.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +13,9 @@ import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
 @Table(name = "skill")
 public class Skill implements Serializable {
 
@@ -22,25 +28,6 @@ public class Skill implements Serializable {
 
     @NotBlank
     private String description;
-
-    public Skill() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     @Override
     public boolean equals(Object o) {
