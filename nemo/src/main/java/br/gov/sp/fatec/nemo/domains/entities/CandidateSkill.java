@@ -5,6 +5,7 @@ import br.gov.sp.fatec.nemo.domains.utils.PostgreSQLEnumType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
@@ -16,6 +17,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "candidate_skill")
 @TypeDef(
         name = "pgsql_enum",

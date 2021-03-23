@@ -3,6 +3,7 @@ package br.gov.sp.fatec.nemo.domains.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.br.CPF;
 
@@ -17,6 +18,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "candidate")
 public class Candidate implements Serializable {

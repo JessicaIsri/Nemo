@@ -3,6 +3,7 @@ package br.gov.sp.fatec.nemo.domains.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Column;
@@ -16,6 +17,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "skill")
 public class Skill implements Serializable {
 

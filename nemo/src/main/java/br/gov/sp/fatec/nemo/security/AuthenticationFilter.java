@@ -28,7 +28,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     public AuthenticationFilter(AuthenticationManager authenticationManager)
     {
         this.authenticationManager = authenticationManager;
-        setFilterProcessesUrl("/login");
+        setFilterProcessesUrl("/nemo/v1/authentication");
     }
 
     @Override
