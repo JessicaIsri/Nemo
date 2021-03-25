@@ -5,9 +5,9 @@ services:
     # volumes:
     #     - ~/volumes/jhipster/Nimus/postgresql/:/var/lib/postgresql/data/
     environment:
-      - POSTGRES_DB=nemo
-      - POSTGRES_USER=nemo
-      - POSTGRES_PASSWORD=nemo
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
 
     ports:
       - 5432:5432
