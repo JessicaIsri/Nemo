@@ -1,0 +1,199 @@
+{
+	"info": {
+		"_postman_id": "0b8c2ac6-86e6-41fa-9d75-d679fd372d98",
+		"name": "Nemo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Local",
+			"item": [
+				{
+					"name": "Get Candidate",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYxNzIyNDkyM30.k_CEaKDMl2fzTmG3XLZknzyuEp7B2dbxLRjxSE6DmvoepZab3WLp4p0PfS_ZxLfVg_JDTPemJE_W2JtZ3OZYsg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/nemo/v1/candidate?skill=oihoijoi",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"nemo",
+								"v1",
+								"candidate"
+							],
+							"query": [
+								{
+									"key": "gender",
+									"value": "Male",
+									"disabled": true
+								},
+								{
+									"key": "country",
+									"value": "USA",
+									"disabled": true
+								},
+								{
+									"key": "city",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "zipCode",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "skill",
+									"value": "oihoijoi"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authentication",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"clientId\": \"admin\",\r\n    \"clientSecret\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/nemo/v1/authentication",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"nemo",
+								"v1",
+								"authentication"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AWS",
+			"item": [
+				{
+					"name": "Get Candidate",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYxNjQ2Mjc0MH0.MzAXdeNgHtoPzGzzYIEGQ2Ub0qBSjF9y31pWSAlMku6IubOWA5Nj4SgupkEuzv5PJpJUaLpGEr_UEBqOzesipA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://18.219.226.4:8081/nemo/v1/candidate?gender=Male",
+							"protocol": "http",
+							"host": [
+								"18",
+								"219",
+								"226",
+								"4"
+							],
+							"port": "8081",
+							"path": [
+								"nemo",
+								"v1",
+								"candidate"
+							],
+							"query": [
+								{
+									"key": "gender",
+									"value": "Male"
+								},
+								{
+									"key": "country",
+									"value": "USA",
+									"disabled": true
+								},
+								{
+									"key": "city",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "zipCode",
+									"value": "wefwef",
+									"disabled": true
+								},
+								{
+									"key": "skill",
+									"value": "Java",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authentication",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"clientId\": \"admin\",\r\n    \"clientSecret\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://18.219.226.4:8081/nemo/v1/authentication",
+							"protocol": "http",
+							"host": [
+								"18",
+								"219",
+								"226",
+								"4"
+							],
+							"port": "8081",
+							"path": [
+								"nemo",
+								"v1",
+								"authentication"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
