@@ -55,7 +55,7 @@ Nesta [Wiki](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/home) voc�
 
 
 #### 3.1.1 Sprint 1
-<strong>RF01</strong> - Candidato será capaz de submeter currículo de forma organizada e padronizada.</br>
+<strong>RF01</strong> - Candidato será capaz de submeter currículo de forma organizada e padronizada.<br>
 <strong>RF02</strong> - O candidato poderá realizar as pesquisas de vagas com base nos parâmetros:
 - Geolocalização
 - Cidade
@@ -64,8 +64,8 @@ Nesta [Wiki](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/home) voc�
 - Tipo de contratação
 - Data da divulgação
 - Etc...
-<strong>RF03</strong> - Candidato poderá exportar parcialmente o resultado em arquivo CSV.</br>
-<strong>RF04</strong> - Candidato poderá exportar o resultado total da pesquisa em CSV.</br>
+<strong>RF03</strong> - Candidato poderá exportar parcialmente o resultado em arquivo CSV.<br>
+<strong>RF04</strong> - Candidato poderá exportar o resultado total da pesquisa em CSV.<br>
 <strong>RF05</strong> - Empresa poderá realizar as pesquisas de candidatos com base nos parâmetros:
 - Sexo
 - Idade
