@@ -56,13 +56,9 @@ Nesta [Wiki](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/home) voc�
 
 #### 3.1.1 Sprint 1
 <strong>RF01</strong> - Criar interface de submissão de currículos dos candidatos de forma padronizada e adequada ao processo.
-
 <strong>RF02</strong> - Busca de candidatos por vagas.
-
-<strong>RF03</strong> - Utilizar filtros configuráveis nas buscas de cada vaga.
-
 #### 3.1.2 Sprint 2
-
+<strong>RF03</strong> - Utilizar filtros configuráveis nas buscas de cada vaga.
 #### 3.1.3 Sprint 3
 
 ### 3.2. Requisitos não Funcionais
