@@ -53,7 +53,13 @@ Nesta [Wiki](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/home) voc�
 
 ### 3.1. Requisitos Funcionais (Story Cards)
 
+
 #### 3.1.1 Sprint 1
+R01 - Criar interface de submissão de currículos dos candidatos que recebam, de forma padronizada e adequada ao processo.
+
+R02 - Busca de candidatos por vagas.
+
+R03 - Utilizar filtros configuráveis nas buscas de cada vaga.
 
 #### 3.1.2 Sprint 2
 
