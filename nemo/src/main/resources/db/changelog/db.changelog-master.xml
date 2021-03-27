@@ -37,6 +37,7 @@ http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibas
     <include file="db/changelog/202103172251_remove_initial_tables.sql" relativeToChangelogFile="false"/>
     <include file="db/changelog/schema.sql" relativeToChangelogFile="false"/>
     <include file="db/changelog/data.sql" relativeToChangelogFile="false"/>
+    <include file="db/changelog/dataMock.sql" relativeToChangelogFile="false"/>
 
 
 
