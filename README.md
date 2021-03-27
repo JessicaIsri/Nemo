@@ -47,7 +47,15 @@ Nesta [Wiki](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/home) voc�
 
 ## 2. Arquitetura do Projeto
 
-(descrever arquitetura)
+### Arquitetura do MVP:
+
+![MVP_Architecture](/uploads/da23ece3ab6a514cc11ec02a9a0adea7/MVP_Architecture.png)
+
+----------------------------------------------------------------------------------------------
+
+### Design da aplicação:
+
+![MVP_System_Design](/uploads/6cbd2856fb40b82e08d19ecca5133ab5/MVP_System_Design.png)
 
 ## 3. Backlog
 
