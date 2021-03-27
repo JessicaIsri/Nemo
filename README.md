@@ -80,6 +80,8 @@ Nesta [Wiki](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/home) voc√
 
 ## 4. Diagrama do Banco de Dados
 
+<img src="/uploads/d1b09e30413720f9fc24b0f58ca82fd5/Modelagem_v1.jpg" alt="diagrama do banco de dados"/>
+
 ## 5. Equipe
 
 * Andr√© Lars da Cunha | Scrum Developer | [linkedIn](https://www.linkedin.com/in/andre-lars-da-cunha/)
