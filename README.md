@@ -84,9 +84,9 @@ Nesta [Wiki](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/home) voc√
 
 * Andr√© Lars da Cunha | Scrum Developer | [linkedIn](https://www.linkedin.com/in/andre-lars-da-cunha/)
 
-* Alex | Product Owner | [linkedIn]()
+* Alex | Product Owner | [linkedIn](www.linkedin.com/in/alex-costa-ba3439187)
 
-* Daniel | Scrum Developer | [linkedIn]()
+* Daniel | Scrum Developer | [linkedIn](https://www.linkedin.com/in/daniel-delgado-274096194/)
 
 * Felipe Gustavo Braga | Scrum Master | [linkedIn](https://www.linkedin.com/in/felipegbraga/)
 
