@@ -47,17 +47,36 @@ Nesta [Wiki](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/home) voc�
 
 ## 2. Arquitetura do Projeto
 
-(descrever arquitetura)
+### Arquitetura do MVP:
+
+![MVP_Architecture](/uploads/da23ece3ab6a514cc11ec02a9a0adea7/MVP_Architecture.png)
+
+----------------------------------------------------------------------------------------------
+
+### Design da aplicação:
+
+![MVP_System_Design](/uploads/6cbd2856fb40b82e08d19ecca5133ab5/MVP_System_Design.png)
 
 ## 3. Backlog
 
 ### 3.1. Requisitos Funcionais (Story Cards)
 
+
 #### 3.1.1 Sprint 1
+<strong>RF_02</strong> - O candidato poderá realizar as pesquisas de vagas com base nos parâmetros de geolocalização, cidade, tipo de vaga, nível de escolaridade, tipo de contratação, data da divulgação e etc...<br>
 
 #### 3.1.2 Sprint 2
+<strong>RF_01</strong> - Candidato será capaz de submeter currículo de forma organizada e padronizada.<br>
+<strong>RF_03</strong> - Empresa poderá realizar as pesquisas de candidatos com base nos parâmetros de sexo, idade, escolaridade, distância da vaga, geolocalização e etc...<br>
+<strong>RF_06</strong> - Candidato poderá exportar parcialmente o resultado da pesquisa em arquivo do tipo CSV.<br>
+<strong>RF_07</strong> - Candidato poderá exportar o resultado total da pesquisa em arquivo do tipo CSV.<br>
+<strong>RF_04</strong> - Candidato poderá ver o resumo da pesquisa.<br>
+<strong>RF_05</strong> - Candidato poderá ver a pesquisa por completo.<br>
+<strong>RF_08</strong> - Candidato poderá utilizar filtros configuráveis nas buscas de cada vaga.<br>
 
 #### 3.1.3 Sprint 3
+
+
 
 ### 3.2. Requisitos não Funcionais
 
@@ -71,13 +90,15 @@ Nesta [Wiki](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/home) voc�
 
 ## 4. Diagrama do Banco de Dados
 
+<img src="/uploads/d1b09e30413720f9fc24b0f58ca82fd5/Modelagem_v1.jpg" alt="diagrama do banco de dados"/>
+
 ## 5. Equipe
 
 * André Lars da Cunha | Scrum Developer | [linkedIn](https://www.linkedin.com/in/andre-lars-da-cunha/)
 
-* Alex | Product Owner | [linkedIn]()
+* Alex | Product Owner | [linkedIn](www.linkedin.com/in/alex-costa-ba3439187)
 
-* Daniel | Scrum Developer | [linkedIn]()
+* Daniel | Scrum Developer | [linkedIn](https://www.linkedin.com/in/daniel-delgado-274096194/)
 
 * Felipe Gustavo Braga | Scrum Master | [linkedIn](https://www.linkedin.com/in/felipegbraga/)
 
