@@ -61,22 +61,27 @@ Nesta [Wiki](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/home) voc�
 
 ### 3.1. Requisitos Funcionais (Story Cards)
 
+Na descrição dos story cards, entende-se como usuário o recrutador ou responsável por analisar os currículos e como candidato a pessoa que deseja se candidatar à uma vaga
 
 #### 3.1.1 Sprint 1
-<strong>RF_02</strong> - O candidato poderá realizar as pesquisas de vagas com base nos parâmetros de geolocalização, cidade, tipo de vaga, nível de escolaridade, tipo de contratação, data da divulgação e etc...<br>
+<strong>RF_01</strong> - O usuário poderá realizar as pesquisas simples ou compostas com os seguintes parâmetros de buscas: genero, pais, cidade, código postal e/ou habilidades<br>
 
 #### 3.1.2 Sprint 2
-<strong>RF_01</strong> - Candidato será capaz de submeter currículo de forma organizada e padronizada.<br>
-<strong>RF_03</strong> - Empresa poderá realizar as pesquisas de candidatos com base nos parâmetros de sexo, idade, escolaridade, distância da vaga, geolocalização e etc...<br>
-<strong>RF_06</strong> - Candidato poderá exportar parcialmente o resultado da pesquisa em arquivo do tipo CSV.<br>
-<strong>RF_07</strong> - Candidato poderá exportar o resultado total da pesquisa em arquivo do tipo CSV.<br>
-<strong>RF_04</strong> - Candidato poderá ver o resumo da pesquisa.<br>
-<strong>RF_05</strong> - Candidato poderá ver a pesquisa por completo.<br>
-<strong>RF_08</strong> - Candidato poderá utilizar filtros configuráveis nas buscas de cada vaga.<br>
+<strong>RF_02</strong> - O usuário poderá realizar as pesquisas simples ou compostas com os seguintes parâmetros de buscas (além dos mencionados no RF1): nome, idade, contatos e/ou geolocalização<br>
+<strong>RF_03</strong> - O usuário poderá exportar o resultado da pesquisa em arquivo do tipo CSV.<br>
 
 #### 3.1.3 Sprint 3
+<strong>RF_06</strong> - O usuário poderá ver o resumo da pesquisa.<br>
+<strong>RF_07</strong> - O usuário poderá ver a pesquisa por completo.<br>
+<strong>RF_08</strong> - O usuário poderá escolher se irá exportar o resultado da pesquisa de forma completa ou resumida.<br>
+<strong>RF_09</strong> - O usuário poderá cadastrar vários currículos <br>
 
-
+#### 3.1.4 Sprint 4
+<strong>RF_04</strong> - O usuário poderá cadastrar um currículo<br>
+<strong>RF_05</strong> - O usuário poderá cadastrar varios currículos de uma vez<br>
+<strong>RF_10</strong> - O candidato poderá buscar por vagas.<br>
+<strong>RF_10</strong> - O candidato poderá candidatar-se a vagas.<br>
+<strong>RF_11</strong> - O candidato poderá cadastrar, atualizar e excluir o seu currículo.<br>
 
 ### 3.2. Requisitos não Funcionais
 
