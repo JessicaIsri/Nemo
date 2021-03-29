@@ -5,7 +5,7 @@
 
 ## Apresentação do Projeto
 
-(descrever o problema do projeto aqui)
+
 
 ### 1.1. Visão do Projeto
 
