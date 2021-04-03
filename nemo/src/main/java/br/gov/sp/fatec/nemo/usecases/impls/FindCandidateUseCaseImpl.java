@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class FindCandidateUseCaseImpl implements FindCandidateUseCase {
@@ -15,7 +16,21 @@ public class FindCandidateUseCaseImpl implements FindCandidateUseCase {
     private CandidateRepository candidateRepository;
 
     @Override
-    public List<Candidate> findCandidate(String gender, String country, String city, String zipCode, String skill) {
-        return candidateRepository.findCandidateByAllParams(gender, country, city, zipCode, skill);
+    public List<Candidate> findCandidate(
+        String gender,
+        String country,
+        String city,
+        String zipCode,
+        String skill,
+        Double longitude,
+        Double latitude,
+        Double kilometers
+    ) {
+        List<Candidate> candidates = candidateRepository.findCandidateByAllParams(gender, country, city, zipCode, skill);
+        if (latitude != null && longitude != null) {
+            List<Long> ids = candidates.stream().map(Candidate::getId).collect(Collectors.toList());
+            candidates = candidateRepository.findRadiusCandidate(longitude, latitude, ids, kilometers);
+        }
+        return candidates;
     }
 }

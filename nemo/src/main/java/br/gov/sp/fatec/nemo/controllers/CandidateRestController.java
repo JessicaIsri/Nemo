@@ -19,15 +19,18 @@ public class CandidateRestController {
 
     @GetMapping(value = "nemo/v1/candidate", produces = "application/json")
     public ResponseEntity<List<Candidate>> getCandidate(
-            @RequestParam(required = false) String gender,
-            @RequestParam(required = false) String country,
-            @RequestParam(required = false) String city,
-            @RequestParam(required = false) String zipCode,
-            @RequestParam(required = false) String skill
+        @RequestParam(required = false) String gender,
+        @RequestParam(required = false) String country,
+        @RequestParam(required = false) String city,
+        @RequestParam(required = false) String zipCode,
+        @RequestParam(required = false) String skill,
+        @RequestParam(required = false) Double longitude,
+        @RequestParam(required = false) Double latitude,
+        @RequestParam(required = false) Double kilometers
     ) {
         return Optional
-                .ofNullable(findCandidateUseCase.findCandidate(gender, country, city, zipCode, skill))
-                .map(candidate -> ResponseEntity.ok().body(candidate))
-                .orElseGet(() -> ResponseEntity.notFound().build());
+            .ofNullable(findCandidateUseCase.findCandidate(gender, country, city, zipCode, skill, longitude, latitude, kilometers))
+            .map(candidate -> ResponseEntity.ok().body(candidate))
+            .orElseGet(() -> ResponseEntity.notFound().build());
     }
 }

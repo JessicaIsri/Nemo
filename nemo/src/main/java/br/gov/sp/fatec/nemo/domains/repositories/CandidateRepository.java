@@ -26,4 +26,13 @@ public interface CandidateRepository extends JpaRepository<Candidate, Long> {
             @Param("zip_code") String zipCode,
             @Param("skill") String skill
     );
+
+    @Query(value = "SELECT * FROM candidate where can_id in (:ids) and ST_Distance_Sphere(geom, ST_MakePoint(:longitude,:latitude))/1000 <= :kilometers",
+        nativeQuery = true )
+    List<Candidate> findRadiusCandidate(
+        @Param("longitude") Double longitude,
+        @Param("latitude") Double latitude,
+        @Param("ids") List<Long> ids,
+        @Param("kilometers") Double kilometers
+    );
 }
