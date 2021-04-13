@@ -13,5 +13,6 @@ http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibas
     <include file="db/changelog/data.sql" relativeToChangelogFile="false"/>
     <include file="db/changelog/dataMock.sql" relativeToChangelogFile="false"/>
     <include file="db/changelog/candidateSkill.sql" relativeToChangelogFile="false"/>
+    <include file="db/changelog/addGeomCandidate.sql" relativeToChangelogFile="false"/>
 
 </databaseChangeLog>
