@@ -1,12 +1,19 @@
 package br.gov.sp.fatec.nemo.usecases.impls;
 
 import br.gov.sp.fatec.nemo.domains.entities.Candidate;
+import br.gov.sp.fatec.nemo.domains.entities.CandidateSkill;
 import br.gov.sp.fatec.nemo.domains.repositories.CandidateRepository;
+import br.gov.sp.fatec.nemo.domains.repositories.interfaces.GeometryCandidate;
+import br.gov.sp.fatec.nemo.usecases.impls.dtos.CandidateDTO;
 import br.gov.sp.fatec.nemo.usecases.interfaces.FindCandidateUseCase;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -27,10 +34,70 @@ public class FindCandidateUseCaseImpl implements FindCandidateUseCase {
         Double kilometers
     ) {
         List<Candidate> candidates = candidateRepository.findCandidateByAllParams(gender, country, city, zipCode, skill);
+//        if (latitude != null && longitude != null) {
+//            List<Long> ids = candidates.stream().map(Candidate::getId).collect(Collectors.toList());
+//            candidates = candidateRepository.findRadiusCandidate(longitude, latitude, ids, kilometers);
+//        }
+        return candidates;
+    }
+
+    @Override
+    public List<CandidateDTO> findCandidateV2(
+        List<String> hability,
+        Double longitude,
+        Double latitude,
+        Double kilometers) {
+
+        Set<Candidate> candidates = candidateRepository.findAllBySkills_Skill_DescriptionIn(hability);
+        Set<GeometryCandidate> geometryCandidates = null;
         if (latitude != null && longitude != null) {
             List<Long> ids = candidates.stream().map(Candidate::getId).collect(Collectors.toList());
             candidates = candidateRepository.findRadiusCandidate(longitude, latitude, ids, kilometers);
+            geometryCandidates = candidateRepository.findRadiusCandidateInterface(longitude, latitude, ids, kilometers);
         }
-        return candidates;
+
+        List<CandidateDTO> classify = classifyCandidate(candidates, hability, geometryCandidates);
+        Collections.sort(classify, new SortById());
+        return classify;
+    }
+
+    private List<CandidateDTO> classifyCandidate(Set<Candidate> candidates, List<String> hability, Set<GeometryCandidate> geometryCandidateSet) {
+        return candidates.stream().map(candidate -> {
+            var points = 0;
+            CandidateDTO candidateDTO = new CandidateDTO().fromCandidateDTO(candidate);
+            Integer skills = candidate.getSkills()
+                .stream()
+                .filter(f -> hability.contains(f.getSkill().getDescription())).collect(Collectors.toList()).size();
+
+            if (geometryCandidateSet != null) {
+                List<GeometryCandidate> geometryCandidate = geometryCandidateSet
+                    .stream().filter(f -> f.getId().equals(candidate.getId()))
+                    .collect(Collectors.toList());
+                var distance = geometryCandidate.get(0).getKilometer();
+                candidateDTO.setDistance(distance);
+                if (distance >= 0 && distance <= 20){
+                    points += 20;
+                } else if (distance >= 20 && distance <= 50){
+                    points += 10;
+                }
+                else{
+                    points += 5;
+                }
+
+
+            }
+
+            points += (skills * 50) / 10;
+
+            candidateDTO.setPoints(points);
+
+            return candidateDTO;
+        }).collect(Collectors.toList());
+    }
+}
+
+class SortById implements Comparator<CandidateDTO> {
+    public int compare(CandidateDTO candidateDTO, CandidateDTO candidateDTO2) {
+        return (int) candidateDTO2.getPoints() - (int) candidateDTO.getPoints();
     }
 }

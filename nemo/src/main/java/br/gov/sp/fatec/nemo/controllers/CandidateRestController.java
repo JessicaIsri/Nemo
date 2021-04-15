@@ -1,6 +1,7 @@
 package br.gov.sp.fatec.nemo.controllers;
 
 import br.gov.sp.fatec.nemo.domains.entities.Candidate;
+import br.gov.sp.fatec.nemo.usecases.impls.dtos.CandidateDTO;
 import br.gov.sp.fatec.nemo.usecases.interfaces.FindCandidateUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +32,18 @@ public class CandidateRestController {
         return Optional
             .ofNullable(findCandidateUseCase.findCandidate(gender, country, city, zipCode, skill, longitude, latitude, kilometers))
             .map(candidate -> ResponseEntity.ok().body(candidate))
+            .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @GetMapping(value = "nemo/v2/candidate", produces = "application/json")
+    public ResponseEntity<List<CandidateDTO>> getCandidateV2(
+        @RequestParam(required = false) List<String> hability,
+        @RequestParam(required = false) Double longitude,
+        @RequestParam(required = false) Double latitude,
+        @RequestParam(required = false) Double kilometers
+    ) {
+        return Optional.ofNullable(findCandidateUseCase.findCandidateV2(hability, longitude, latitude, kilometers))
+            .map(candidateDTOS -> ResponseEntity.ok().body(candidateDTOS))
             .orElseGet(() -> ResponseEntity.notFound().build());
     }
 }
