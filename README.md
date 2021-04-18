@@ -28,10 +28,10 @@ O projeto Nemo visa ser uma solução simples, versátil, escalável e open sour
 ### 1.2. Apresentação da Evolução do Projeto
 Sprint 1  | Sprint 2 | Sprint 3 | Sprint 4 :checkered_flag:  
 --------- |--------- |--------- |--------- |
-:heavy_check_mark:[Apresentação](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/4-Entrega-Sprint-1) |:heavy_check_mark:[Apresentação - Indisponível]() |[Apresentação]() |[Apresentação]() |
+:heavy_check_mark:[Apresentação](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/4-Entrega-Sprint-1) |:heavy_check_mark:[Apresentação]() |[Apresentação]() |[Apresentação]() |
 
 
-### 1.3. Planejamento :calendar:
+### 1.3. Planejamento
 
 Para fazer o planejamento foi utilizado a metodologia de "Design Thinking". Segundo o wikipedia, Design Thinking é o conjunto de ideias e insights para abordar problemas, relacionados a futuras aquisições de informações, análise de conhecimento e propostas de soluções.
 
