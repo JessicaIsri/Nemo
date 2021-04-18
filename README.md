@@ -1,12 +1,13 @@
 <br>
-<p align="center">
+<!-- <p align="center">
       <img src="/uploads/-/system/personal_snippet/2106755/52d2fd1f408cfbfa9c013d7933f8bc1f/Nemo_API__1_.png" width="200" height="200">
       <h3 align="center"> O seu sistema de gestão de vagas e candidatos </h3>
-<p align="center">
+<p align="center"> -->
+![Nemo_API__1_](/uploads/-/system/personal_snippet/2106755/52d2fd1f408cfbfa9c013d7933f8bc1f/Nemo_API__1_.png
 
 <hr>
 
-## :large_blue_circle: Apresentação do Projeto
+## Apresentação do Projeto
 
 
 
