@@ -1,6 +1,19 @@
 <div align="center">
       <img src="/uploads/d3295be8d95140beb572615b52a02a87/Nemo_API__1_.png" width="300" height="300">
 </div>
+<hr>
+<div align="center">
+      <h2>Menu</h2>
+      <p>
+            :small_orange_diamond:<a href="#">Apresentação</a>
+            :small_orange_diamond:<a href="#">Arquitetura</a>
+            :small_orange_diamond:<a href="#">Backlog</a>
+            :small_orange_diamond:<a href="#">Banco de Dados</a>
+            :small_orange_diamond:<a href="#">Tecnologias</a>
+            :small_orange_diamond:<a href="#">Time</a>
+      </p>
+</div>
+
 
 ## :fish: Apresentação do Projeto
 
@@ -13,9 +26,9 @@ Para cada semestre do curso de Banco de Dados é selecionado uma empresa que apr
 O projeto Nemo visa ser uma solução simples, versátil, escalável e open source para pessoas e empresas que precisam de um sistema escalável, simples e versátil para fazer a gestão dos currículos de candidatos relacionando eles às vagas disponíveis pela empresa.
 
 ### 1.2. Apresentação da Evolução do Projeto
-Sprint 1  | Sprint 2 | Sprint 3 | Sprint 4 (Final)  
+Sprint 1  | Sprint 2 | Sprint 3 | Sprint 4 :checkered_flag:  
 --------- |--------- |--------- |--------- |
-[Apresentação](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/4-Entrega-Sprint-1) |[Apresentação - Indisponível]() |[Apresentação - Indisponível]() |[Apresentação - Indisponível]() |
+:heavy_check_mark:[Apresentação](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/4-Entrega-Sprint-1) |:heavy_check_mark:[Apresentação - Indisponível]() |[Apresentação]() |[Apresentação]() |
 
 
 ### 1.3. Planejamento
