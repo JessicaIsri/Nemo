@@ -25,7 +25,6 @@ public class Skill implements Serializable {
 
     @Id
     @Column(name = "skill_id")
-    @JsonIgnore
     private Long id;
 
     @NotBlank

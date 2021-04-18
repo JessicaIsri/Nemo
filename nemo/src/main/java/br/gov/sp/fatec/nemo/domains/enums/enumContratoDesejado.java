@@ -6,5 +6,8 @@ public enum enumContratoDesejado {
     CLT("CLT"),
     INDEFINIDO("Contrato Indefinido"),
     AUTONOMO("Autônomo - Prestador de Serviços");
+
+    enumContratoDesejado(String contratoDesejado) {
     }
+}
 

@@ -14,6 +14,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -141,4 +142,7 @@ public class Candidate implements Serializable {
         result = 31 * result + (getSkills() != null ? getSkills().hashCode() : 0);
         return result;
     }
+
+
+
 }

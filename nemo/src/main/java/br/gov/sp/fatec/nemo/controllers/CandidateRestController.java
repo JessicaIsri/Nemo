@@ -4,18 +4,26 @@ import br.gov.sp.fatec.nemo.domains.entities.Candidate;
 import br.gov.sp.fatec.nemo.usecases.interfaces.FindCandidateUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+
+
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import br.gov.sp.fatec.nemo.domains.repositories.CandidateRepository;
+
+import javax.validation.Valid;
 
 @RestController
 public class CandidateRestController {
 
     @Autowired
     private FindCandidateUseCase findCandidateUseCase;
+
+
 
     @GetMapping(value = "nemo/v1/candidate", produces = "application/json")
     public ResponseEntity<List<Candidate>> getCandidate(
@@ -33,4 +41,24 @@ public class CandidateRestController {
             .map(candidate -> ResponseEntity.ok().body(candidate))
             .orElseGet(() -> ResponseEntity.notFound().build());
     }
+
+    //POST CANDIDATE
+    private static List<Candidate> LoadItemsFromDb(){
+        List<Candidate> object = new ArrayList<Candidate>();
+        return object;
+    }
+
+    private List<Candidate> candidatos = LoadItemsFromDb();
+
+    public String addCandidate(Candidate candidate){
+        candidatos.add(candidate);
+        return "Candidato cadastrado com sucesso!";
+    }
+
+    @PostMapping("nemo/v1/candidate/add")
+    public String criarCandidate(@RequestBody Candidate candidate){
+        return addCandidate(candidate);
+    }
+
+
 }

@@ -35,4 +35,6 @@ public interface CandidateRepository extends JpaRepository<Candidate, Long> {
         @Param("ids") List<Long> ids,
         @Param("kilometers") Double kilometers
     );
+
+
 }

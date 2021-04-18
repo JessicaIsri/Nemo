@@ -5,7 +5,11 @@ public enum enumPeriodoDisponivel {
     TARDE("Tarde"),
     NOITE("Noite"),
     MADRUGADA("Madrugada"),
-    INTEGRAL DIURNO("Integral Diurno"),
-    INTEGRAL NOTURNO("Integral Noturno");
+    INTEGRAL_DIURNO("Integral Diurno"),
+    INTEGRAL_NOTURNO("Integral Noturno");
+
+    enumPeriodoDisponivel(String periodoDisponivel) {
+    }
+
 }
 
