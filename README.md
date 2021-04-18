@@ -1,9 +1,13 @@
-<img src="https://img.shields.io/badge/licence-MIT-blue"> <img src="https://img.shields.io/badge/language-java-orange"> <img src="https://img.shields.io/badge/REST-API-green"> <img src="https://img.shields.io/badge/FATEC-BancoDados-success">
+<br>
+<p align="center">
+      <img src="/uploads/-/system/user/4471868/52d2fd1f408cfbfa9c013d7933f8bc1f/Nemo_API__1_.png" width="200" height="200">
+      <h3 align="center"> O seu sistema de gestão de vagas e candidatos </h3>
+<p align="center">
 
+<hr>
 
-# Projeto NEMO
+## :large_blue_circle: Apresentação do Projeto
 
-## Apresentação do Projeto
 
 
 
