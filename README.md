@@ -1,25 +1,22 @@
-<br>
-<p align="center">
-      <img src="/uploads/d3295be8d95140beb572615b52a02a87/Nemo_API__1_.png" width="200" height="200">
-      <h3 align="center"> O seu sistema de gestão de vagas e candidatos </h3>
-<p align="center">
+<div align="center">
+      <img src="/uploads/d3295be8d95140beb572615b52a02a87/Nemo_API__1_.png" width="300" height="300">
+</div>
 
-<hr>
+## :fish: Apresentação do Projeto
 
-## Apresentação do Projeto
+Organizado pela Fatec de São José dos Campos em conjunto com as melhores empresas da região do Vale do Paraíba, o API é uma iniciativa que envolve os alunos da fatec em projetos reais. 
 
-
-
+Para cada semestre do curso de Banco de Dados é selecionado uma empresa que apresenta um problema para ser desenvolvido pelos alunos, e para a turma do 4º semestre de Banco de Dados foi apresentado o seguinte problema: Desenvolver uma aplicação que resolva o problema de "match" entre candidatos e vagas, onde se possa alcançar, de maneira escalável e ágil a contratação dos melhores candidatos para as vagas apresentadas, através de uma gestão simples e eficiente.
 
 ### 1.1. Visão do Projeto
 
-O projeto Nemo visa ser uma solução simples, versátil, escalável e open source para pessoas e empresas que precisam gerenciar a seleção de canditados para suas oportunidades de trabalho.
+O projeto Nemo visa ser uma solução simples, versátil, escalável e open source para pessoas e empresas que precisam de um sistema escalável, simples e versátil para fazer a gestão dos currículos de candidatos relacionando eles às vagas disponíveis pela empresa.
 
 ### 1.2. Apresentação da Evolução do Projeto
 Sprint 1  | Sprint 2 | Sprint 3 | Sprint 4 (Final)  
 --------- |--------- |--------- |--------- |
 [Apresentação](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/4-Entrega-Sprint-1) |[Apresentação - Indisponível]() |[Apresentação - Indisponível]() |[Apresentação - Indisponível]() |
-[Release](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/releases) |[Release - Indisponível]() |[Release - Indisponível]() |[Release - Indisponível]() |
+
 
 ### 1.3. Planejamento
 
