@@ -5,7 +5,7 @@
 <div align="center">
       <h2>Menu</h2>
       <p>
-            :small_orange_diamond:<a href="#">Apresentação</a>
+            :small_orange_diamond:<a href="#">Introdução</a>
             :small_orange_diamond:<a href="#">Arquitetura</a>
             :small_orange_diamond:<a href="#">Backlog</a>
             :small_orange_diamond:<a href="#">Banco de Dados</a>
@@ -15,7 +15,7 @@
 </div>
 
 
-## :fish: Apresentação do Projeto
+## :fish: Introdução
 
 Organizado pela Fatec de São José dos Campos em conjunto com as melhores empresas da região do Vale do Paraíba, o API é uma iniciativa que envolve os alunos da fatec em projetos reais. 
 
@@ -28,14 +28,14 @@ O projeto Nemo visa ser uma solução simples, versátil, escalável e open sour
 ### 1.2. Apresentação da Evolução do Projeto
 Sprint 1  | Sprint 2 | Sprint 3 | Sprint 4 :checkered_flag:  
 --------- |--------- |--------- |--------- |
-:heavy_check_mark:[Apresentação](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/4-Entrega-Sprint-1) |:heavy_check_mark:[Apresentação]() |[Apresentação]() |[Apresentação]() |
+:heavy_check_mark:[Entrega](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/4-Entrega-Sprint-1) |:heavy_check_mark:[Entrega]() |[Entrega]() |[Entrega]() |
 
 
 ### 1.3. Planejamento
 
 Para fazer o planejamento foi utilizado a metodologia de "Design Thinking". Segundo o wikipedia, Design Thinking é o conjunto de ideias e insights para abordar problemas, relacionados a futuras aquisições de informações, análise de conhecimento e propostas de soluções.
 
-O design thinking consiste em 5 partes ciclicas: empatia, definição, ideação, prototipo, teste.
+:arrows_counterclockwise:O design thinking consiste em 5 partes ciclicas: empatia, definição, ideação, prototipo, teste.
 
 - A primeira etapa (empatia) do primeiro ciclo foi realizada junto ao cliente.
 - A etapa de definição é realizada durante as plannings do projeto.
@@ -45,16 +45,9 @@ O design thinking consiste em 5 partes ciclicas: empatia, definição, ideação
 
 ### 1.4. Tecnologias Utilizadas
 
-- Java
-- Swagger (documentação)
-- Banco de Dados Postgres
-- Hibernate
-- JPA
-- Java Spring
-- Git/Gitlab
-- Gitlab CI/CD
-- Microsoft Teams e Google Meet
-- Whatsapp
+<div align="center">
+      <img src="/uploads/130e4d8da8a8daa4d9876b41e2568552/Design_sem_nome.png">
+</div>
 
 ### 1.5. Wiki do Projeto
 Nesta [Wiki](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/home) você irá encontrar todo o passo a passo de desenvolvimento do projeto, várias informações úteis, bem como o SETUP do Projeto e a documentação de todas as reuniões de planejamento.
