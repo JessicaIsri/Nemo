@@ -14,20 +14,20 @@
 </div>
 
 
-## :fish: Introdução
+## Introdução
 
 Organizado pela Fatec de São José dos Campos em conjunto com as melhores empresas da região do Vale do Paraíba, o API é uma iniciativa que envolve os alunos da fatec em projetos reais. 
 
 Para cada semestre do curso de Banco de Dados é selecionado uma empresa que apresenta um problema para ser desenvolvido pelos alunos, e para a turma do 4º semestre de Banco de Dados foi apresentado o seguinte problema: Desenvolver uma aplicação que resolva o problema de "match" entre candidatos e vagas, onde se possa alcançar, de maneira escalável e ágil a contratação dos melhores candidatos para as vagas apresentadas, através de uma gestão simples e eficiente.
 
-### 1.1. Visão do Projeto
+### :dart: 1.1. Visão do Projeto
 
 O projeto Nemo visa ser uma solução simples, versátil, escalável e open source para pessoas e empresas que precisam de um sistema escalável, simples e versátil para fazer a gestão dos currículos de candidatos relacionando eles às vagas disponíveis pela empresa.
 
-### :camera_flash: 1.2. Apresentação da Evolução do Projeto
-Sprint 1  | Sprint 2 | Sprint 3 | Sprint 4 :checkered_flag:  
+### :camera: 1.2. Apresentação da Evolução do Projeto
+:heavy_check_mark: Sprint 1  | :heavy_check_mark: Sprint 2 | :information_source: Sprint 3 | Sprint 4 :checkered_flag:  
 --------- |--------- |--------- |--------- |
-:heavy_check_mark:[Entrega](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/4-Entrega-Sprint-1) |:heavy_check_mark:[Entrega]() |[Entrega]() |[Entrega]() |
+[Entrega](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/4-Entrega-Sprint-1) |[Entrega]() |[Entrega]() |[Entrega]() |
 
 
 ### :clipboard: 1.3. Planejamento
