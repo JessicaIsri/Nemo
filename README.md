@@ -6,6 +6,7 @@
       <h2>Menu</h2>
       <p>
             :small_orange_diamond:<a href="#introducao">Introdução</a>
+            :small_orange_diamond:<a href="#comousar">Como usar</a>
             :small_orange_diamond:<a href="#arquitetura">Arquitetura</a>
             :small_orange_diamond:<a href="#backlog">Backlog</a>
             :small_orange_diamond:<a href="#bd">Banco de Dados</a>
@@ -64,7 +65,8 @@ Nesta [Wiki](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/home) voc�
 
 Destacamos em negrito os principais requisitos de cada sprint.
 
-## :beginner: 2. Como usar
+<a name="comousar"></a>
+## 2. Como usar
 
 ### 2.1 No seu ambiente
 
@@ -88,7 +90,7 @@ Este comando irá inicializar o banco de dados na sua máquina.
 
 
 <a name="arquitetura"></a>
-## :large_orange_diamond: 3. Arquitetura do Projeto
+## 3. Arquitetura do Projeto
 
 ### 3.1. Arquitetura do MVP:
 
@@ -150,7 +152,7 @@ Na descrição dos story cards, entende-se como usuário o recrutador ou respons
 <img src="/uploads/d1b09e30413720f9fc24b0f58ca82fd5/Modelagem_v1.jpg" alt="diagrama do banco de dados"/>
 
 <a name="equipe"></a>
-## :two_men_holding_hands: 6. Equipe
+## 6. Equipe
 
 * André Lars da Cunha | Scrum Developer | [linkedIn](https://www.linkedin.com/in/andre-lars-da-cunha/)
 
