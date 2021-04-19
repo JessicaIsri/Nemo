@@ -62,6 +62,8 @@ Para fazer o planejamento foi utilizado a metodologia de "Design Thinking". Segu
 ### :bulb: 1.6. Wiki do Projeto
 Nesta [Wiki](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/home) você irá encontrar todo o passo a passo de desenvolvimento do projeto, várias informações úteis, bem como o SETUP do Projeto e a documentação de todas as reuniões de planejamento.
 
+Destacamos em negrito os principais requisitos de cada sprint.
+
 ## 2. Arquitetura do Projeto
 
 ### Arquitetura do MVP:
@@ -78,27 +80,27 @@ Nesta [Wiki](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/home) voc�
 
 ### 3.1. Requisitos Funcionais (Story Cards)
 
-Na descrição dos story cards, entende-se como usuário o recrutador ou responsável por analisar os currículos e como candidato a pessoa que deseja se candidatar à uma vaga
+Na descrição dos story cards, entende-se como usuário o recrutador ou responsável por analisar os currículos e como candidato a pessoa que deseja se candidatar à uma vaga.
 
-#### 3.1.1 Sprint 1
+#### :ok: 3.1.1 Sprint 1
 <strong>RF_01</strong> - O usuário poderá realizar as pesquisas simples ou compostas com os seguintes parâmetros de buscas: genero, pais, cidade, código postal e/ou habilidades;<br>
 
 #### 3.1.2 Sprint 2
-<strong>RF_02</strong> - O usuário poderá realizar as pesquisas simples ou compostas com utilizando como parâmetro todos os campos dos currículos;
-<strong>RF_03</strong> - O usuário poderá realizar pesquisa dos candidatos para determinada vaga e receber como resposta os currículos de maneira ordenada, com os que tem mais afinidade com a vaga sendo retornados nas primeiras posições;<br>
-<strong>RF_04</strong> - O usuário poderá cadastrar um currículo;
-<strong>RF_05</strong> - O usuário poderá cadastrar uma vaga;
-<strong>RF_06</strong> - O usuário poderá consultar todas as vagas cadastradas;
-<strong>RF_07</strong> - 
-<strong>RF_08</strong> - 
-<strong>RF_09</strong> - 
+<strong>RF_02- O usuário poderá realizar as pesquisas simples ou compostas com utilizando como parâmetro todos os campos dos currículos;</strong> 
+<strong>RF_03 - O usuário poderá realizar pesquisa dos candidatos para determinada vaga e receber como resposta os currículos de maneira ordenada, com os que tem mais afinidade com a vaga sendo retornados nas primeiras posições;</strong>
+<strong>RF_04</strong> - O usuário poderá cadastrar uma vaga;
+<strong>RF_05</strong> - O usuário poderá consultar todas as vagas cadastradas;
+<strong>RF_06</strong> - O usuário poderá cadastrar um currículo.
 
 #### 3.1.3 Sprint 3
+<strong>RF_07 - O usuário poderá escolher os parâmetros que ele quer receber de uma consulta de currículo e de vagas de acordo com sua necessidade;</strong>
+<strong>RF_08 - O usuário poderá registrar e consultar a jornada do candidato na aplicação à uma vaga;</strong>
+<strong>RF_09</strong> - O usuário será capaz de consultar à que vagas um candidato se aplicou;
+<strong>RF_10</strong> - O candidato poderá consultar e apagar seus dados do sistema.
 
 #### 3.1.4 Sprint 4
-<strong>RF_10</strong> - 
-<strong>RF_10</strong> - 
-<strong>RF_11</strong> - 
+<strong>RF_10 - O usuário poderá exportar os dados dos candidatos à uma vaga;</strong>
+<strong>RF_11</strong> - O usuário poderá obter estatísticas sobre o perfil da base de candidatos e dos candidatos aplicados à uma vaga.
 
 ### 3.2. Requisitos não Funcionais
 
@@ -108,7 +110,6 @@ Na descrição dos story cards, entende-se como usuário o recrutador ou respons
 - Escalabilidade
 - Performance
 - Testes
-- workflow de CI/CD
 
 ## 4. Diagrama do Banco de Dados
 
