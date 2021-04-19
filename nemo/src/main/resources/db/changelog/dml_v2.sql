@@ -29,12 +29,12 @@ INSERT INTO candidate_formation (fk_can_id, fk_inst_id , fk_course_id , dt_start
 (2, 2, 1, '2019-06-22', '2022-12-22') -- joker's formation  (on course)
 ;
 
-INSERT INTO job_opportunity (jo_id, jo_name, description, contract_type, 
-working_hours, salary_range_ini, salary_range_end, gender, availability, 
-workplace_country, workplace_city, workplace_neighborhood, workplace_street, 
-workplace_home_number, workplace_complement, workplace_zip_code, workplace_latitude, 
-workplace_longitude, divulgation_ini, divulgation_end) 
-VALUES(1, 'Programador XPTO', 'Programar tudo', 'CLT', '08:00:00', 1800.0, 2200.0, 
+INSERT INTO job_opportunity (jo_id, jo_name, description, contract_type,
+working_hours, salary_range_ini, salary_range_end, gender, availability,
+workplace_country, workplace_city, workplace_neighborhood, workplace_street,
+workplace_home_number, workplace_complement, workplace_zip_code, workplace_latitude,
+workplace_longitude, divulgation_ini, divulgation_end)
+VALUES(1, 'Programador XPTO', 'Programar tudo', 'CLT', '08:00:00', 1800.0, 2200.0,
 'M', 'MT', 'Brasil', 'SJC', 'Aquarius', 'Rua  Aquarius', 123, NULL, '12345678', 12.0, -58.0, '2021-04-18 17:53:42.401431', '2021-04-18 17:53:42.401431');
 
 

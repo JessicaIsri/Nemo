@@ -34,3 +34,4 @@ public class CandidateRestController {
             .orElseGet(() -> ResponseEntity.notFound().build());
     }
 }
+

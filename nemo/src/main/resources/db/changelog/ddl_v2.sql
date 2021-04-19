@@ -26,7 +26,7 @@ CREATE TABLE "candidate" (
 can_id SERIAL,
 can_name varchar(100) NOT NULL,
 email varchar(100) NOT null UNIQUE,
-cpf_cnpj varchar(14) NOT null UNIQUE,
+cpf varchar(14) NOT null UNIQUE,
 phone varchar(14) NOT NULL,
 gender varchar(20) NOT NULL,
 birthday date NOT NULL,
@@ -178,9 +178,3 @@ PRIMARY KEY(fk_jo_id, fk_post_id),
 CONSTRAINT fk_jo_id_joer FOREIGN KEY(fk_jo_id) REFERENCES "job_opportunity"(jo_id),
 CONSTRAINT fk_post_id_joer FOREIGN KEY(fk_post_id) REFERENCES "post"(post_id)
 );
-
-
-
-
-
-
