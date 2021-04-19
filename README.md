@@ -28,7 +28,7 @@ O projeto Nemo visa ser uma solução simples, versátil, escalável e open sour
 ### :camera: 1.2. Apresentação da Evolução do Projeto
 :heavy_check_mark: Sprint 1  | :heavy_check_mark: Sprint 2 | :information_source: Sprint 3 | Sprint 4 :checkered_flag:  
 --------- |--------- |--------- |--------- |
-[Entrega](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/4-Entrega-Sprint-1) |[Entrega]() |[Entrega]() |[Entrega]() |
+[Entrega](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/4-Entrega-Sprint-1) |[Entrega](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/6-Entrega-Sprint-2) |[Entrega]() |[Entrega]() |
 
 
 ### :clipboard: 1.3. Planejamento
