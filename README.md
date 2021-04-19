@@ -64,47 +64,78 @@ Nesta [Wiki](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/home) voc�
 
 Destacamos em negrito os principais requisitos de cada sprint.
 
-<a name="arquitetura"></a>
-## 2. Arquitetura do Projeto
+## :beginner: 2. Como usar
 
-### Arquitetura do MVP:
+### 2.1 No seu ambiente
+
+- 2.1.1 - Para que você possa utilizar o projeto, primeiro é legal dar uma olhada no [SETUP](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/2-Setup-do-Projeto), lá você conseguirá configurar o ambiente para executar a aplicação. 
+
+- 2.1.2 - Após configurar o ambiente, será necessário também ter o _**docker**_ e o _**docker compose**_ na sua máquina.
+
+- 2.1.3 - Abra a pasta do projeto e navegue para a pasta "docker" que fica em: "./nemo/main/docker" e execute o seguinte comando:<br>
+`docker-compose -d -f postgresql.yml up`<br>
+Este comando irá inicializar o banco de dados na sua máquina.
+
+- 2.1.4 - Execute o programa no IntelliJ
+
+- 2.1.5 - Agora acesse através do POSTMAN ou do INSOMNIA a rota: "localhost:8081/nemo/v1/authentication" para se autenticar,
+
+- 2.1.6 - Copie o token e agora insira ele no header da requisição para fazer requisições para as outras rotas da aplicação. (Para saber sobre as outras rotas, você pode acessar a nossa [documentação](). )
+
+### 2.1 Na cloud do projeto
+
+- Siga os passos _2.1.5_ e _2.1.6_ porém com a url: http://3.139.101.230:8081/nemo/v1/authentication
+
+
+<a name="arquitetura"></a>
+## :large_orange_diamond: 3. Arquitetura do Projeto
+
+### 3.1. Arquitetura do MVP:
 
 ![MVP_Architecture](/uploads/da23ece3ab6a514cc11ec02a9a0adea7/MVP_Architecture.png)
 
 ----------------------------------------------------------------------------------------------
 
-### Design da aplicação:
+### 3.2. Design da aplicação:
 
 ![MVP_System_Design](/uploads/6cbd2856fb40b82e08d19ecca5133ab5/MVP_System_Design.png)
 
 <a name="backlog"></a>
-## 3. Backlog
+## 4. Backlog
 
-### 3.1. Requisitos Funcionais (Story Cards)
+### 4.1. Requisitos Funcionais (Story Cards)
 
 Na descrição dos story cards, entende-se como usuário o recrutador ou responsável por analisar os currículos e como candidato a pessoa que deseja se candidatar à uma vaga.
 
-#### :heavy_check_mark: 3.1.1 Sprint 1
+#### :white_check_mark: 4.1.1 Sprint 1
 <strong>RF_01</strong> - O usuário poderá realizar as pesquisas simples ou compostas com os seguintes parâmetros de buscas: genero, pais, cidade, código postal e/ou habilidades;<br>
 
-#### :heavy_check_mark: 3.1.2 Sprint 2
+#### :white_check_mark: 4.1.2 Sprint 2
 <strong>RF_02- O usuário poderá realizar as pesquisas simples ou compostas com utilizando como parâmetro todos os campos dos currículos;</strong> 
+
 <strong>RF_03 - O usuário poderá realizar pesquisa dos candidatos para determinada vaga e receber como resposta os currículos de maneira ordenada, com os que tem mais afinidade com a vaga sendo retornados nas primeiras posições;</strong>
+
 <strong>RF_04</strong> - O usuário poderá cadastrar uma vaga;
+
 <strong>RF_05</strong> - O usuário poderá consultar todas as vagas cadastradas;
+
 <strong>RF_06</strong> - O usuário poderá cadastrar um currículo.
 
-#### :white_check_mark: 3.1.3 Sprint 3
+####  :heavy_check_mark: 4.1.3 Sprint 3
 <strong>RF_07 - O usuário poderá escolher os parâmetros que ele quer receber de uma consulta de currículo e de vagas de acordo com sua necessidade;</strong>
+
 <strong>RF_08 - O usuário poderá registrar e consultar a jornada do candidato na aplicação à uma vaga;</strong>
+
 <strong>RF_09</strong> - O usuário será capaz de consultar à que vagas um candidato se aplicou;
+
 <strong>RF_10</strong> - O candidato poderá consultar e apagar seus dados do sistema.
 
-#### :white_check_mark: 3.1.4 Sprint 4
+#### :heavy_check_mark: 4.1.4 Sprint 4
 <strong>RF_10 - O usuário poderá exportar os dados dos candidatos à uma vaga;</strong>
+
 <strong>RF_11</strong> - O usuário poderá obter estatísticas sobre o perfil da base de candidatos e dos candidatos aplicados à uma vaga.
 
-### :arrow_forward: 3.2. Requisitos não Funcionais
+### :arrow_forward: 4.2. Requisitos não Funcionais
 
 - Documentação completa e clara
 - Relatórios de desempenho
@@ -114,12 +145,12 @@ Na descrição dos story cards, entende-se como usuário o recrutador ou respons
 - Testes
 
 <a name="bd"></a>
-## :floppy_disk: 4. Diagrama do Banco de Dados
+## :floppy_disk: 5. Diagrama do Banco de Dados
 
 <img src="/uploads/d1b09e30413720f9fc24b0f58ca82fd5/Modelagem_v1.jpg" alt="diagrama do banco de dados"/>
 
 <a name="equipe"></a>
-## :two_men_holding_hands: 5. Equipe
+## :two_men_holding_hands: 6. Equipe
 
 * André Lars da Cunha | Scrum Developer | [linkedIn](https://www.linkedin.com/in/andre-lars-da-cunha/)
 
