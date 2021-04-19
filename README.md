@@ -24,13 +24,13 @@ Para cada semestre do curso de Banco de Dados é selecionado uma empresa que apr
 
 O projeto Nemo visa ser uma solução simples, versátil, escalável e open source para pessoas e empresas que precisam de um sistema escalável, simples e versátil para fazer a gestão dos currículos de candidatos relacionando eles às vagas disponíveis pela empresa.
 
-### :camera_flash:1.2. Apresentação da Evolução do Projeto
+### :camera_flash: 1.2. Apresentação da Evolução do Projeto
 Sprint 1  | Sprint 2 | Sprint 3 | Sprint 4 :checkered_flag:  
 --------- |--------- |--------- |--------- |
 :heavy_check_mark:[Entrega](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/4-Entrega-Sprint-1) |:heavy_check_mark:[Entrega]() |[Entrega]() |[Entrega]() |
 
 
-### :clipboard:1.3. Planejamento
+### :clipboard: 1.3. Planejamento
 
 Para fazer o planejamento foi utilizado a metodologia de "Design Thinking". Segundo o wikipedia, Design Thinking é o conjunto de ideias e insights para abordar problemas, relacionados a futuras aquisições de informações, análise de conhecimento e propostas de soluções.
 
@@ -53,13 +53,13 @@ Para fazer o planejamento foi utilizado a metodologia de "Design Thinking". Segu
 - [ ] 14/06/2021 até 18/06/2021 - Sprint Feira de Soluções
 
 
-### :hammer:1.5. Tecnologias Utilizadas
+### :hammer: 1.5. Tecnologias Utilizadas
 
 <div align="center">
       <img src="/uploads/130e4d8da8a8daa4d9876b41e2568552/Design_sem_nome.png">
 </div>
 
-### 1.6. Wiki do Projeto
+### :bulb: 1.6. Wiki do Projeto
 Nesta [Wiki](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/home) você irá encontrar todo o passo a passo de desenvolvimento do projeto, várias informações úteis, bem como o SETUP do Projeto e a documentação de todas as reuniões de planejamento.
 
 ## 2. Arquitetura do Projeto
