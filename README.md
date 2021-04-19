@@ -9,8 +9,7 @@
             :small_orange_diamond:<a href="#">Arquitetura</a>
             :small_orange_diamond:<a href="#">Backlog</a>
             :small_orange_diamond:<a href="#">Banco de Dados</a>
-            :small_orange_diamond:<a href="#">Tecnologias</a>
-            :small_orange_diamond:<a href="#">Time</a>
+            :small_orange_diamond:<a href="#">Equipe</a>
       </p>
 </div>
 
@@ -25,13 +24,13 @@ Para cada semestre do curso de Banco de Dados é selecionado uma empresa que apr
 
 O projeto Nemo visa ser uma solução simples, versátil, escalável e open source para pessoas e empresas que precisam de um sistema escalável, simples e versátil para fazer a gestão dos currículos de candidatos relacionando eles às vagas disponíveis pela empresa.
 
-### 1.2. Apresentação da Evolução do Projeto
+### :camera_flash:1.2. Apresentação da Evolução do Projeto
 Sprint 1  | Sprint 2 | Sprint 3 | Sprint 4 :checkered_flag:  
 --------- |--------- |--------- |--------- |
 :heavy_check_mark:[Entrega](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/4-Entrega-Sprint-1) |:heavy_check_mark:[Entrega]() |[Entrega]() |[Entrega]() |
 
 
-### 1.3. Planejamento
+### :clipboard:1.3. Planejamento
 
 Para fazer o planejamento foi utilizado a metodologia de "Design Thinking". Segundo o wikipedia, Design Thinking é o conjunto de ideias e insights para abordar problemas, relacionados a futuras aquisições de informações, análise de conhecimento e propostas de soluções.
 
@@ -43,13 +42,24 @@ Para fazer o planejamento foi utilizado a metodologia de "Design Thinking". Segu
 - A etapa de teste é realizada sempre que um prototipo vira funcionalidade através do fluxo de CI (continuous integration) e CD (continuous deploy/delivery) do projeto.
 
 
-### 1.4. Tecnologias Utilizadas
+### :calendar: 1.4. Cronograma
+
+- [x] 28/02/2021 até 06/03/2021 - Kick Off do Projeto
+- [x] 08/03/2021 até 28/03/2021 - Sprint 1
+- [x] 29/03/2021 até 18/04/2021 - Sprint 2
+- [ ] 26/04/2021 até 16/05/2021 - Sprint 3
+- [ ] 17/05/2021 até 05/06/2021 - Sprint 4
+- [ ] 07/06/2021 até 11/06/2021 - Sprint Apresentação Final
+- [ ] 14/06/2021 até 18/06/2021 - Sprint Feira de Soluções
+
+
+### :hammer:1.5. Tecnologias Utilizadas
 
 <div align="center">
       <img src="/uploads/130e4d8da8a8daa4d9876b41e2568552/Design_sem_nome.png">
 </div>
 
-### 1.5. Wiki do Projeto
+### 1.6. Wiki do Projeto
 Nesta [Wiki](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/home) você irá encontrar todo o passo a passo de desenvolvimento do projeto, várias informações úteis, bem como o SETUP do Projeto e a documentação de todas as reuniões de planejamento.
 
 ## 2. Arquitetura do Projeto
@@ -71,24 +81,24 @@ Nesta [Wiki](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/home) voc�
 Na descrição dos story cards, entende-se como usuário o recrutador ou responsável por analisar os currículos e como candidato a pessoa que deseja se candidatar à uma vaga
 
 #### 3.1.1 Sprint 1
-<strong>RF_01</strong> - O usuário poderá realizar as pesquisas simples ou compostas com os seguintes parâmetros de buscas: genero, pais, cidade, código postal e/ou habilidades<br>
+<strong>RF_01</strong> - O usuário poderá realizar as pesquisas simples ou compostas com os seguintes parâmetros de buscas: genero, pais, cidade, código postal e/ou habilidades;<br>
 
 #### 3.1.2 Sprint 2
-<strong>RF_02</strong> - O usuário poderá realizar as pesquisas simples ou compostas com os seguintes parâmetros de buscas (além dos mencionados no RF1): nome, idade, contatos e/ou geolocalização<br>
-<strong>RF_03</strong> - O usuário poderá exportar o resultado da pesquisa em arquivo do tipo CSV.<br>
+<strong>RF_02</strong> - O usuário poderá realizar as pesquisas simples ou compostas com utilizando como parâmetro todos os campos dos currículos;
+<strong>RF_03</strong> - O usuário poderá realizar pesquisa dos candidatos para determinada vaga e receber como resposta os currículos de maneira ordenada, com os que tem mais afinidade com a vaga sendo retornados nas primeiras posições;<br>
+<strong>RF_04</strong> - O usuário poderá cadastrar um currículo;
+<strong>RF_05</strong> - O usuário poderá cadastrar uma vaga;
+<strong>RF_06</strong> - O usuário poderá consultar todas as vagas cadastradas;
+<strong>RF_07</strong> - 
+<strong>RF_08</strong> - 
+<strong>RF_09</strong> - 
 
 #### 3.1.3 Sprint 3
-<strong>RF_06</strong> - O usuário poderá ver o resumo da pesquisa.<br>
-<strong>RF_07</strong> - O usuário poderá ver a pesquisa por completo.<br>
-<strong>RF_08</strong> - O usuário poderá escolher se irá exportar o resultado da pesquisa de forma completa ou resumida.<br>
-<strong>RF_09</strong> - O usuário poderá cadastrar vários currículos <br>
 
 #### 3.1.4 Sprint 4
-<strong>RF_04</strong> - O usuário poderá cadastrar um currículo<br>
-<strong>RF_05</strong> - O usuário poderá cadastrar varios currículos de uma vez<br>
-<strong>RF_10</strong> - O candidato poderá buscar por vagas.<br>
-<strong>RF_10</strong> - O candidato poderá candidatar-se a vagas.<br>
-<strong>RF_11</strong> - O candidato poderá cadastrar, atualizar e excluir o seu currículo.<br>
+<strong>RF_10</strong> - 
+<strong>RF_10</strong> - 
+<strong>RF_11</strong> - 
 
 ### 3.2. Requisitos não Funcionais
 
