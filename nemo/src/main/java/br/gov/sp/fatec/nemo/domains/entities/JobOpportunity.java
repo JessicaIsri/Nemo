@@ -16,6 +16,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -48,7 +49,7 @@ public class JobOpportunity implements Serializable {
 
     @NotBlank
     @Column(name = "working_hours")
-    private Long workingHours;
+    private Time workingHours;
 
     @NotBlank
     @Column(name = "salary_range_ini")

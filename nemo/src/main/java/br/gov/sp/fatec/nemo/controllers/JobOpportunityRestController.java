@@ -18,11 +18,9 @@ public class JobOpportunityRestController {
     private FindJobOpportunityUseCase findJobOpportunityUseCase;
 
     @GetMapping(value = "nemo/v1/jobopportunity", produces = "application/json")
-    public ResponseEntity<List<JobOpportunity>> getJobOpportunity(
-        @RequestParam(required = false) Long id
-    ) {
+    public ResponseEntity<List<JobOpportunity>> getJobOpportunity() {
         return Optional
-            .ofNullable(findJobOpportunityUseCase.findJobOpportunity(id))
+            .ofNullable(findJobOpportunityUseCase.findJobOpportunity())
             .map(jobopportunity -> ResponseEntity.ok().body(jobopportunity))
             .orElseGet(() -> ResponseEntity.notFound().build());
     }

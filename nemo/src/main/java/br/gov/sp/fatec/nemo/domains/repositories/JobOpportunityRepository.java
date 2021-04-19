@@ -11,10 +11,9 @@ import java.util.List;
 @Repository
 public interface JobOpportunityRepository extends JpaRepository<JobOpportunity, Long> {
 
-    @Query("SELECT DISTINCT j FROM JobOpportunity j WHERE (:jo_id is null or j.id = :jo_id)")
-            List<JobOpportunity> findJobOpportunityByAllParams(
-            @Param("id") Long id
-    );
+    @Query(value = "SELECT * FROM job_opportunity", nativeQuery = true )
+            List<JobOpportunity> findJobOpportunityByAllParams();
+
 
 
 }

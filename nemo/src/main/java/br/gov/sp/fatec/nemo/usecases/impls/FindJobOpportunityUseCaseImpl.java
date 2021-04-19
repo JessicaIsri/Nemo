@@ -20,9 +20,8 @@ public class FindJobOpportunityUseCaseImpl implements FindJobOpportunityUseCase 
 
     @Override
     public List<JobOpportunity> findJobOpportunity(
-        Long id
     ) {
-        List<JobOpportunity> jos = jobOpportunityRepository.findJobOpportunityByAllParams(id);
+        List<JobOpportunity> jos = jobOpportunityRepository.findJobOpportunityByAllParams();
         return jos;
     }
 }
