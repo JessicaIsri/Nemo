@@ -5,15 +5,15 @@
 <div align="center">
       <h2>Menu</h2>
       <p>
-            :small_orange_diamond:<a href="#">Introdução</a>
-            :small_orange_diamond:<a href="#">Arquitetura</a>
-            :small_orange_diamond:<a href="#">Backlog</a>
-            :small_orange_diamond:<a href="#">Banco de Dados</a>
-            :small_orange_diamond:<a href="#">Equipe</a>
+            :small_orange_diamond:<a href="#introducao">Introdução</a>
+            :small_orange_diamond:<a href="#arquitetura">Arquitetura</a>
+            :small_orange_diamond:<a href="#backlog">Backlog</a>
+            :small_orange_diamond:<a href="#bd">Banco de Dados</a>
+            :small_orange_diamond:<a href="#equipe">Equipe</a>
       </p>
 </div>
 
-
+<a name="introducao"></a>
 ## Introdução
 
 Organizado pela Fatec de São José dos Campos em conjunto com as melhores empresas da região do Vale do Paraíba, o API é uma iniciativa que envolve os alunos da fatec em projetos reais. 
@@ -64,6 +64,7 @@ Nesta [Wiki](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/home) voc�
 
 Destacamos em negrito os principais requisitos de cada sprint.
 
+<a name="arquitetura"></a>
 ## 2. Arquitetura do Projeto
 
 ### Arquitetura do MVP:
@@ -76,33 +77,34 @@ Destacamos em negrito os principais requisitos de cada sprint.
 
 ![MVP_System_Design](/uploads/6cbd2856fb40b82e08d19ecca5133ab5/MVP_System_Design.png)
 
+<a name="backlog"></a>
 ## 3. Backlog
 
 ### 3.1. Requisitos Funcionais (Story Cards)
 
 Na descrição dos story cards, entende-se como usuário o recrutador ou responsável por analisar os currículos e como candidato a pessoa que deseja se candidatar à uma vaga.
 
-#### :ok: 3.1.1 Sprint 1
+#### :heavy_check_mark: 3.1.1 Sprint 1
 <strong>RF_01</strong> - O usuário poderá realizar as pesquisas simples ou compostas com os seguintes parâmetros de buscas: genero, pais, cidade, código postal e/ou habilidades;<br>
 
-#### 3.1.2 Sprint 2
+#### :heavy_check_mark: 3.1.2 Sprint 2
 <strong>RF_02- O usuário poderá realizar as pesquisas simples ou compostas com utilizando como parâmetro todos os campos dos currículos;</strong> 
 <strong>RF_03 - O usuário poderá realizar pesquisa dos candidatos para determinada vaga e receber como resposta os currículos de maneira ordenada, com os que tem mais afinidade com a vaga sendo retornados nas primeiras posições;</strong>
 <strong>RF_04</strong> - O usuário poderá cadastrar uma vaga;
 <strong>RF_05</strong> - O usuário poderá consultar todas as vagas cadastradas;
 <strong>RF_06</strong> - O usuário poderá cadastrar um currículo.
 
-#### 3.1.3 Sprint 3
+#### :white_check_mark: 3.1.3 Sprint 3
 <strong>RF_07 - O usuário poderá escolher os parâmetros que ele quer receber de uma consulta de currículo e de vagas de acordo com sua necessidade;</strong>
 <strong>RF_08 - O usuário poderá registrar e consultar a jornada do candidato na aplicação à uma vaga;</strong>
 <strong>RF_09</strong> - O usuário será capaz de consultar à que vagas um candidato se aplicou;
 <strong>RF_10</strong> - O candidato poderá consultar e apagar seus dados do sistema.
 
-#### 3.1.4 Sprint 4
+#### :white_check_mark: 3.1.4 Sprint 4
 <strong>RF_10 - O usuário poderá exportar os dados dos candidatos à uma vaga;</strong>
 <strong>RF_11</strong> - O usuário poderá obter estatísticas sobre o perfil da base de candidatos e dos candidatos aplicados à uma vaga.
 
-### 3.2. Requisitos não Funcionais
+### :arrow_forward: 3.2. Requisitos não Funcionais
 
 - Documentação completa e clara
 - Relatórios de desempenho
@@ -111,11 +113,13 @@ Na descrição dos story cards, entende-se como usuário o recrutador ou respons
 - Performance
 - Testes
 
-## 4. Diagrama do Banco de Dados
+<a name="bd"></a>
+## :floppy_disk: 4. Diagrama do Banco de Dados
 
 <img src="/uploads/d1b09e30413720f9fc24b0f58ca82fd5/Modelagem_v1.jpg" alt="diagrama do banco de dados"/>
 
-## 5. Equipe
+<a name="equipe"></a>
+## :two_men_holding_hands: 5. Equipe
 
 * André Lars da Cunha | Scrum Developer | [linkedIn](https://www.linkedin.com/in/andre-lars-da-cunha/)
 
