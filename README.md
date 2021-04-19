@@ -1,27 +1,41 @@
-<img src="https://img.shields.io/badge/licence-MIT-blue"> <img src="https://img.shields.io/badge/language-java-orange"> <img src="https://img.shields.io/badge/REST-API-green"> <img src="https://img.shields.io/badge/FATEC-BancoDados-success">
+<div align="center">
+      <img src="/uploads/d3295be8d95140beb572615b52a02a87/Nemo_API__1_.png" width="300" height="300">
+</div>
+<hr>
+<div align="center">
+      <h2>Menu</h2>
+      <p>
+            :small_orange_diamond:<a href="#">Introdução</a>
+            :small_orange_diamond:<a href="#">Arquitetura</a>
+            :small_orange_diamond:<a href="#">Backlog</a>
+            :small_orange_diamond:<a href="#">Banco de Dados</a>
+            :small_orange_diamond:<a href="#">Tecnologias</a>
+            :small_orange_diamond:<a href="#">Time</a>
+      </p>
+</div>
 
 
-# Projeto NEMO
+## :fish: Introdução
 
-## Apresentação do Projeto
+Organizado pela Fatec de São José dos Campos em conjunto com as melhores empresas da região do Vale do Paraíba, o API é uma iniciativa que envolve os alunos da fatec em projetos reais. 
 
-
+Para cada semestre do curso de Banco de Dados é selecionado uma empresa que apresenta um problema para ser desenvolvido pelos alunos, e para a turma do 4º semestre de Banco de Dados foi apresentado o seguinte problema: Desenvolver uma aplicação que resolva o problema de "match" entre candidatos e vagas, onde se possa alcançar, de maneira escalável e ágil a contratação dos melhores candidatos para as vagas apresentadas, através de uma gestão simples e eficiente.
 
 ### 1.1. Visão do Projeto
 
-O projeto Nemo visa ser uma solução simples, versátil, escalável e open source para pessoas e empresas que precisam gerenciar a seleção de canditados para suas oportunidades de trabalho.
+O projeto Nemo visa ser uma solução simples, versátil, escalável e open source para pessoas e empresas que precisam de um sistema escalável, simples e versátil para fazer a gestão dos currículos de candidatos relacionando eles às vagas disponíveis pela empresa.
 
 ### 1.2. Apresentação da Evolução do Projeto
-Sprint 1  | Sprint 2 | Sprint 3 | Sprint 4 (Final)  
+Sprint 1  | Sprint 2 | Sprint 3 | Sprint 4 :checkered_flag:  
 --------- |--------- |--------- |--------- |
-[Apresentação](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/4-Entrega-Sprint-1) |[Apresentação - Indisponível]() |[Apresentação - Indisponível]() |[Apresentação - Indisponível]() |
-[Release](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/releases) |[Release - Indisponível]() |[Release - Indisponível]() |[Release - Indisponível]() |
+:heavy_check_mark:[Entrega](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/4-Entrega-Sprint-1) |:heavy_check_mark:[Entrega]() |[Entrega]() |[Entrega]() |
+
 
 ### 1.3. Planejamento
 
 Para fazer o planejamento foi utilizado a metodologia de "Design Thinking". Segundo o wikipedia, Design Thinking é o conjunto de ideias e insights para abordar problemas, relacionados a futuras aquisições de informações, análise de conhecimento e propostas de soluções.
 
-O design thinking consiste em 5 partes ciclicas: empatia, definição, ideação, prototipo, teste.
+:arrows_counterclockwise:O design thinking consiste em 5 partes ciclicas: empatia, definição, ideação, prototipo, teste.
 
 - A primeira etapa (empatia) do primeiro ciclo foi realizada junto ao cliente.
 - A etapa de definição é realizada durante as plannings do projeto.
@@ -31,16 +45,9 @@ O design thinking consiste em 5 partes ciclicas: empatia, definição, ideação
 
 ### 1.4. Tecnologias Utilizadas
 
-- Java
-- Swagger (documentação)
-- Banco de Dados Postgres
-- Hibernate
-- JPA
-- Java Spring
-- Git/Gitlab
-- Gitlab CI/CD
-- Microsoft Teams e Google Meet
-- Whatsapp
+<div align="center">
+      <img src="/uploads/130e4d8da8a8daa4d9876b41e2568552/Design_sem_nome.png">
+</div>
 
 ### 1.5. Wiki do Projeto
 Nesta [Wiki](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/home) você irá encontrar todo o passo a passo de desenvolvimento do projeto, várias informações úteis, bem como o SETUP do Projeto e a documentação de todas as reuniões de planejamento.
