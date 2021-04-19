@@ -29,7 +29,6 @@ public class Candidate implements Serializable {
 
     @Id
     @Column(name = "can_id")
-    @JsonIgnore
     private Long id;
 
     @NotBlank

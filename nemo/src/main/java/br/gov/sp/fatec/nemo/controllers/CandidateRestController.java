@@ -3,6 +3,7 @@ package br.gov.sp.fatec.nemo.controllers;
 import br.gov.sp.fatec.nemo.domains.entities.Candidate;
 import br.gov.sp.fatec.nemo.usecases.interfaces.FindCandidateUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,18 +12,21 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import java.util.Optional;
 
 import br.gov.sp.fatec.nemo.domains.repositories.CandidateRepository;
 
-import javax.validation.Valid;
-
 @RestController
 public class CandidateRestController {
+
+
 
     @Autowired
     private FindCandidateUseCase findCandidateUseCase;
 
+    @Autowired
+    private CandidateRepository candidateRepository;
 
 
     @GetMapping(value = "nemo/v1/candidate", produces = "application/json")
@@ -59,6 +63,14 @@ public class CandidateRestController {
     public String criarCandidate(@RequestBody Candidate candidate){
         return addCandidate(candidate);
     }
+
+
+    //GET CANDIDATE BY ID
+    @GetMapping("nemo/v1/candidate/{id}")
+    public Candidate candidateById(@PathVariable(value="id") Long id){
+        return candidateRepository.findCandidateById(id);
+    }
+
 
 
 }

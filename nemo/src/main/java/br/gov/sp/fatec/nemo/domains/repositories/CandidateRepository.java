@@ -36,5 +36,7 @@ public interface CandidateRepository extends JpaRepository<Candidate, Long> {
         @Param("kilometers") Double kilometers
     );
 
-
+    //FIND BY ID
+    @Query(value="select * from candidate where can_id = :id", nativeQuery = true)
+    Candidate findCandidateById(@Param("id") Long id);
 }

@@ -5,19 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7dbaddb2-3408-434b-86f8-881a2be4ea3d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nemo/src/main/java/br/gov/sp/fatec/nemo/controllers/CandidateRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/nemo/src/main/java/br/gov/sp/fatec/nemo/controllers/CandidateRestController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nemo/src/main/java/br/gov/sp/fatec/nemo/domains/entities/Candidate.java" beforeDir="false" afterPath="$PROJECT_DIR$/nemo/src/main/java/br/gov/sp/fatec/nemo/domains/entities/Candidate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nemo/src/main/java/br/gov/sp/fatec/nemo/domains/entities/Curriculo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nemo/src/main/java/br/gov/sp/fatec/nemo/domains/entities/Curso.java" beforeDir="false" afterPath="$PROJECT_DIR$/nemo/src/main/java/br/gov/sp/fatec/nemo/domains/entities/Curso.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nemo/src/main/java/br/gov/sp/fatec/nemo/domains/entities/Experiencia.java" beforeDir="false" afterPath="$PROJECT_DIR$/nemo/src/main/java/br/gov/sp/fatec/nemo/domains/entities/Experiencia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nemo/src/main/java/br/gov/sp/fatec/nemo/domains/entities/Habilidade.java" beforeDir="false" afterPath="$PROJECT_DIR$/nemo/src/main/java/br/gov/sp/fatec/nemo/domains/entities/Habilidade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nemo/src/main/java/br/gov/sp/fatec/nemo/domains/entities/Skill.java" beforeDir="false" afterPath="$PROJECT_DIR$/nemo/src/main/java/br/gov/sp/fatec/nemo/domains/entities/Skill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nemo/src/main/java/br/gov/sp/fatec/nemo/domains/enums/enumContratoDesejado.java" beforeDir="false" afterPath="$PROJECT_DIR$/nemo/src/main/java/br/gov/sp/fatec/nemo/domains/enums/enumContratoDesejado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nemo/src/main/java/br/gov/sp/fatec/nemo/domains/enums/enumJornadaDesejada.java" beforeDir="false" afterPath="$PROJECT_DIR$/nemo/src/main/java/br/gov/sp/fatec/nemo/domains/enums/enumJornadaDesejada.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nemo/src/main/java/br/gov/sp/fatec/nemo/domains/enums/enumPeriodoDisponivel.java" beforeDir="false" afterPath="$PROJECT_DIR$/nemo/src/main/java/br/gov/sp/fatec/nemo/domains/enums/enumPeriodoDisponivel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nemo/src/main/java/br/gov/sp/fatec/nemo/domains/enums/enumTipoTrabalho.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/nemo/src/main/java/br/gov/sp/fatec/nemo/domains/repositories/CandidateRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/nemo/src/main/java/br/gov/sp/fatec/nemo/domains/repositories/CandidateRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nemo/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nemo/src/main/resources/application.properties" afterDir="false" />
     </list>
@@ -61,6 +51,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="serviceRemoteNemo" type="Remote">
+      <module name="nemo" />
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5004" />
+      <option name="AUTO_RESTART" value="false" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="5004" />
+        <option name="LOCAL" value="false" />
+      </RunnerSettings>
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -74,14 +78,46 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="178" y="121" width="1084" height="709" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1618713547978">
+    <state x="6" y="155" width="1084" height="709" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1618792636709">
       <screen x="0" y="27" width="1440" height="873" />
     </state>
-    <state x="178" y="121" width="1084" height="709" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1440.873@0.27.1440.873" timestamp="1618713547978" />
+    <state x="6" y="155" width="1084" height="709" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1440.873@0.27.1440.873" timestamp="1618792636709" />
     <state x="452" y="255" width="525" height="422" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1618700244662">
       <screen x="0" y="27" width="1440" height="873" />
     </state>
     <state x="452" y="255" width="525" height="422" key="#com.intellij.ide.util.TreeClassChooserDialog/0.27.1440.873@0.27.1440.873" timestamp="1618700244662" />
+    <state width="1398" height="270" key="GridCell.Tab.0.bottom" timestamp="1618794582458">
+      <screen x="0" y="27" width="1440" height="873" />
+    </state>
+    <state width="1398" height="270" key="GridCell.Tab.0.bottom/0.27.1440.873@0.27.1440.873" timestamp="1618794582458" />
+    <state width="1398" height="270" key="GridCell.Tab.0.center" timestamp="1618794582457">
+      <screen x="0" y="27" width="1440" height="873" />
+    </state>
+    <state width="1398" height="270" key="GridCell.Tab.0.center/0.27.1440.873@0.27.1440.873" timestamp="1618794582457" />
+    <state width="1398" height="270" key="GridCell.Tab.0.left" timestamp="1618794582457">
+      <screen x="0" y="27" width="1440" height="873" />
+    </state>
+    <state width="1398" height="270" key="GridCell.Tab.0.left/0.27.1440.873@0.27.1440.873" timestamp="1618794582457" />
+    <state width="1398" height="270" key="GridCell.Tab.0.right" timestamp="1618794582457">
+      <screen x="0" y="27" width="1440" height="873" />
+    </state>
+    <state width="1398" height="270" key="GridCell.Tab.0.right/0.27.1440.873@0.27.1440.873" timestamp="1618794582457" />
+    <state width="1398" height="270" key="GridCell.Tab.1.bottom" timestamp="1618794582458">
+      <screen x="0" y="27" width="1440" height="873" />
+    </state>
+    <state width="1398" height="270" key="GridCell.Tab.1.bottom/0.27.1440.873@0.27.1440.873" timestamp="1618794582458" />
+    <state width="1398" height="270" key="GridCell.Tab.1.center" timestamp="1618794582458">
+      <screen x="0" y="27" width="1440" height="873" />
+    </state>
+    <state width="1398" height="270" key="GridCell.Tab.1.center/0.27.1440.873@0.27.1440.873" timestamp="1618794582458" />
+    <state width="1398" height="270" key="GridCell.Tab.1.left" timestamp="1618794582458">
+      <screen x="0" y="27" width="1440" height="873" />
+    </state>
+    <state width="1398" height="270" key="GridCell.Tab.1.left/0.27.1440.873@0.27.1440.873" timestamp="1618794582458" />
+    <state width="1398" height="270" key="GridCell.Tab.1.right" timestamp="1618794582458">
+      <screen x="0" y="27" width="1440" height="873" />
+    </state>
+    <state width="1398" height="270" key="GridCell.Tab.1.right/0.27.1440.873@0.27.1440.873" timestamp="1618794582458" />
     <state x="253" y="121" width="924" height="691" key="Maven.ArtifactSearchDialog" timestamp="1618704245975">
       <screen x="0" y="27" width="1440" height="873" />
     </state>
