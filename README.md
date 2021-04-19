@@ -149,7 +149,7 @@ Na descrição dos story cards, entende-se como usuário o recrutador ou respons
 <a name="bd"></a>
 ## :floppy_disk: 5. Diagrama do Banco de Dados
 
-<img src="/uploads/d1b09e30413720f9fc24b0f58ca82fd5/Modelagem_v1.jpg" alt="diagrama do banco de dados"/>
+<img src="/uploads/d4f43a9bca078511acc3a0f18e82192c/WhatsApp_Image_2021-04-18_at_23.14.01.jpeg" alt="diagrama do banco de dados"/>
 
 <a name="equipe"></a>
 ## 6. Equipe
