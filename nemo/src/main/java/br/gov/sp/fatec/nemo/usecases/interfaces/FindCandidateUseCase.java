@@ -18,5 +18,5 @@ public interface FindCandidateUseCase {
     List<CandidateDTO> findCandidateV2(List<String> hability,
                                        Double longitude,
                                        Double latitude,
-                                       Double kilometers);
+                                       Double kilometers) throws Exception;
 }

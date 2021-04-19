@@ -41,7 +41,7 @@ public class CandidateRestController {
         @RequestParam(required = false) Double longitude,
         @RequestParam(required = false) Double latitude,
         @RequestParam(required = false) Double kilometers
-    ) {
+    ) throws Exception {
         return Optional.ofNullable(findCandidateUseCase.findCandidateV2(hability, longitude, latitude, kilometers))
             .map(candidateDTOS -> ResponseEntity.ok().body(candidateDTOS))
             .orElseGet(() -> ResponseEntity.notFound().build());

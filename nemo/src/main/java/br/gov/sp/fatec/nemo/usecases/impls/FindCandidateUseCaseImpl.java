@@ -7,6 +7,7 @@ import br.gov.sp.fatec.nemo.domains.repositories.interfaces.GeometryCandidate;
 import br.gov.sp.fatec.nemo.usecases.impls.dtos.CandidateDTO;
 import br.gov.sp.fatec.nemo.usecases.interfaces.FindCandidateUseCase;
 
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,15 +42,22 @@ public class FindCandidateUseCaseImpl implements FindCandidateUseCase {
         return candidates;
     }
 
+    @SneakyThrows
     @Override
     public List<CandidateDTO> findCandidateV2(
         List<String> hability,
         Double longitude,
         Double latitude,
-        Double kilometers) {
-
-        Set<Candidate> candidates = candidateRepository.findAllBySkills_Skill_DescriptionIn(hability);
+        Double kilometers) throws Exception {
+        Set<Candidate> candidates = null;
         Set<GeometryCandidate> geometryCandidates = null;
+        if (hability != null) {
+            candidates = candidateRepository.findAllBySkills_Skill_DescriptionIn(hability);
+
+        } else {
+            throw new Exception("Habilidades são Obrigatórias para essa pesquisa");
+        }
+
         if (latitude != null && longitude != null) {
             List<Long> ids = candidates.stream().map(Candidate::getId).collect(Collectors.toList());
             candidates = candidateRepository.findRadiusCandidate(longitude, latitude, ids, kilometers);
@@ -65,9 +73,17 @@ public class FindCandidateUseCaseImpl implements FindCandidateUseCase {
         return candidates.stream().map(candidate -> {
             var points = 0;
             CandidateDTO candidateDTO = new CandidateDTO().fromCandidateDTO(candidate);
-            Integer skills = candidate.getSkills()
-                .stream()
-                .filter(f -> hability.contains(f.getSkill().getDescription())).collect(Collectors.toList()).size();
+
+            if (hability != null){
+                Integer skills = candidate.getSkills()
+                    .stream()
+                    .filter(f -> hability.contains(f.getSkill().getDescription())).collect(Collectors.toList()).size();
+
+                points += (skills * 50) / hability.size();
+            } else {
+                points += 50;
+            }
+
 
             if (geometryCandidateSet != null) {
                 List<GeometryCandidate> geometryCandidate = geometryCandidateSet
@@ -76,18 +92,20 @@ public class FindCandidateUseCaseImpl implements FindCandidateUseCase {
                 var distance = geometryCandidate.get(0).getKilometer();
                 candidateDTO.setDistance(distance);
                 if (distance >= 0 && distance <= 20){
-                    points += 20;
+                    points += 50;
                 } else if (distance >= 20 && distance <= 50){
-                    points += 10;
+                    points += 30;
                 }
                 else{
-                    points += 5;
+                    points += 15;
                 }
 
 
+            } else {
+                points += 50;
             }
 
-            points += (skills * 50) / 10;
+
 
             candidateDTO.setPoints(points);
 
