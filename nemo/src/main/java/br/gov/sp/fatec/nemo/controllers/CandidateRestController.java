@@ -8,8 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
-
-
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,6 +68,96 @@ public class CandidateRestController {
     @GetMapping("nemo/v1/candidate/{id}")
     public Candidate candidateById(@PathVariable(value="id") Long id){
         return candidateRepository.findCandidateById(id);
+    }
+
+    //GET CANDIDATE BY NAME
+    @GetMapping("nemo/v1/candidate/name")
+    List<Candidate> candidateByName(String name){
+        return candidateRepository.findCandidateByName(name);
+    }
+
+    //GET CANDIDATE BY EMAIL
+    @GetMapping("nemo/v1/candidate/email")
+    List<Candidate> candidateByEmail(String email){
+        return candidateRepository.findCandidateByEmail(email);
+    }
+
+    //GET CANDIDATE BY EMAIL
+    @GetMapping("nemo/v1/candidate/cpf")
+    List<Candidate> candidateByCpf(String cpf){
+        return candidateRepository.findCandidateByCpf(cpf);
+    }
+
+    //GET CANDIDATE BY PHONE
+    @GetMapping("nemo/v1/candidate/phone")
+    List<Candidate> candidateByPhone(String phone){
+        return candidateRepository.findCandidateByPhone(phone);
+    }
+
+    //GET CANDIDATE BY GENDER
+    @GetMapping("nemo/v1/candidate/gender")
+    List<Candidate> candidateByGender(String gender){
+        return candidateRepository.findCandidateByGender(gender);
+    }
+
+    //GET CANDIDATE BY BIRTHDAY
+    @GetMapping("nemo/v1/candidate/birthday")
+    List<Candidate> candidateByBirthday(LocalDate birthday){
+        return candidateRepository.findCandidateByBirthday(birthday);
+    }
+
+    //GET CANDIDATE BY COUNTRY
+    @GetMapping("nemo/v1/candidate/country")
+    List<Candidate> candidateByCountry(String country){
+        return candidateRepository.findCandidateByCountry(country);
+    }
+
+    //GET CANDIDATE BY CITY
+    @GetMapping("nemo/v1/candidate/city")
+    List<Candidate> candidateByCity(String city){
+        return candidateRepository.findCandidateByCity(city);
+    }
+
+    //GET CANDIDATE BY NEIGHBORHOOD
+    @GetMapping("nemo/v1/candidate/neighborhood")
+    List<Candidate> candidateByNeighborhood(String neighborhood){
+        return candidateRepository.findCandidateByNeighborhood(neighborhood);
+    }
+
+    //GET CANDIDATE BY STREET
+    @GetMapping("nemo/v1/candidate/street")
+    List<Candidate> candidateByStreet(String street){
+        return candidateRepository.findCandidateByStreet(street);
+    }
+
+    //GET CANDIDATE BY HOMENUMBER
+    @GetMapping("nemo/v1/candidate/homenumber")
+    List<Candidate> candidateByHomeNumber(String homenumber){
+        return candidateRepository.findCandidateByHomeNumber(homenumber);
+    }
+
+    //GET CANDIDATE BY COMPLEMENT
+    @GetMapping("nemo/v1/candidate/complement")
+    List<Candidate> candidateByComplement(String complement){
+        return candidateRepository.findCandidateByComplement(complement);
+    }
+
+    //GET CANDIDATE BY ZIPCODE
+    @GetMapping("nemo/v1/candidate/zipcode")
+    List<Candidate> candidateByZipCode(String zipcode){
+        return candidateRepository.findCandidateByZipCode(zipcode);
+    }
+
+    //GET CANDIDATE BY LATITUDE
+    @GetMapping("nemo/v1/candidate/latitude")
+    List<Candidate> candidateByLatitude(Float latitude){
+        return candidateRepository.findCandidateByLatitude(latitude);
+    }
+
+    //GET CANDIDATE BY LONGITUDE
+    @GetMapping("nemo/v1/candidate/longitude")
+    List<Candidate> candidateByLongitude(Float longitude){
+        return candidateRepository.findCandidateByLongitude(longitude);
     }
 
 

@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -39,4 +40,54 @@ public interface CandidateRepository extends JpaRepository<Candidate, Long> {
     //FIND BY ID
     @Query(value="select * from candidate where can_id = :id", nativeQuery = true)
     Candidate findCandidateById(@Param("id") Long id);
+
+    //FIND BY NAME
+    List<Candidate> findCandidateByName(@Param("name") String name);
+
+    //FIND BY EMAIL
+    List<Candidate> findCandidateByEmail(@Param("email") String email);
+
+    //FIND BY CPF
+    List<Candidate> findCandidateByCpf(@Param("cpf") String cpf);
+
+    //FIND BY PHONE
+    List<Candidate> findCandidateByPhone(@Param("phone") String phone);
+
+    //FIND BY GENDER
+    List<Candidate> findCandidateByGender(@Param("gender") String gender);
+
+    //FIND BY BIRTHDAY
+    List<Candidate> findCandidateByBirthday(@Param("birthday") LocalDate birthday);
+
+     //FIND BY COUNTRY
+    List<Candidate> findCandidateByCountry(@Param("country") String country);
+
+    //FIND BY CITY
+    List<Candidate> findCandidateByCity(@Param("city") String city);
+
+    //FIND BY NEIGHBORHOOD
+    List<Candidate> findCandidateByNeighborhood(@Param("neighborhood") String neighborhood);
+
+    //FIND BY STREET
+    List<Candidate> findCandidateByStreet(@Param("street") String street);
+
+    //FIND BY HOMENUMBER
+    List<Candidate> findCandidateByHomeNumber(@Param("homeNumber") String homeNumber);
+
+    //FIND BY COMPLEMENT
+    List<Candidate> findCandidateByComplement(@Param("complement") String complement);
+
+    //FIND BY ZIPCODE
+    List<Candidate> findCandidateByZipCode(@Param("zipCode") String zipCode);
+
+    //FIND BY LATITUDE
+    List<Candidate> findCandidateByLatitude(@Param("latitude") Float latitude);
+
+    //FIND BY LONGITUDE
+    List<Candidate> findCandidateByLongitude(@Param("longitude") Float longitude);
+
+
+
+
+
 }
