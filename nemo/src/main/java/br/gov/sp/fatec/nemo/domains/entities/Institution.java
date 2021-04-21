@@ -15,20 +15,22 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "curso")
-public class Curso implements Serializable {
+@Table(name = "institution")
+public class Institution implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "curso_id")
+    @Column(name = "inst_id")
     @JsonIgnore
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
     @NotBlank
-    @Column(name = "curso_nomecurso")
-    private String curso;
+    @Column(name = "inst_name")
+    private String courseName;
+
+
+
 
 }
-

@@ -3,6 +3,9 @@ DROP TYPE IF EXISTS "skill_level";
 DROP TABLE  IF EXISTS "skill";
 DROP TABLE  IF EXISTS "candidate";
 DROP TABLE  IF EXISTS "client";
+DROP TABLE  IF EXISTS "course";
+DROP TABLE  IF EXISTS "institution";
+DROP TABLE  IF EXISTS "candidate_formation";
 
 /* Table 'candidate' */
 CREATE TABLE "candidate" (
@@ -51,3 +54,30 @@ CREATE TABLE "client" (
 client_id varchar(50),
 client_secret varchar(100) NOT NULL,
 PRIMARY KEY(client_id));
+
+/* Table 'course' */
+CREATE TABLE "course" (
+course_id serial,
+course_name varchar(100) NOT NULL,
+PRIMARY KEY(course_id));
+
+/* Table 'institution' */
+CREATE TABLE "institution" (
+inst_id serial,
+inst_name varchar(100) NOT NULL,
+PRIMARY KEY(inst_id));
+
+
+/* Table 'candidate_formation' */
+CREATE TABLE "candidate_formation" (
+fk_can_id serial,
+fk_inst_id serial,
+fk_course_id serial,
+dt_start date NOT NULL,
+dt_end date,
+PRIMARY KEY(fk_can_id, fk_inst_id, fk_course_id),
+CONSTRAINT fk_can_id FOREIGN KEY(fk_can_id) REFERENCES "candidate"(can_id),
+CONSTRAINT fk_inst_id FOREIGN KEY(fk_inst_id) REFERENCES "institution"(inst_id),
+CONSTRAINT fk_course_id FOREIGN KEY(fk_course_id) REFERENCES "course"(course_id)
+);
+

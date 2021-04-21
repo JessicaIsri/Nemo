@@ -2,7 +2,10 @@ package br.gov.sp.fatec.nemo.controllers;
 
 import br.gov.sp.fatec.nemo.domains.entities.Candidate;
 import br.gov.sp.fatec.nemo.usecases.interfaces.FindCandidateUseCase;
+import net.bytebuddy.implementation.bytecode.assign.TypeCasting;
+import org.hibernate.jpa.TypedParameterValue;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
 
 import java.util.Optional;
 
@@ -102,7 +106,7 @@ public class CandidateRestController {
 
     //GET CANDIDATE BY BIRTHDAY
     @GetMapping("nemo/v1/candidate/birthday")
-    List<Candidate> candidateByBirthday(LocalDate birthday){
+    List<Candidate> candidateByBirthday(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate birthday){
         return candidateRepository.findCandidateByBirthday(birthday);
     }
 
@@ -131,9 +135,9 @@ public class CandidateRestController {
     }
 
     //GET CANDIDATE BY HOMENUMBER
-    @GetMapping("nemo/v1/candidate/homenumber")
-    List<Candidate> candidateByHomeNumber(String homenumber){
-        return candidateRepository.findCandidateByHomeNumber(homenumber);
+    @GetMapping("nemo/v1/candidate/homeNumber")
+    List<Candidate> candidateByHomeNumber(Integer home_number){
+        return candidateRepository.findCandidateByHomeNumber(home_number);
     }
 
     //GET CANDIDATE BY COMPLEMENT
@@ -150,13 +154,13 @@ public class CandidateRestController {
 
     //GET CANDIDATE BY LATITUDE
     @GetMapping("nemo/v1/candidate/latitude")
-    List<Candidate> candidateByLatitude(Float latitude){
+    List<Candidate> candidateByLatitude(Double latitude){
         return candidateRepository.findCandidateByLatitude(latitude);
     }
 
     //GET CANDIDATE BY LONGITUDE
     @GetMapping("nemo/v1/candidate/longitude")
-    List<Candidate> candidateByLongitude(Float longitude){
+    List<Candidate> candidateByLongitude(Double longitude){
         return candidateRepository.findCandidateByLongitude(longitude);
     }
 

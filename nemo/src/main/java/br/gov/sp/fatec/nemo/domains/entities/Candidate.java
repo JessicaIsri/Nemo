@@ -84,6 +84,13 @@ public class Candidate implements Serializable {
             orphanRemoval = true)
     private List<CandidateSkill> skills;
 
+    @OneToMany(mappedBy = "candidate",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    private List<CandidateFormation> formations;
+
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

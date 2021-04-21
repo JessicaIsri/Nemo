@@ -1,6 +1,8 @@
 package br.gov.sp.fatec.nemo.domains.repositories;
 
 import br.gov.sp.fatec.nemo.domains.entities.Candidate;
+import net.bytebuddy.implementation.bytecode.assign.TypeCasting;
+import org.hibernate.jpa.TypedParameterValue;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -19,6 +21,7 @@ public interface CandidateRepository extends JpaRepository<Candidate, Long> {
             "(:country is null or c.country = :country) and (:city is null or c.city = :city) and " +
             "(:zip_code is null or c.zipCode = :zip_code) and " +
             "(:skill is null or sk.description = :skill)"
+
     )
     List<Candidate> findCandidateByAllParams(
             @Param("gender") String gender,
@@ -72,7 +75,9 @@ public interface CandidateRepository extends JpaRepository<Candidate, Long> {
     List<Candidate> findCandidateByStreet(@Param("street") String street);
 
     //FIND BY HOMENUMBER
-    List<Candidate> findCandidateByHomeNumber(@Param("homeNumber") String homeNumber);
+    //Cast(:home_number as integer)
+    @Query(value="select * from candidate where home_number = :home_number", nativeQuery = true)
+    List<Candidate> findCandidateByHomeNumber(@Param("home_number") Integer home_number);
 
     //FIND BY COMPLEMENT
     List<Candidate> findCandidateByComplement(@Param("complement") String complement);
@@ -81,10 +86,12 @@ public interface CandidateRepository extends JpaRepository<Candidate, Long> {
     List<Candidate> findCandidateByZipCode(@Param("zipCode") String zipCode);
 
     //FIND BY LATITUDE
-    List<Candidate> findCandidateByLatitude(@Param("latitude") Float latitude);
+    @Query(value="select * from candidate where latitude = :latitude", nativeQuery = true)
+    List<Candidate> findCandidateByLatitude(@Param("latitude") Double latitude);
 
     //FIND BY LONGITUDE
-    List<Candidate> findCandidateByLongitude(@Param("longitude") Float longitude);
+    @Query(value="select * from candidate where longitude = :longitude", nativeQuery = true)
+    List<Candidate> findCandidateByLongitude(@Param("longitude") Double longitude);
 
 
 
