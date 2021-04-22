@@ -89,7 +89,10 @@ public class Candidate implements Serializable {
             orphanRemoval = true)
     private List<CandidateFormation> formations;
 
-
+    @OneToMany(mappedBy = "candidate",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    private List<CandidateExp> experiences;
 
     @Override
     public boolean equals(Object o) {

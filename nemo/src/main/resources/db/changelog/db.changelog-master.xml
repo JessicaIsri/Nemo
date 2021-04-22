@@ -15,6 +15,7 @@ http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibas
     <include file="db/changelog/candidateSkill.sql" relativeToChangelogFile="false"/>
     <include file="db/changelog/addGeomCandidate.sql" relativeToChangelogFile="false"/>
     <include file="db/changelog/Insert_candidate_formation.sql" relativeToChangelogFile="false"/>
+    <include file="db/changelog/Insert_candidate_exp.sql" relativeToChangelogFile="false"/>
 
 
 </databaseChangeLog>
