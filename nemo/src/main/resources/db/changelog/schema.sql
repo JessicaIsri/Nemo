@@ -1,5 +1,8 @@
 DROP TABLE IF EXISTS "candidate_skill";
 DROP TYPE IF EXISTS "skill_level";
+DROP TYPE IF EXISTS "desired_journey";
+DROP TYPE IF EXISTS "available_period";
+DROP TYPE IF EXISTS "work_modality";
 DROP TABLE  IF EXISTS "skill";
 DROP TABLE  IF EXISTS "candidate";
 DROP TABLE  IF EXISTS "client";
@@ -9,6 +12,20 @@ DROP TABLE  IF EXISTS "candidate_formation";
 DROP TABLE  IF EXISTS "company";
 DROP TABLE  IF EXISTS "post";
 DROP TABLE  IF EXISTS "candidate_exp";
+
+
+/* Enum 'desired_journey' */
+CREATE TYPE desired_journey
+AS ENUM('UMA_HORA', 'DUAS_HORAS','TRES_HORAS', 'QUATRO_HORAS','CINCO_HORAS', 'SEIS_HORAS', 'SETE_HORAS', 'OITO_HORAS',
+                'NOVE_HORAS', 'DEZ_HORAS', 'ONZE_HORAS', 'DOZE_HORAS');
+
+/* Enum 'available_period' */
+CREATE TYPE available_period
+AS ENUM('MANHA','TARDE','NOITE','MADRUGADA','INTEGRAL_DIURNO','INTEGRAL_NOTURNO');
+
+/* Enum 'work_modality' */
+CREATE TYPE work_modality
+AS ENUM('PRESENCIAL', 'REMOTO');
 
 /* Table 'candidate' */
 CREATE TABLE "candidate" (
@@ -28,6 +45,10 @@ complement varchar(100),
 zip_code varchar(8) NOT NULL,
 latitude float8 NOT NULL,
 longitude float8 NOT NULL,
+pretentionSalary varchar(15) NOT NULL,
+desired_journey desired_journey NOT NULL,
+available_period available_period NOT NULL,
+work_modality work_modality NOT NULL,
 PRIMARY KEY(can_id)
 );
 

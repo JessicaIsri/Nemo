@@ -1,6 +1,9 @@
 package br.gov.sp.fatec.nemo.domains.repositories;
 
 import br.gov.sp.fatec.nemo.domains.entities.Candidate;
+import br.gov.sp.fatec.nemo.domains.enums.AvailablePeriod;
+import br.gov.sp.fatec.nemo.domains.enums.DesiredJourney;
+import br.gov.sp.fatec.nemo.domains.enums.WorkModality;
 import net.bytebuddy.implementation.bytecode.assign.TypeCasting;
 import org.hibernate.jpa.TypedParameterValue;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -20,7 +23,7 @@ public interface CandidateRepository extends JpaRepository<Candidate, Long> {
             "WHERE (:gender is null or c.gender = :gender) and " +
             "(:country is null or c.country = :country) and (:city is null or c.city = :city) and " +
             "(:zip_code is null or c.zipCode = :zip_code) and " +
-            "(:skill is null or sk.description = :skill)"
+            "(:skill is null or sk.description = :skill) ORDER BY can_id ASC"
 
     )
     List<Candidate> findCandidateByAllParams(
@@ -41,7 +44,7 @@ public interface CandidateRepository extends JpaRepository<Candidate, Long> {
     );
 
     //FIND BY ID
-    @Query(value="select * from candidate where can_id = :id", nativeQuery = true)
+    @Query(value="select * from public.candidate where can_id = :id ", nativeQuery = true)
     Candidate findCandidateById(@Param("id") Long id);
 
     //FIND BY NAME
@@ -92,6 +95,26 @@ public interface CandidateRepository extends JpaRepository<Candidate, Long> {
     //FIND BY LONGITUDE
     @Query(value="select * from candidate where longitude = :longitude", nativeQuery = true)
     List<Candidate> findCandidateByLongitude(@Param("longitude") Double longitude);
+
+
+
+    //FIND BY PRETENTIONSALARY
+    @Query(value="select * from candidate where pretentionSalary = :pretentionSalary", nativeQuery = true)
+    List<Candidate> findCandidateByPretentionSalary(@Param("pretentionSalary") String pretentionSalary);
+
+    //***
+
+    //FIND BY DESIREDJOURNEY
+    @Query(value="select * from candidate c where c.desired_journey = :desired_journey", nativeQuery = true)
+    List<Candidate> findCandidateByDesiredJourney(@Param("desired_journey") String desired_journey);
+
+    //FIND BY AVAILABLEPERIOD
+    @Query(value="select * from candidate where available_period = :available_period", nativeQuery = true)
+    List<Candidate> findCandidateByAvailablePeriod(@Param("available_period") String available_period);
+
+    //FIND BY WORKMODALITY
+    @Query(value="select * from candidate where work_modality = :work_modality", nativeQuery = true)
+    List<Candidate> findCandidateByWorkModality(@Param("work_modality") String work_modality);
 
 
 

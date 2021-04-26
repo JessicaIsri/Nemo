@@ -23,7 +23,6 @@ public class CandidateFormation implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @EmbeddedId
-    @JsonIgnore
     private CandidateFormationPK id;
 
     @ManyToOne(fetch = FetchType.LAZY)

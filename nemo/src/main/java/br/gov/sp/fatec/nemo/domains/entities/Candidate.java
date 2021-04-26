@@ -1,11 +1,18 @@
 package br.gov.sp.fatec.nemo.domains.entities;
 
+import br.gov.sp.fatec.nemo.domains.enums.AvailablePeriod;
+import br.gov.sp.fatec.nemo.domains.enums.DesiredJourney;
+import br.gov.sp.fatec.nemo.domains.enums.SkillLevel;
+import br.gov.sp.fatec.nemo.domains.enums.WorkModality;
+import br.gov.sp.fatec.nemo.domains.utils.PostgreSQLEnumType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.vividsolutions.jts.geom.Geometry;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
@@ -23,6 +30,10 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "candidate")
+@TypeDef(
+        name = "pgsql_enum",
+        typeClass = PostgreSQLEnumType.class
+)
 public class Candidate implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -78,6 +89,24 @@ public class Candidate implements Serializable {
 
     @NotNull
     private Float longitude;
+
+    @NotNull
+    private String pretentionSalary;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "desired_journey", columnDefinition = "desired_journey")
+    @Type(type = "pgsql_enum")
+    private DesiredJourney desired_journey;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "available_period", columnDefinition = "available_period")
+    @Type(type = "pgsql_enum")
+    private AvailablePeriod available_period;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "work_modality", columnDefinition = "work_modality")
+    @Type(type = "pgsql_enum")
+    private WorkModality work_modality;
 
     @OneToMany(mappedBy = "candidate",
             cascade = CascadeType.ALL,

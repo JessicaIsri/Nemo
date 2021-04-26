@@ -1,6 +1,9 @@
 package br.gov.sp.fatec.nemo.controllers;
 
 import br.gov.sp.fatec.nemo.domains.entities.Candidate;
+import br.gov.sp.fatec.nemo.domains.enums.AvailablePeriod;
+import br.gov.sp.fatec.nemo.domains.enums.DesiredJourney;
+import br.gov.sp.fatec.nemo.domains.enums.WorkModality;
 import br.gov.sp.fatec.nemo.usecases.interfaces.FindCandidateUseCase;
 import net.bytebuddy.implementation.bytecode.assign.TypeCasting;
 import org.hibernate.jpa.TypedParameterValue;
@@ -162,6 +165,30 @@ public class CandidateRestController {
     @GetMapping("nemo/v1/candidate/longitude")
     List<Candidate> candidateByLongitude(Double longitude){
         return candidateRepository.findCandidateByLongitude(longitude);
+    }
+
+    //GET CANDIDATE BY PRETENTIONSALARY
+    @GetMapping("nemo/v1/candidate/pretentionsalary")
+    List<Candidate> candidateByPretentionSalary(String pretentionSalary){
+        return candidateRepository.findCandidateByPretentionSalary(pretentionSalary);
+    }
+
+    //GET CANDIDATE BY DESIREDJOURNEY
+    @GetMapping("nemo/v1/candidate/desiredjourney")
+    List<Candidate> candidateByDesiredJourney(String desired_journey){
+        return candidateRepository.findCandidateByDesiredJourney(desired_journey);
+    }
+
+    //GET CANDIDATE BY AVAILABLEPERIOD
+    @GetMapping("nemo/v1/candidate/availableperiod")
+    List<Candidate> candidateByAvailablePeriod(String available_period){
+        return candidateRepository.findCandidateByAvailablePeriod(available_period);
+    }
+
+    //GET CANDIDATE BY WORKMODALITY
+    @GetMapping("nemo/v1/candidate/workmodality")
+    List<Candidate> candidateByWorkModality(String work_modality){
+        return candidateRepository.findCandidateByWorkModality(work_modality);
     }
 
 
