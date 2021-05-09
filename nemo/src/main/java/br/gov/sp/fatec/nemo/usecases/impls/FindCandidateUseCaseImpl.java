@@ -35,10 +35,7 @@ public class FindCandidateUseCaseImpl implements FindCandidateUseCase {
         Double kilometers
     ) {
         List<Candidate> candidates = candidateRepository.findCandidateByAllParams(gender, country, city, zipCode, skill);
-//        if (latitude != null && longitude != null) {
-//            List<Long> ids = candidates.stream().map(Candidate::getId).collect(Collectors.toList());
-//            candidates = candidateRepository.findRadiusCandidate(longitude, latitude, ids, kilometers);
-//        }
+
         return candidates;
     }
 
@@ -71,7 +68,7 @@ public class FindCandidateUseCaseImpl implements FindCandidateUseCase {
 
     private List<CandidateDTO> classifyCandidate(Set<Candidate> candidates, List<String> hability, Set<GeometryCandidate> geometryCandidateSet) {
         return candidates.stream().map(candidate -> {
-            var points = 0;
+            Integer points = 0;
             CandidateDTO candidateDTO = new CandidateDTO().fromCandidateDTO(candidate);
 
             if (hability != null){
@@ -89,7 +86,7 @@ public class FindCandidateUseCaseImpl implements FindCandidateUseCase {
                 List<GeometryCandidate> geometryCandidate = geometryCandidateSet
                     .stream().filter(f -> f.getId().equals(candidate.getId()))
                     .collect(Collectors.toList());
-                var distance = geometryCandidate.get(0).getKilometer();
+                Double distance = geometryCandidate.get(0).getKilometer();
                 candidateDTO.setDistance(distance);
                 if (distance >= 0 && distance <= 20){
                     points += 50;
