@@ -998,3 +998,51 @@ insert into candidate (can_name, email, cpf, phone, gender, birthday, country, s
 insert into candidate (can_name, email, cpf, phone, gender, birthday, country, street, neighborhood, home_number, zip_code, latitude, longitude, city, availability) values ('Muire Purton', 'mpurtonrp@stumbleupon.com', '55737932167', '(620) 5670405', 'Female', '2020-06-27', 'Brazil', 'Surrey', 'Ouro Branco', '0965', '42922826', -6.6760711, -36.9326095, 'El Kef', 'MT');
 insert into candidate (can_name, email, cpf, phone, gender, birthday, country, street, neighborhood, home_number, zip_code, latitude, longitude, city, availability) values ('Letta Piercey', 'lpierceyrq@google.com.hk', '56865450531', '(437) 1296338', 'Male', '2020-05-15', 'Brazil', 'Hanson', 'Sapiranga', '2', '90621060', -29.6353852, -51.0069543, 'Kočevje', 'MT');
 insert into candidate (can_name, email, cpf, phone, gender, birthday, country, street, neighborhood, home_number, zip_code, latitude, longitude, city, availability) values ('Bron Hegden', 'bhegdenrr@wsj.com', '98814784838', '(336) 1497583', 'Female', '2020-08-23', 'Brazil', 'Division', 'Arcoverde', '5', '24657338', -8.4176445, -37.0585205, 'Pidigan', 'MT');
+
+INSERT INTO skill (description) VALUES ('Martial Arts'), ('Python'), ('Java'), ('PHP'), ('GOlang'), ('C'), ('Brainfuck');
+
+INSERT INTO candidate_skill (fk_can_id, fk_skill_id, skill_level) VALUES
+(1, 1, 'FIVE'), (1, 2, 'FIVE'), (1, 3, 'FIVE'), (1, 6, 'FIVE'), (1, 4, 'FIVE'), -- batman's skills
+(2, 1, 'FIVE'), (2, 2, 'TWO'), (2, 4, 'TWO'), (2, 7, 'FIVE'), -- joker's skills
+(3, 1, 'FIVE'), (3, 2, 'FIVE'), (3, 5, 'FIVE'), (3, 4, 'FIVE') -- barb's skills
+;
+
+INSERT INTO company (com_name) VALUES('Gothan Zoo'), ('Goathan Bank'), ('Goathan Police');
+INSERT INTO post (post_name) VALUES('Police Officer'), ('Developer'), ('Janitor');
+
+INSERT INTO candidate_exp (fk_can_id, fk_company_id, fk_post_id, dt_start, dt_end, description) values
+(1, 1, 2, '1998-03-22', '2008-03-22', 'fassdada'), -- batman's experience
+(2, 2, 3, '1992-03-22', '2008-03-22', 'aythgdgfd'), -- joker's experience
+(3, 3, 1, '1998-03-22', NULL, 'fassdada') -- barb's experience (still working / current job)
+;
+
+INSERT INTO institution (inst_name) VALUES('Gothan University'), ('University of Gothan');
+INSERT INTO course (course_name) VALUES('Dentistry'), ('Computer engineering');
+
+INSERT INTO candidate_formation (fk_can_id, fk_inst_id , fk_course_id , dt_start, dt_end) values
+(1, 1, 2, '2013-03-22', '2018-03-22'), -- batman's formation (finished)
+(2, 2, 1, '2019-06-22', '2022-12-22') -- joker's formation  (on course)
+;
+
+INSERT INTO job_opportunity (jo_id, jo_name, description, contract_type,
+working_hours, salary_range_ini, salary_range_end, gender, availability,
+workplace_country, workplace_city, workplace_neighborhood, workplace_street,
+workplace_home_number, workplace_complement, workplace_zip_code, workplace_latitude,
+workplace_longitude, divulgation_ini, divulgation_end)
+VALUES(1, 'Programador XPTO', 'Programar tudo', 'CLT', '08:00:00', 1800.0, 2200.0,
+'M', 'MT', 'Brasil', 'SJC', 'Aquarius', 'Rua  Aquarius', 123, NULL, '12345678', 12.0, -58.0, '2021-04-18 17:53:42.401431', '2021-04-18 17:53:42.401431');
+
+
+INSERT INTO jo_exp_req (fk_jo_id, fk_post_id, exp_time) values
+(1, 2, 6), -- 6 months as developer
+(1, 3, 6) -- 6 months as janitor
+;
+
+INSERT INTO jo_skill_req (fk_jo_id, fk_skill_id, skill_level) VALUES(1, 5, 'FIVE'); -- golang  expert
+
+INSERT INTO jo_formation_req (fk_jo_id, fk_course_id, finished) values
+(1, 2, true), -- finished programming
+(1, 1, false) -- coursing dentristy
+;
+
+update candidate set geom = st_setsrid(st_makepoint(longitude, latitude), 4326) where latitude is not null and longitude is not null;

@@ -26,7 +26,7 @@ CREATE TABLE "candidate" (
 can_id SERIAL,
 can_name varchar(100) NOT NULL,
 email varchar(100) NOT null UNIQUE,
-cpf_cnpj varchar(14) NOT null UNIQUE,
+cpf varchar(14) NOT null UNIQUE,
 phone varchar(14) NOT NULL,
 gender varchar(20) NOT NULL,
 birthday date NOT NULL,
@@ -125,12 +125,12 @@ CREATE TABLE "job_opportunity" (
 	jo_id serial NOT NULL,
 	jo_name varchar(100) NOT NULL,
 	description varchar(250) NOT NULL,
-	contract_type contract_type NOT NULL,
+	contract_type varchar(50) NOT NULL,
 	working_hours time NOT NULL, -- per month
 	salary_range_ini float8 NOT NULL,
 	salary_range_end float8 NOT NULL,
 	gender varchar(20),
-	availability availability NOT NULL,
+	availability varchar(50) NOT NULL,
 	workplace_country varchar(20),
 	workplace_city varchar(30),
 	workplace_neighborhood varchar(30),
@@ -179,8 +179,6 @@ CONSTRAINT fk_jo_id_joer FOREIGN KEY(fk_jo_id) REFERENCES "job_opportunity"(jo_i
 CONSTRAINT fk_post_id_joer FOREIGN KEY(fk_post_id) REFERENCES "post"(post_id)
 );
 
+alter table candidate add column if not exists geom geometry;
 
-
-
-
-
+CREATE SEQUENCE if not exists serial START 1;
