@@ -84,61 +84,139 @@ public class Candidate implements Serializable {
             orphanRemoval = true)
     private List<CandidateSkill> skills;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Candidate)) return false;
-
-        Candidate candidate = (Candidate) o;
-
-        if (getId() != null ? !getId().equals(candidate.getId()) : candidate.getId() != null) return false;
-        if (getName() != null ? !getName().equals(candidate.getName()) : candidate.getName() != null) return false;
-        if (getEmail() != null ? !getEmail().equals(candidate.getEmail()) : candidate.getEmail() != null) return false;
-        if (getCpf() != null ? !getCpf().equals(candidate.getCpf()) : candidate.getCpf() != null) return false;
-        if (getPhone() != null ? !getPhone().equals(candidate.getPhone()) : candidate.getPhone() != null) return false;
-        if (getGender() != null ? !getGender().equals(candidate.getGender()) : candidate.getGender() != null)
-            return false;
-        if (getBirthday() != null ? !getBirthday().equals(candidate.getBirthday()) : candidate.getBirthday() != null)
-            return false;
-        if (getCountry() != null ? !getCountry().equals(candidate.getCountry()) : candidate.getCountry() != null)
-            return false;
-        if (getCity() != null ? !getCity().equals(candidate.getCity()) : candidate.getCity() != null) return false;
-        if (getNeighborhood() != null ? !getNeighborhood().equals(candidate.getNeighborhood()) : candidate.getNeighborhood() != null)
-            return false;
-        if (getStreet() != null ? !getStreet().equals(candidate.getStreet()) : candidate.getStreet() != null)
-            return false;
-        if (getHomeNumber() != null ? !getHomeNumber().equals(candidate.getHomeNumber()) : candidate.getHomeNumber() != null)
-            return false;
-        if (getComplement() != null ? !getComplement().equals(candidate.getComplement()) : candidate.getComplement() != null)
-            return false;
-        if (getZipCode() != null ? !getZipCode().equals(candidate.getZipCode()) : candidate.getZipCode() != null)
-            return false;
-        if (getLatitude() != null ? !getLatitude().equals(candidate.getLatitude()) : candidate.getLatitude() != null)
-            return false;
-        if (getLongitude() != null ? !getLongitude().equals(candidate.getLongitude()) : candidate.getLongitude() != null)
-            return false;
-        return getSkills() != null ? getSkills().equals(candidate.getSkills()) : candidate.getSkills() == null;
+    public Long getId() {
+        return id;
     }
 
-    @Override
-    public int hashCode() {
-        int result = getId() != null ? getId().hashCode() : 0;
-        result = 31 * result + (getName() != null ? getName().hashCode() : 0);
-        result = 31 * result + (getEmail() != null ? getEmail().hashCode() : 0);
-        result = 31 * result + (getCpf() != null ? getCpf().hashCode() : 0);
-        result = 31 * result + (getPhone() != null ? getPhone().hashCode() : 0);
-        result = 31 * result + (getGender() != null ? getGender().hashCode() : 0);
-        result = 31 * result + (getBirthday() != null ? getBirthday().hashCode() : 0);
-        result = 31 * result + (getCountry() != null ? getCountry().hashCode() : 0);
-        result = 31 * result + (getCity() != null ? getCity().hashCode() : 0);
-        result = 31 * result + (getNeighborhood() != null ? getNeighborhood().hashCode() : 0);
-        result = 31 * result + (getStreet() != null ? getStreet().hashCode() : 0);
-        result = 31 * result + (getHomeNumber() != null ? getHomeNumber().hashCode() : 0);
-        result = 31 * result + (getComplement() != null ? getComplement().hashCode() : 0);
-        result = 31 * result + (getZipCode() != null ? getZipCode().hashCode() : 0);
-        result = 31 * result + (getLatitude() != null ? getLatitude().hashCode() : 0);
-        result = 31 * result + (getLongitude() != null ? getLongitude().hashCode() : 0);
-        result = 31 * result + (getSkills() != null ? getSkills().hashCode() : 0);
-        return result;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public LocalDate getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(LocalDate birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getNeighborhood() {
+        return neighborhood;
+    }
+
+    public void setNeighborhood(String neighborhood) {
+        this.neighborhood = neighborhood;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getHomeNumber() {
+        return homeNumber;
+    }
+
+    public void setHomeNumber(String homeNumber) {
+        this.homeNumber = homeNumber;
+    }
+
+    public String getComplement() {
+        return complement;
+    }
+
+    public void setComplement(String complement) {
+        this.complement = complement;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
+
+    public Float getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Float latitude) {
+        this.latitude = latitude;
+    }
+
+    public Float getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Float longitude) {
+        this.longitude = longitude;
+    }
+
+    public List<CandidateSkill> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(List<CandidateSkill> skills) {
+        this.skills = skills;
     }
 }

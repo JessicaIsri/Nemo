@@ -79,4 +79,37 @@ public class CandidateSkill implements Serializable {
                 ", skillLevel=" + skillLevel +
                 '}';
     }
+
+
+    public CandidateSkillPK getId() {
+        return id;
+    }
+
+    public void setId(CandidateSkillPK id) {
+        this.id = id;
+    }
+
+    public Candidate getCandidate() {
+        return candidate;
+    }
+
+    public void setCandidate(Candidate candidate) {
+        this.candidate = candidate;
+    }
+
+    public Skill getSkill() {
+        return skill;
+    }
+
+    public void setSkill(Skill skill) {
+        this.skill = skill;
+    }
+
+    public SkillLevel getSkillLevel() {
+        return skillLevel;
+    }
+
+    public void setSkillLevel(SkillLevel skillLevel) {
+        this.skillLevel = skillLevel;
+    }
 }
