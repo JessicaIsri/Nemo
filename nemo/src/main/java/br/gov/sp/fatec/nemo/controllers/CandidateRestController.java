@@ -23,6 +23,8 @@ import java.util.Optional;
 
 import br.gov.sp.fatec.nemo.domains.repositories.CandidateRepository;
 
+import javax.websocket.server.PathParam;
+
 @RestController
 public class CandidateRestController {
 
@@ -175,7 +177,7 @@ public class CandidateRestController {
 
     //GET CANDIDATE BY DESIREDJOURNEY
     @GetMapping("nemo/v1/candidate/desiredjourney")
-    List<Candidate> candidateByDesiredJourney(String desired_journey){
+    List<Candidate> candidateByDesiredJourney(@PathParam("desiredjourney") String desired_journey){
         return candidateRepository.findCandidateByDesiredJourney(desired_journey);
     }
 
