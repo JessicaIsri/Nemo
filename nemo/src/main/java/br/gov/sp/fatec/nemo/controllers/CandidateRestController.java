@@ -1,34 +1,21 @@
 package br.gov.sp.fatec.nemo.controllers;
 
 import br.gov.sp.fatec.nemo.domains.entities.Candidate;
-import br.gov.sp.fatec.nemo.domains.enums.AvailablePeriod;
-import br.gov.sp.fatec.nemo.domains.enums.DesiredJourney;
-import br.gov.sp.fatec.nemo.domains.enums.WorkModality;
+import br.gov.sp.fatec.nemo.domains.repositories.CandidateRepository;
 import br.gov.sp.fatec.nemo.usecases.interfaces.FindCandidateUseCase;
-import net.bytebuddy.implementation.bytecode.assign.TypeCasting;
-import org.hibernate.jpa.TypedParameterValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
+import javax.websocket.server.PathParam;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
-
 import java.util.Optional;
-
-import br.gov.sp.fatec.nemo.domains.repositories.CandidateRepository;
-
-import javax.websocket.server.PathParam;
 
 @RestController
 public class CandidateRestController {
-
-
 
     @Autowired
     private FindCandidateUseCase findCandidateUseCase;
@@ -39,17 +26,18 @@ public class CandidateRestController {
 
     @GetMapping(value = "nemo/v1/candidate", produces = "application/json")
     public ResponseEntity<List<Candidate>> getCandidate(
-        @RequestParam(required = false) String gender,
-        @RequestParam(required = false) String country,
-        @RequestParam(required = false) String city,
-        @RequestParam(required = false) String zipCode,
-        @RequestParam(required = false) String skill,
-        @RequestParam(required = false) Double longitude,
-        @RequestParam(required = false) Double latitude,
-        @RequestParam(required = false) Double kilometers
+            @RequestParam(required = false) String gender,
+            @RequestParam(required = false) String country,
+            @RequestParam(required = false) String city,
+            @RequestParam(required = false) String zipCode,
+            @RequestParam(required = false) String skill,
+            @RequestParam(required = false) Double longitude,
+            @RequestParam(required = false) Double latitude,
+            @RequestParam(required = false) Double kilometers,
+            @RequestParam(required = false) String availablePeriod
     ) {
         return Optional
-            .ofNullable(findCandidateUseCase.findCandidate(gender, country, city, zipCode, skill, longitude, latitude, kilometers))
+                .ofNullable(findCandidateUseCase.findCandidate(gender, country, city, zipCode, skill, longitude, latitude, kilometers, availablePeriod))
             .map(candidate -> ResponseEntity.ok().body(candidate))
             .orElseGet(() -> ResponseEntity.notFound().build());
     }

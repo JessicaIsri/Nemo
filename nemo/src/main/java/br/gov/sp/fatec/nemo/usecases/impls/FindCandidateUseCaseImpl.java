@@ -17,16 +17,17 @@ public class FindCandidateUseCaseImpl implements FindCandidateUseCase {
 
     @Override
     public List<Candidate> findCandidate(
-        String gender,
-        String country,
-        String city,
-        String zipCode,
-        String skill,
-        Double longitude,
-        Double latitude,
-        Double kilometers
+            String gender,
+            String country,
+            String city,
+            String zipCode,
+            String skill,
+            Double longitude,
+            Double latitude,
+            Double kilometers,
+            String availablePeriod
     ) {
-        List<Candidate> candidates = candidateRepository.findCandidateByAllParams(gender, country, city, zipCode, skill);
+        List<Candidate> candidates = candidateRepository.findCandidateByAllParams(gender, country, city, zipCode, skill, availablePeriod);
         if (latitude != null && longitude != null) {
             List<Long> ids = candidates.stream().map(Candidate::getId).collect(Collectors.toList());
             candidates = candidateRepository.findRadiusCandidate(longitude, latitude, ids, kilometers);

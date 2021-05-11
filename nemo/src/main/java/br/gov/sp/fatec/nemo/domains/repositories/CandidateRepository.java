@@ -1,11 +1,6 @@
 package br.gov.sp.fatec.nemo.domains.repositories;
 
 import br.gov.sp.fatec.nemo.domains.entities.Candidate;
-import br.gov.sp.fatec.nemo.domains.enums.AvailablePeriod;
-import br.gov.sp.fatec.nemo.domains.enums.DesiredJourney;
-import br.gov.sp.fatec.nemo.domains.enums.WorkModality;
-import net.bytebuddy.implementation.bytecode.assign.TypeCasting;
-import org.hibernate.jpa.TypedParameterValue;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -23,7 +18,8 @@ public interface CandidateRepository extends JpaRepository<Candidate, Long> {
             "WHERE (:gender is null or c.gender = :gender) and " +
             "(:country is null or c.country = :country) and (:city is null or c.city = :city) and " +
             "(:zip_code is null or c.zipCode = :zip_code) and " +
-            "(:skill is null or sk.description = :skill) ORDER BY can_id ASC"
+            "(:skill is null or sk.description = :skill) and " +
+            "(:availablePeriod is null or c.availablePeriod = :availablePeriod)"
 
     )
     List<Candidate> findCandidateByAllParams(
@@ -31,7 +27,8 @@ public interface CandidateRepository extends JpaRepository<Candidate, Long> {
             @Param("country") String country,
             @Param("city") String city,
             @Param("zip_code") String zipCode,
-            @Param("skill") String skill
+            @Param("skill") String skill,
+            @Param("availablePeriod") String availablePeriod
     );
 
     @Query(value = "SELECT * FROM candidate where can_id in (:ids) and ST_Distance_Sphere(geom, ST_MakePoint(:longitude,:latitude))/1000 <= :kilometers",

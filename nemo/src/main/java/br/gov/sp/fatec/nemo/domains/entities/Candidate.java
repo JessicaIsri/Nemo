@@ -2,11 +2,8 @@ package br.gov.sp.fatec.nemo.domains.entities;
 
 import br.gov.sp.fatec.nemo.domains.enums.AvailablePeriod;
 import br.gov.sp.fatec.nemo.domains.enums.DesiredJourney;
-import br.gov.sp.fatec.nemo.domains.enums.SkillLevel;
 import br.gov.sp.fatec.nemo.domains.enums.WorkModality;
 import br.gov.sp.fatec.nemo.domains.utils.PostgreSQLEnumType;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.vividsolutions.jts.geom.Geometry;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,7 +18,6 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -101,7 +97,7 @@ public class Candidate implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(name = "available_period", columnDefinition = "available_period")
     @Type(type = "pgsql_enum")
-    private AvailablePeriod available_period;
+    private AvailablePeriod availablePeriod;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "work_modality", columnDefinition = "work_modality")
