@@ -147,25 +147,25 @@ public class CandidateRestController {
 
     //GET CANDIDATE BY LATITUDE
     @GetMapping("nemo/v1/candidate/latitude")
-    List<Candidate> candidateByLatitude(Double latitude){
+    List<Candidate> candidateByLatitude(Double latitude) {
         return candidateRepository.findCandidateByLatitude(latitude);
     }
 
     //GET CANDIDATE BY LONGITUDE
     @GetMapping("nemo/v1/candidate/longitude")
-    List<Candidate> candidateByLongitude(Double longitude){
+    List<Candidate> candidateByLongitude(Double longitude) {
         return candidateRepository.findCandidateByLongitude(longitude);
     }
 
-    //GET CANDIDATE BY PRETENTIONSALARY
-    @GetMapping("nemo/v1/candidate/pretentionsalary")
-    List<Candidate> candidateByPretentionSalary(String pretentionSalary){
-        return candidateRepository.findCandidateByPretentionSalary(pretentionSalary);
+    //GET CANDIDATE BY pretensionSALARY
+    @GetMapping("nemo/v1/candidate/pretensionsalary")
+    List<Candidate> candidateBypretensionSalary(String pretensionSalary) {
+        return candidateRepository.findCandidateBypretensionSalary(pretensionSalary);
     }
 
     //GET CANDIDATE BY DESIREDJOURNEY
     @GetMapping("nemo/v1/candidate/desiredjourney")
-    List<Candidate> candidateByDesiredJourney(@PathParam("desiredjourney") String desired_journey){
+    List<Candidate> candidateByDesiredJourney(@PathParam("desiredjourney") String desired_journey) {
         return candidateRepository.findCandidateByDesiredJourney(desired_journey);
     }
 

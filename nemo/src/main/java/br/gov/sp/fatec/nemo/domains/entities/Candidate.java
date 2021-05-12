@@ -1,14 +1,10 @@
 package br.gov.sp.fatec.nemo.domains.entities;
 
-import br.gov.sp.fatec.nemo.domains.enums.AvailablePeriod;
-import br.gov.sp.fatec.nemo.domains.enums.DesiredJourney;
-import br.gov.sp.fatec.nemo.domains.enums.WorkModality;
 import br.gov.sp.fatec.nemo.domains.utils.PostgreSQLEnumType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 import org.hibernate.validator.constraints.br.CPF;
 
@@ -87,22 +83,19 @@ public class Candidate implements Serializable {
     private Float longitude;
 
     @NotNull
-    private String pretentionSalary;
+    private String pretensionSalary;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "desired_journey", columnDefinition = "desired_journey")
-    @Type(type = "pgsql_enum")
-    private DesiredJourney desired_journey;
+    @OneToOne
+    @JoinColumn(name = "desired_journey_fk", referencedColumnName = "id")
+    private DesiredJourney desiredJourney;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "available_period", columnDefinition = "available_period")
-    @Type(type = "pgsql_enum")
+    @OneToOne
+    @JoinColumn(name = "available_period_fk", referencedColumnName = "id")
     private AvailablePeriod availablePeriod;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "work_modality", columnDefinition = "work_modality")
-    @Type(type = "pgsql_enum")
-    private WorkModality work_modality;
+    @OneToOne
+    @JoinColumn(name = "work_modality_fk", referencedColumnName = "id")
+    private WorkModality workModality;
 
     @OneToMany(mappedBy = "candidate",
             cascade = CascadeType.ALL,

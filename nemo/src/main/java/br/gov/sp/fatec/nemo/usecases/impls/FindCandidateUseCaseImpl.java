@@ -27,7 +27,7 @@ public class FindCandidateUseCaseImpl implements FindCandidateUseCase {
             Double kilometers,
             String availablePeriod
     ) {
-        List<Candidate> candidates = candidateRepository.findCandidateByAllParams(gender, country, city, zipCode, skill, availablePeriod);
+        List<Candidate> candidates = candidateRepository.findCandidateByAnyParams(gender, country, city, zipCode, skill, availablePeriod);
         if (latitude != null && longitude != null) {
             List<Long> ids = candidates.stream().map(Candidate::getId).collect(Collectors.toList());
             candidates = candidateRepository.findRadiusCandidate(longitude, latitude, ids, kilometers);

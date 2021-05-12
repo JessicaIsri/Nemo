@@ -19,10 +19,9 @@ public interface CandidateRepository extends JpaRepository<Candidate, Long> {
             "(:country is null or c.country = :country) and (:city is null or c.city = :city) and " +
             "(:zip_code is null or c.zipCode = :zip_code) and " +
             "(:skill is null or sk.description = :skill) and " +
-            "(:availablePeriod is null or c.availablePeriod = :availablePeriod)"
-
+            "(:availablePeriod is null or c.availablePeriod.name = :availablePeriod)"
     )
-    List<Candidate> findCandidateByAllParams(
+    List<Candidate> findCandidateByAnyParams(
             @Param("gender") String gender,
             @Param("country") String country,
             @Param("city") String city,
@@ -86,35 +85,30 @@ public interface CandidateRepository extends JpaRepository<Candidate, Long> {
     List<Candidate> findCandidateByZipCode(@Param("zipCode") String zipCode);
 
     //FIND BY LATITUDE
-    @Query(value="select * from candidate where latitude = :latitude", nativeQuery = true)
+    @Query(value = "select * from candidate where latitude = :latitude", nativeQuery = true)
     List<Candidate> findCandidateByLatitude(@Param("latitude") Double latitude);
 
     //FIND BY LONGITUDE
-    @Query(value="select * from candidate where longitude = :longitude", nativeQuery = true)
+    @Query(value = "select * from candidate where longitude = :longitude", nativeQuery = true)
     List<Candidate> findCandidateByLongitude(@Param("longitude") Double longitude);
 
 
-
-    //FIND BY PRETENTIONSALARY
-    @Query(value="select * from candidate where pretentionSalary = :pretentionSalary", nativeQuery = true)
-    List<Candidate> findCandidateByPretentionSalary(@Param("pretentionSalary") String pretentionSalary);
+    //FIND BY pretensionSALARY
+    @Query(value = "select * from candidate where pretensionSalary = :pretensionSalary", nativeQuery = true)
+    List<Candidate> findCandidateBypretensionSalary(@Param("pretensionSalary") String pretensionSalary);
 
     //***
 
     //FIND BY DESIREDJOURNEY
-    @Query(value="select * from candidate c where c.desired_journey = :desired_journey", nativeQuery = true)
+    @Query(value = "select * from candidate c where c.desired_journey = :desired_journey", nativeQuery = true)
     List<Candidate> findCandidateByDesiredJourney(@Param("desired_journey") String desired_journey);
 
     //FIND BY AVAILABLEPERIOD
-    @Query(value="select * from candidate where available_period = :available_period", nativeQuery = true)
+    @Query(value = "select * from candidate where available_period = :available_period", nativeQuery = true)
     List<Candidate> findCandidateByAvailablePeriod(@Param("available_period") String available_period);
 
     //FIND BY WORKMODALITY
     @Query(value="select * from candidate where work_modality = :work_modality", nativeQuery = true)
     List<Candidate> findCandidateByWorkModality(@Param("work_modality") String work_modality);
-
-
-
-
 
 }

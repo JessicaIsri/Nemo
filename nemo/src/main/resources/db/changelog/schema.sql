@@ -1,31 +1,35 @@
 DROP TABLE IF EXISTS "candidate_skill";
-DROP TYPE IF EXISTS "skill_level";
-DROP TYPE IF EXISTS "desired_journey";
-DROP TYPE IF EXISTS "available_period";
-DROP TYPE IF EXISTS "work_modality";
-DROP TABLE  IF EXISTS "skill";
-DROP TABLE  IF EXISTS "candidate";
-DROP TABLE  IF EXISTS "client";
-DROP TABLE  IF EXISTS "course";
-DROP TABLE  IF EXISTS "institution";
-DROP TABLE  IF EXISTS "candidate_formation";
-DROP TABLE  IF EXISTS "company";
-DROP TABLE  IF EXISTS "post";
-DROP TABLE  IF EXISTS "candidate_exp";
+DROP TYPE  IF EXISTS "skill_level";
+DROP TABLE IF EXISTS "desired_journey";
+DROP TABLE IF EXISTS "available_period";
+DROP TABLE IF EXISTS "work_modality";
+DROP TABLE IF EXISTS "skill";
+DROP TABLE IF EXISTS "candidate";
+DROP TABLE IF EXISTS "client";
+DROP TABLE IF EXISTS "course";
+DROP TABLE IF EXISTS "institution";
+DROP TABLE IF EXISTS "candidate_formation";
+DROP TABLE IF EXISTS "company";
+DROP TABLE IF EXISTS "post";
+DROP TABLE IF EXISTS "candidate_exp";
 
+CREATE TABLE "desired_journey" (
+id SMALLINT,
+name varchar(255) NOT NULL,
+PRIMARY KEY(id)
+);
 
-/* Enum 'desired_journey' */
-CREATE TYPE desired_journey
-AS ENUM('UMA_HORA', 'DUAS_HORAS','TRES_HORAS', 'QUATRO_HORAS','CINCO_HORAS', 'SEIS_HORAS', 'SETE_HORAS', 'OITO_HORAS',
-                'NOVE_HORAS', 'DEZ_HORAS', 'ONZE_HORAS', 'DOZE_HORAS');
+CREATE TABLE "available_period" (
+id SMALLINT,
+name varchar(255) NOT NULL,
+PRIMARY KEY(id)
+);
 
-/* Enum 'available_period' */
-CREATE TYPE available_period
-AS ENUM('MANHA','TARDE','NOITE','MADRUGADA','INTEGRAL_DIURNO','INTEGRAL_NOTURNO');
-
-/* Enum 'work_modality' */
-CREATE TYPE work_modality
-AS ENUM('PRESENCIAL', 'REMOTO');
+CREATE TABLE "work_modality" (
+id SMALLINT,
+name varchar(255) NOT NULL,
+PRIMARY KEY(id)
+);
 
 /* Table 'candidate' */
 CREATE TABLE "candidate" (
@@ -45,11 +49,14 @@ complement varchar(100),
 zip_code varchar(8) NOT NULL,
 latitude float8 NOT NULL,
 longitude float8 NOT NULL,
-pretentionSalary varchar(15) NOT NULL,
-desired_journey desired_journey NOT NULL,
-available_period available_period NOT NULL,
-work_modality work_modality NOT NULL,
-PRIMARY KEY(can_id)
+pretensionSalary varchar(15) NOT NULL,
+desired_journey_fk SMALLINT NOT NULL,
+available_period_fk SMALLINT NOT NULL,
+work_modality_fk SMALLINT NOT NULL,
+PRIMARY KEY(can_id),
+FOREIGN KEY(desired_journey_fk) REFERENCES desired_journey(id),
+FOREIGN KEY(available_period_fk) REFERENCES available_period(id),
+FOREIGN KEY(work_modality_fk) REFERENCES work_modality(id)
 );
 
 /* Table 'skill' */
@@ -72,12 +79,6 @@ PRIMARY KEY(fk_can_id, fk_skill_id),
 CONSTRAINT fk_can_id FOREIGN KEY(fk_can_id) REFERENCES "candidate"(can_id),
 CONSTRAINT fk_skill_id FOREIGN KEY(fk_skill_id) REFERENCES "skill"(skill_id)
 );
-
-/* Table 'client' */
-CREATE TABLE "client" (
-client_id varchar(50),
-client_secret varchar(100) NOT NULL,
-PRIMARY KEY(client_id));
 
 /* Table 'course' */
 CREATE TABLE "course" (
