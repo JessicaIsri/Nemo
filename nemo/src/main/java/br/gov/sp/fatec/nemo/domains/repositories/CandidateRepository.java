@@ -1,9 +1,13 @@
 package br.gov.sp.fatec.nemo.domains.repositories;
 
 import br.gov.sp.fatec.nemo.domains.entities.Candidate;
+import br.gov.sp.fatec.nemo.domains.enums.SkillLevel;
 import br.gov.sp.fatec.nemo.domains.repositories.interfaces.GeometryCandidate;
+import br.gov.sp.fatec.nemo.usecases.impls.dtos.CandidateDTO;
+import br.gov.sp.fatec.nemo.usecases.impls.dtos.CandidateFunction;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
@@ -48,4 +52,20 @@ public interface CandidateRepository extends JpaRepository<Candidate, Long> {
     );
 
     Set<Candidate> findAllBySkills_Skill_DescriptionIn(List<String> skills);
+
+    Set<Candidate> findAllBySkills_Skill_DescriptionInAndSkills_SkillLevelIn(List<String> skills, List<SkillLevel> skillLevels);
+
+    @Query(value = "SELECT * from searchCandidate(array[:skills])", nativeQuery = true)
+    Set<Long> findCandidateWithoutGeom(
+        @Param("skills") String skills
+    );
+
+//    @Procedure(procedureName = "searchcandidate")
+//    Object[] findCandidateWithoutGeom(
+//        @Param("habilit_experience") List<String> skills,
+//        @Param("longitudePar") Double longitude,
+//        @Param("latitudePar") Double latitude,
+//        @Param("distanceLimit") Double kilometers
+//    );
+
 }
