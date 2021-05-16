@@ -22,8 +22,9 @@ public class CandidateExp implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @EmbeddedId
-    private CandidateExpPK id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("candidateId") //This is the name of attr in EmployerDeliveryAgentPK class
@@ -31,27 +32,23 @@ public class CandidateExp implements Serializable {
     @JsonIgnore
     private Candidate candidate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @MapsId("companyId") //This is the name of attr in EmployerDeliveryAgentPK class
-    @JoinColumn(name = "fk_company_id")
-    private Company company;
+    @NotBlank
+    @Column(name = "fk_company_id")
+    private String company;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @MapsId("postId") //This is the name of attr in EmployerDeliveryAgentPK class
-    @JoinColumn(name = "fk_post_id")
-    private Post post;
+    @NotBlank
+    @Column(name = "fk_post_id")
+    private String jobTitle;
 
     @NotNull
-    private LocalDate dt_start;
+    @Column(name = "dt_start")
+    private LocalDate dtStart;
 
     @NotNull
-    private LocalDate dt_end;
+    @Column(name = "dt_end")
+    private LocalDate dtEnd;
 
-    @NotNull
+    @NotBlank
     private String description;
-
-
-
-
 
 }

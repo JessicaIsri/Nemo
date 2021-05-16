@@ -49,7 +49,7 @@ complement varchar(100),
 zip_code varchar(8) NOT NULL,
 latitude float8 NOT NULL,
 longitude float8 NOT NULL,
-pretensionSalary varchar(15) NOT NULL,
+pretensionSalary NUMERIC(17, 4) NOT NULL,
 desired_journey_fk SMALLINT NOT NULL,
 available_period_fk SMALLINT NOT NULL,
 work_modality_fk SMALLINT NOT NULL,
@@ -80,54 +80,27 @@ CONSTRAINT fk_can_id FOREIGN KEY(fk_can_id) REFERENCES "candidate"(can_id),
 CONSTRAINT fk_skill_id FOREIGN KEY(fk_skill_id) REFERENCES "skill"(skill_id)
 );
 
-/* Table 'course' */
-CREATE TABLE "course" (
-course_id serial,
-course_name varchar(100) NOT NULL,
-PRIMARY KEY(course_id));
-
-/* Table 'institution' */
-CREATE TABLE "institution" (
-inst_id serial,
-inst_name varchar(100) NOT NULL,
-PRIMARY KEY(inst_id));
-
-
 /* Table 'candidate_formation' */
 CREATE TABLE "candidate_formation" (
+id serial,
 fk_can_id serial,
-fk_inst_id serial,
-fk_course_id serial,
+institution varchar(255) NOT NULL,
+course varchar(255) NOT NULL,
 dt_start date NOT NULL,
 dt_end date,
-PRIMARY KEY(fk_can_id, fk_inst_id, fk_course_id),
-CONSTRAINT fk_can_id FOREIGN KEY(fk_can_id) REFERENCES "candidate"(can_id),
-CONSTRAINT fk_inst_id FOREIGN KEY(fk_inst_id) REFERENCES "institution"(inst_id),
-CONSTRAINT fk_course_id FOREIGN KEY(fk_course_id) REFERENCES "course"(course_id)
+PRIMARY KEY(id),
+CONSTRAINT fk_can_id FOREIGN KEY(fk_can_id) REFERENCES "candidate"(can_id)
 );
-
-/* Table 'company' */
-CREATE TABLE "company" (
-company_id serial,
-com_name varchar(100) NOT NULL,
-PRIMARY KEY(company_id));
-
-/* Table 'post' */
-CREATE TABLE "post" (
-post_id serial,
-post_name varchar(100) NOT NULL,
-PRIMARY KEY(post_id));
 
 /* Table 'candidate_exp' */
 CREATE TABLE "candidate_exp" (
+id serial,
 fk_can_id serial,
-fk_company_id serial,
-fk_post_id serial,
+company varchar(255) NOT NULL,
+job_title varchar(255) NOT NULL,
 dt_start date NOT NULL,
 dt_end date,
-description varchar(100) NOT NULL,
-PRIMARY KEY(fk_can_id, fk_company_id, fk_post_id),
-CONSTRAINT fk_can_id FOREIGN KEY(fk_can_id) REFERENCES "candidate"(can_id),
-CONSTRAINT fk_company_id FOREIGN KEY(fk_company_id) REFERENCES "company"(company_id),
-CONSTRAINT fk_post_id FOREIGN KEY(fk_post_id) REFERENCES "post"(post_id)
+description varchar(255) NOT NULL,
+PRIMARY KEY(id),
+CONSTRAINT fk_can_id FOREIGN KEY(fk_can_id) REFERENCES "candidate"(can_id)
 );

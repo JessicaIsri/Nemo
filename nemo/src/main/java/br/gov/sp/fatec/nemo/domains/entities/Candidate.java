@@ -32,6 +32,7 @@ public class Candidate implements Serializable {
 
     @Id
     @Column(name = "can_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @NotBlank
@@ -83,7 +84,7 @@ public class Candidate implements Serializable {
     private Float longitude;
 
     @NotNull
-    private String pretensionSalary;
+    private Double pretensionSalary;
 
     @OneToOne
     @JoinColumn(name = "desired_journey_fk", referencedColumnName = "id")
