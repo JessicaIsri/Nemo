@@ -10,6 +10,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.lang.reflect.ParameterizedType;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -20,13 +22,38 @@ public class ParametersServiceImpl implements ParametersService {
 
 
     public Parameters saveParameter(Parameters parameters){
-        Client auth = (Client) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         return parameterRepository.saveAndFlush(parameters);
     }
 
     public Optional<Parameters> findById(Long id){
         return parameterRepository.findById(id);
+    }
+
+    public List<Parameters> listAll() {
+        return parameterRepository.findAll();
+    }
+
+    public Parameters update(Parameters parametersToSave) throws Exception {
+        if (parametersToSave.getId() != null) {
+            Optional<Parameters> parameters = parameterRepository.findById(parametersToSave.getId());
+            if (parameters.isPresent()) {
+                parametersToSave.setId(parameters.get().getId());
+                return parameterRepository.saveAndFlush(parametersToSave);
+            }
+        } else {
+            throw new Exception("Parametro não encontrado");
+        }
+        return null;
+    }
+
+    public void delete(Long id) throws Exception {
+        if (id != null) {
+            parameterRepository.deleteById(id);
+        }
+        else {
+            throw new Exception("Parametro não encontrado");
+        }
     }
 
 }

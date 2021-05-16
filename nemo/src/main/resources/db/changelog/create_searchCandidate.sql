@@ -1,6 +1,7 @@
-create or replace function searchCandidate(habilit_experience varchar[])
-returns setof integer as
-$$
+CREATE OR REPLACE FUNCTION public.searchcandidate(habilit_experience character varying[])
+ RETURNS SETOF integer
+ LANGUAGE plpgsql
+AS $function$
 declare
 reg varchar(100);
 skill varchar(100);
@@ -12,7 +13,7 @@ begin
 	foreach reg  in array habilit_experience
 	loop
 		skill := split_part(reg, '.', 1);
-		levelSkill := split_part(reg, '.', 2);
+		levelSkill := upper(split_part(reg, '.', 2));
 
 		queryResult := array(select c.can_id from candidate c
 		join candidate_skill cs on cs.fk_can_id = c.can_id
@@ -28,5 +29,5 @@ end loop ;
 end loop;
 	return  ;
 end;
-$$
-LANGUAGE plpgsql VOLATILE;
+$function$
+;

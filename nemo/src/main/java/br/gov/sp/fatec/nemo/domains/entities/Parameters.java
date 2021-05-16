@@ -25,6 +25,7 @@ public class Parameters {
     @JoinColumn(name = "distance_parameter_id", referencedColumnName = "distance_parameter_id")
     private DistanceParameters distanceParameters;
 
+    @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "client_id", referencedColumnName = "client_id")
     private Client client;

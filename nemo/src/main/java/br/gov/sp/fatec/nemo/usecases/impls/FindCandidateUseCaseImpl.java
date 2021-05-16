@@ -10,6 +10,7 @@ import br.gov.sp.fatec.nemo.usecases.interfaces.ParametersService;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.*;
@@ -57,14 +58,19 @@ public class FindCandidateUseCaseImpl implements FindCandidateUseCase {
         Set<Candidate> candidates = null;
         Set<GeometryCandidate> geometryCandidates = null;
         if (hability != null) {
+            List<String> invalidString = hability.stream()
+                .filter(f -> Arrays.stream(f.split("\\.")).count() == 1).collect(Collectors.toList());
+            if (invalidString.size() > 0) {
+                throw new Exception("Parametro 'hability' está fora do padrão. ||Padrão: Skill.Level||");
+            }
             String habilityString = String.join(",", hability);
             listIds = candidateRepository.findCandidateWithoutGeom(habilityString);
             candidates = candidateRepository.findAllById(listIds).stream().collect(Collectors.toSet());
 
         } else {
-            throw new Exception("Habilidades são Obrigatórias para essa pesquisa");
+            throw new Exception("Habilidades e level são obrigatorios para a pesquisa. ||Padrão: Skill.Level||");
         }
-        if (longitude != null && latitude != null) {
+        if (longitude != null && latitude != null && kilometers != null) {
             geometryCandidates = candidateRepository.findRadiusCandidateInterface(
                 longitude,
                 latitude,
@@ -131,7 +137,7 @@ public class FindCandidateUseCaseImpl implements FindCandidateUseCase {
                 return candidateDTO;
             })).collect(Collectors.toList());
         } else {
-            throw new Exception("Parametro não encontrado");
+            throw new Exception("Parametro com o seguinte id: " + parameter + " não foi encontrado");
         }
     }
 
