@@ -62,11 +62,22 @@ public interface CandidateRepository extends JpaRepository<Candidate, Long> {
     );
 
     @Query(value = "SELECT * FROM candidate where can_id in (:ids) and ST_Distance_Sphere(geom, ST_MakePoint(:longitude,:latitude))/1000 <= :kilometers",
-            nativeQuery = true)
-    List<Candidate> findRadiusCandidate(
-            @Param("longitude") Double longitude,
-            @Param("latitude") Double latitude,
-            @Param("ids") List<Long> ids,
-            @Param("kilometers") Double kilometers
+        nativeQuery = true )
+    Set<Candidate> findRadiusCandidate(
+        @Param("longitude") Double longitude,
+        @Param("latitude") Double latitude,
+        @Param("ids") List<Long> ids,
+        @Param("kilometers") Double kilometers
     );
+
+    @Query(value = "SELECT can_id as id, ST_Distance_Sphere(geom, ST_MakePoint(:longitude,:latitude))/1000 as kilometer  FROM candidate where can_id in (:ids) and ST_Distance_Sphere(geom, ST_MakePoint(:longitude,:latitude))/1000 <= :kilometers",
+        nativeQuery = true )
+    Set<GeometryCandidate> findRadiusCandidateInterface(
+        @Param("longitude") Double longitude,
+        @Param("latitude") Double latitude,
+        @Param("ids") List<Long> ids,
+        @Param("kilometers") Double kilometers
+    );
+
+    Set<Candidate> findAllBySkills_Skill_DescriptionIn(List<String> skills);
 }

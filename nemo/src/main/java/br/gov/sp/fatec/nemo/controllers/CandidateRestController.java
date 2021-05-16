@@ -5,7 +5,9 @@ import br.gov.sp.fatec.nemo.domains.repositories.CandidateRepository;
 import br.gov.sp.fatec.nemo.usecases.impls.FindCandidateUseCaseImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Optional;
@@ -42,6 +44,18 @@ public class CandidateRestController {
                         companyName))
                 .map(candidate -> ResponseEntity.ok().body(candidate))
                 .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @GetMapping(value = "nemo/v2/candidate", produces = "application/json")
+    public ResponseEntity<List<CandidateDTO>> getCandidateV2(
+        @RequestParam(required = false) List<String> hability,
+        @RequestParam(required = false) Double longitude,
+        @RequestParam(required = false) Double latitude,
+        @RequestParam(required = false) Double kilometers
+    ) throws Exception {
+        return Optional.ofNullable(findCandidateUseCase.findCandidateV2(hability, longitude, latitude, kilometers))
+            .map(candidateDTOS -> ResponseEntity.ok().body(candidateDTOS))
+            .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping("nemo/v1/candidate/")

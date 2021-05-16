@@ -9,11 +9,14 @@ http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibas
 
     <!-- Drop de changeset utilizando sql ao invés de xml  -->
     <!-- PADRÃO PARA INCLUDES: YYYYMMDDHHMM_ACAO_ENTIDADE   -->
+    <include file="db/changelog/user.sql" relativeToChangelogFile="false"/>
     <include file="db/changelog/schema.sql" relativeToChangelogFile="false"/>
     <include file="db/changelog/data.sql" relativeToChangelogFile="false"/>
     <include file="db/changelog/dataMock.sql" relativeToChangelogFile="false"/>
     <include file="db/changelog/candidateSkill.sql" relativeToChangelogFile="false"/>
     <include file="db/changelog/addGeomCandidate.sql" relativeToChangelogFile="false"/>
+    <include file="db/changelog/ddl_v2.sql" relativeToChangelogFile="false"/>
+    <include file="db/changelog/dml_v2.sql" relativeToChangelogFile="false"/>
     <include file="db/changelog/Insert_candidate_formation.sql" relativeToChangelogFile="false"/>
     <include file="db/changelog/Insert_candidate_exp.sql" relativeToChangelogFile="false"/>
 
