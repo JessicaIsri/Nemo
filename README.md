@@ -157,11 +157,21 @@ Na descrição dos story cards, entende-se como usuário o recrutador ou respons
 
 * André Lars da Cunha | Scrum Developer | [linkedIn](https://www.linkedin.com/in/andre-lars-da-cunha/)
 
+<img src="/uploads/6e46b1dc126eb671d33186f9d9c7fa09/WhatsApp_Image_2021-05-16_at_20.31.30.jpeg" width="100px">
+
 * Daniel | Scrum Developer | [linkedIn](https://www.linkedin.com/in/daniel-delgado-274096194/)
+
+<img src="" width="100px">
 
 * Felipe Gustavo Braga |  Product Owner | [linkedIn](https://www.linkedin.com/in/felipegbraga/)
 
+<img src="/uploads/9054538bdd27e6df45f7726424f7b84f/IMG_20201027_203842.jpg" width="100px">
+
 * Giovanni Guidace Marassi | Scrum Developer  | [linkedIn](https://www.linkedin.com/in/giovanni-guidace-61982812a/)
 
+<img src="/uploads/1cdb3a51a8986e89a8062bdc58ecd5c7/WhatsApp_Image_2021-05-16_at_20.58.08.jpeg" width="100px">
+
 * Jéssica Isri Dias | Scrum Master | [linkedIn](https://www.linkedin.com/in/jessica-dias1/)
+
+<img src="/uploads/29f076952b263b95660b2fb532f5e5ef/WhatsApp_Image_2021-05-16_at_20.33.44.jpeg" width="100px">
 
