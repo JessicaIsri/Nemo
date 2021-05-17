@@ -26,9 +26,9 @@ Para cada semestre do curso de Banco de Dados é selecionado uma empresa que apr
 O projeto Nemo visa ser uma solução simples, versátil, escalável e open source para pessoas e empresas que precisam de um sistema escalável, simples e versátil para fazer a gestão dos currículos de candidatos relacionando eles às vagas disponíveis pela empresa.
 
 ### :camera: 1.2. Apresentação da Evolução do Projeto
-:heavy_check_mark: Sprint 1  | :heavy_check_mark: Sprint 2 | :information_source: Sprint 3 | Sprint 4 :checkered_flag:  
+:heavy_check_mark: Sprint 1  | :heavy_check_mark: Sprint 2 | :heavy_check_mark: Sprint 3 | Sprint 4 :information_source:  
 --------- |--------- |--------- |--------- |
-[Entrega](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/4-Entrega-Sprint-1) |[Entrega](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/6-Entrega-Sprint-2) |[Entrega]() |[Entrega]() |
+[Entrega](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/4-Entrega-Sprint-1) |[Entrega](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/6-Entrega-Sprint-2) |[Entrega](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/8-Entrega-Sprint-3) |[Entrega](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/9.1-Entrega-Sprint-4-(Final)) |
 
 
 ### :clipboard: 1.3. Planejamento
