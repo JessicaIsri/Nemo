@@ -158,6 +158,6 @@ Na descrição dos story cards, entende-se como usuário o recrutador ou respons
 | André Lars | Daniel Delgado | Felipe Braga | Giovanni Guidace | Jéssica Isri  |
 |---|---|---|---|---|
 | [linkedIn](https://www.linkedin.com/in/andre-lars-da-cunha/) | [linkedIn](https://www.linkedin.com/in/daniel-delgado-274096194/) | [linkedIn](https://www.linkedin.com/in/felipegbraga/) |  [linkedIn](https://www.linkedin.com/in/giovanni-guidace-61982812a/) | [linkedIn](https://www.linkedin.com/in/jessica-dias1/) |
-| <img src="/uploads/6e46b1dc126eb671d33186f9d9c7fa09/WhatsApp_Image_2021-05-16_at_20.31.30.jpeg" width="100px"> | <img src="/uploads/463a30f45fd12e668f5261cd0162ce10/anonimo.png" width="100px"> | <img src="/uploads/ee6db8a1a1670e1dc9053729b7b9609a/Design_sem_nome.jpg" width="100px"> | <img src="/uploads/1cdb3a51a8986e89a8062bdc58ecd5c7/WhatsApp_Image_2021-05-16_at_20.58.08.jpeg" width="100px"> | <img src="/uploads/29f076952b263b95660b2fb532f5e5ef/WhatsApp_Image_2021-05-16_at_20.33.44.jpeg" width="100px"> |
+| <img src="/uploads/6e46b1dc126eb671d33186f9d9c7fa09/WhatsApp_Image_2021-05-16_at_20.31.30.jpeg" width="100px"> | <img src="/uploads/2d4aea38bb9a385745b3e41d4215a10a/Design_sem_nome.jpg" width="100px"> | <img src="/uploads/ee6db8a1a1670e1dc9053729b7b9609a/Design_sem_nome.jpg" width="100px"> | <img src="/uploads/1cdb3a51a8986e89a8062bdc58ecd5c7/WhatsApp_Image_2021-05-16_at_20.58.08.jpeg" width="100px"> | <img src="/uploads/29f076952b263b95660b2fb532f5e5ef/WhatsApp_Image_2021-05-16_at_20.33.44.jpeg" width="100px"> |
 
 
