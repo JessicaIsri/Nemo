@@ -9,3 +9,7 @@ stages:
 maven-build:
   stage: build
   script: "mvn -f nemo/pom.xml compile"
+
+maven-build:
+  stage: test
+  script: "mvn -f nemo/pom.xml clean install"
