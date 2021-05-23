@@ -1,15 +1,12 @@
-image: maven:latest
+image: maven:3-jdk-11
 
-variables:
-  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
-
-cache:
-  paths:
-    - .m2/repository/
-    - target/
+stages:
+  - build
+  - test
+  - package
+  - deploy 
 
 build:
-  stage: build
-  script:
-    - mvn compile
+  script: "mvn install"
+
 
