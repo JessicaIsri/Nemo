@@ -6,7 +6,6 @@ stages:
   - package
   - deploy 
 
-build:
-  script: "mvn install"
-
-
+maven-build:
+  stage: build
+  script: "mvn -f nemo/pom.xml compile"
