@@ -1,28 +1,22 @@
-image: docker:stable
-
-services:
-  - postgres:latest
-  - docker:dind
-
-variables:
-  DOCKER_DRIVER: overlay2
-  DATABASE_URL: postgres://postgres@postgres:5432/postgres
-  POSTGRES_DB: postgres
-  POSTGRES_USER: postgres
-  POSTGRES_PASSWORD: pg@123
-  POSTGRES_HOST_AUTH_METHOD: trust
-
-stages:
+--- 
+maven-build: 
+  image: "maven:3-jdk-11"
+  script: "mvn -f nemo/pom.xml compile"
+  services: 
+    - "postgres:latest"
+  stage: build
+maven-test: 
+  image: "maven:3-jdk-11"
+  script: "mvn -f nemo/pom.xml clean install"
+  services: 
+    - "postgres:latest"
+  stage: test
+stages: 
   - build
   - test
-
-maven-build:
-  image: maven:3-jdk-11
-  stage: build
-  script: "mvn -f nemo/pom.xml compile"
-
-maven-test:
-  image: maven:3-jdk-11
-  stage: test
-  script: "mvn -f nemo/pom.xml clean install"
-
+variables: 
+  DATABASE_URL: "postgres://postgres@postgres:5432/postgres"
+  POSTGRES_DB: postgres
+  POSTGRES_HOST_AUTH_METHOD: trust
+  POSTGRES_PASSWORD: pg@123
+  POSTGRES_USER: postgres
