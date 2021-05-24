@@ -11,7 +11,7 @@ maven-test:
   services: 
     - "postgres:latest"
     - "liquibase/liquibase"
-    - "postgis:latest"
+    - "postgis/postgis"
   stage: test
 stages: 
   - build
