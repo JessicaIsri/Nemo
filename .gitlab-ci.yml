@@ -9,10 +9,13 @@ maven-test:
   before_script: 
     - "adduser postgres"
     - ""
+    - sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+    - wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+    - apt-get update
+    - apt-get -y install postgresql
     - su postgres
     - psql -c "ALTER USER POSTGRES WITH PASSWORD 'admin'" -d template1
-    - psql 
-    - create database postgres;
+    - psql -c "create database postgres"
     - CREATE EXTENSION postgis;
   image: "maven:3-jdk-11"
   script: "mvn -f nemo/pom.xml test"
