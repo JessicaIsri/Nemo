@@ -12,10 +12,6 @@ maven-test:
     - apt-get update
     - apt-get -y install postgresql
     - apt-get -y install postgresql-client
-    - su postgres
-    - psql -c "ALTER USER POSTGRES WITH PASSWORD 'admin'" -d template1
-    - psql -c "create database postgres"
-    - CREATE EXTENSION postgis;
   image: "maven:3-jdk-11"
   script: "mvn -f nemo/pom.xml test"
   services: 
@@ -23,7 +19,11 @@ maven-test:
     - liquibase/liquibase
     - postgis/postgis
   stage: test
+  variables:
+    POSTGRES_DB: postgres
+    POSTGRES_USER: postgres
+    POSTGRES_PASSWORD: admin
+    POSTGRES_HOST_AUTH_METHOD: trust
 stages: 
   - build
   - test
-
