@@ -7,7 +7,7 @@ maven-build:
   stage: build
 maven-test: 
   image: "maven:3-jdk-11"
-  script: "mvn -f nemo/pom.xml clean install"
+  script: "mvn -f nemo/pom.xml test"
   services: 
     - "postgres:latest"
     - "liquibase/liquibase"
@@ -21,6 +21,6 @@ variables:
   POSTGRES_DB: postgres
   POSTGRES_HOST: docker
   POSTGRES_HOST_AUTH_METHOD: trust
-  POSTGRES_PASSWORD: pg@123
+  POSTGRES_PASSWORD: admin
   POSTGRES_USER: postgres
 
