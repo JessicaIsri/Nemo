@@ -10,7 +10,7 @@ maven-test:
   script: "mvn -f nemo/pom.xml clean install"
   services: 
     - "postgres:latest"
-    - "liquibase:latest"
+    - "liquibase/liquibase"
     - "postgis:latest"
   stage: test
 stages: 
