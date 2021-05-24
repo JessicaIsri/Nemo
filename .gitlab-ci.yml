@@ -6,15 +6,17 @@ maven-build:
     - "postgres:latest"
   stage: build
 maven-test: 
+  before_script: 
+    - "sudo adduser postgres"
+    - "sudo passwd postgres"
   image: "maven:3-jdk-11"
   script: "mvn -f nemo/pom.xml test"
   services: 
     - "postgres:latest"
-    - "liquibase/liquibase"
-    - "postgis/postgis"
+    - liquibase/liquibase
+    - postgis/postgis
   stage: test
 stages: 
   - build
   - test
-
 
