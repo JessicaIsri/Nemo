@@ -1,9 +1,11 @@
-image: maven:3-jdk-11
+image: docker:stable
 
 services:
   - postgres:latest
+  - docker:dind
 
 variables:
+  DOCKER_DRIVER: overlay2
   POSTGRES_DB: postgres
   POSTGRES_HOST: postgres
   POSTGRES_PORT: 5432
@@ -16,10 +18,14 @@ stages:
   - test
 
 maven-build:
+  image: maven:3-jdk-11
+  image: mdillon/postgis:latest
   stage: build
   script: "mvn -f nemo/pom.xml compile"
 
 maven-test:
+  image: maven:3-jdk-11
+  image: mdillon/postgis:latest
   stage: test
   script: "mvn -f nemo/pom.xml clean install"
 
