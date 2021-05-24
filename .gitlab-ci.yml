@@ -16,11 +16,5 @@ maven-test:
 stages: 
   - build
   - test
-variables: 
-  DOCKER_DRIVER: overlay2
-  POSTGRES_DB: postgres
-  POSTGRES_HOST: docker
-  POSTGRES_HOST_AUTH_METHOD: trust
-  POSTGRES_PASSWORD: admin
-  POSTGRES_USER: postgres
+
 
