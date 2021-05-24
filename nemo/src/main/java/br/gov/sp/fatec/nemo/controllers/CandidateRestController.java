@@ -1,23 +1,41 @@
 package br.gov.sp.fatec.nemo.controllers;
 
 import br.gov.sp.fatec.nemo.domains.entities.Candidate;
-import br.gov.sp.fatec.nemo.domains.enums.SkillLevel;
-import br.gov.sp.fatec.nemo.usecases.impls.dtos.CandidateDTO;
+import br.gov.sp.fatec.nemo.domains.enums.AvailablePeriod;
+import br.gov.sp.fatec.nemo.domains.enums.DesiredJourney;
+import br.gov.sp.fatec.nemo.domains.enums.WorkModality;
 import br.gov.sp.fatec.nemo.usecases.interfaces.FindCandidateUseCase;
+import net.bytebuddy.implementation.bytecode.assign.TypeCasting;
+import org.hibernate.jpa.TypedParameterValue;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+
+
 import java.util.Optional;
+
+import br.gov.sp.fatec.nemo.domains.repositories.CandidateRepository;
+
+import javax.websocket.server.PathParam;
 
 @RestController
 public class CandidateRestController {
 
+
+
     @Autowired
     private FindCandidateUseCase findCandidateUseCase;
+
+    @Autowired
+    private CandidateRepository candidateRepository;
+
 
     @GetMapping(value = "nemo/v1/candidate", produces = "application/json")
     public ResponseEntity<List<Candidate>> getCandidate(
@@ -36,21 +54,145 @@ public class CandidateRestController {
             .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @GetMapping(value = "nemo/v2/candidate", produces = "application/json")
-    public ResponseEntity<List<CandidateDTO>> getCandidateV2(
-        @RequestParam(required = false) List<String> hability,
-        @RequestParam(required = false) Double longitude,
-        @RequestParam(required = false) Double latitude,
-        @RequestParam(required = false) Double kilometers,
-        @RequestParam(required = false) Long idParameter,
-        @RequestParam(required = false) List<SkillLevel> skillLevels
-
-    ) throws Exception {
-        return Optional
-            .ofNullable(findCandidateUseCase
-                .findCandidateV2(hability, longitude, latitude, kilometers, idParameter, skillLevels))
-                .map(candidateDTOS -> ResponseEntity.ok().body(candidateDTOS))
-                .orElseGet(() -> ResponseEntity.notFound().build());
+    //POST CANDIDATE
+    private static List<Candidate> LoadItemsFromDb(){
+        List<Candidate> object = new ArrayList<Candidate>();
+        return object;
     }
-}
 
+    private List<Candidate> candidatos = LoadItemsFromDb();
+
+    public String addCandidate(Candidate candidate){
+        candidatos.add(candidate);
+        return "Candidato cadastrado com sucesso!";
+    }
+
+    @PostMapping("nemo/v1/candidate/add")
+    public String criarCandidate(@RequestBody Candidate candidate){
+        return addCandidate(candidate);
+    }
+
+
+    //GET CANDIDATE BY ID
+    @GetMapping("nemo/v1/candidate/{id}")
+    public Candidate candidateById(@PathVariable(value="id") Long id){
+        return candidateRepository.findCandidateById(id);
+    }
+
+    //GET CANDIDATE BY NAME
+    @GetMapping("nemo/v1/candidate/name")
+    List<Candidate> candidateByName(String name){
+        return candidateRepository.findCandidateByName(name);
+    }
+
+    //GET CANDIDATE BY EMAIL
+    @GetMapping("nemo/v1/candidate/email")
+    List<Candidate> candidateByEmail(String email){
+        return candidateRepository.findCandidateByEmail(email);
+    }
+
+    //GET CANDIDATE BY EMAIL
+    @GetMapping("nemo/v1/candidate/cpf")
+    List<Candidate> candidateByCpf(String cpf){
+        return candidateRepository.findCandidateByCpf(cpf);
+    }
+
+    //GET CANDIDATE BY PHONE
+    @GetMapping("nemo/v1/candidate/phone")
+    List<Candidate> candidateByPhone(String phone){
+        return candidateRepository.findCandidateByPhone(phone);
+    }
+
+    //GET CANDIDATE BY GENDER
+    @GetMapping("nemo/v1/candidate/gender")
+    List<Candidate> candidateByGender(String gender){
+        return candidateRepository.findCandidateByGender(gender);
+    }
+
+    //GET CANDIDATE BY BIRTHDAY
+    @GetMapping("nemo/v1/candidate/birthday")
+    List<Candidate> candidateByBirthday(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate birthday){
+        return candidateRepository.findCandidateByBirthday(birthday);
+    }
+
+    //GET CANDIDATE BY COUNTRY
+    @GetMapping("nemo/v1/candidate/country")
+    List<Candidate> candidateByCountry(String country){
+        return candidateRepository.findCandidateByCountry(country);
+    }
+
+    //GET CANDIDATE BY CITY
+    @GetMapping("nemo/v1/candidate/city")
+    List<Candidate> candidateByCity(String city){
+        return candidateRepository.findCandidateByCity(city);
+    }
+
+    //GET CANDIDATE BY NEIGHBORHOOD
+    @GetMapping("nemo/v1/candidate/neighborhood")
+    List<Candidate> candidateByNeighborhood(String neighborhood){
+        return candidateRepository.findCandidateByNeighborhood(neighborhood);
+    }
+
+    //GET CANDIDATE BY STREET
+    @GetMapping("nemo/v1/candidate/street")
+    List<Candidate> candidateByStreet(String street){
+        return candidateRepository.findCandidateByStreet(street);
+    }
+
+    //GET CANDIDATE BY HOMENUMBER
+    @GetMapping("nemo/v1/candidate/homeNumber")
+    List<Candidate> candidateByHomeNumber(Integer home_number){
+        return candidateRepository.findCandidateByHomeNumber(home_number);
+    }
+
+    //GET CANDIDATE BY COMPLEMENT
+    @GetMapping("nemo/v1/candidate/complement")
+    List<Candidate> candidateByComplement(String complement){
+        return candidateRepository.findCandidateByComplement(complement);
+    }
+
+    //GET CANDIDATE BY ZIPCODE
+    @GetMapping("nemo/v1/candidate/zipcode")
+    List<Candidate> candidateByZipCode(String zipcode){
+        return candidateRepository.findCandidateByZipCode(zipcode);
+    }
+
+    //GET CANDIDATE BY LATITUDE
+    @GetMapping("nemo/v1/candidate/latitude")
+    List<Candidate> candidateByLatitude(Double latitude){
+        return candidateRepository.findCandidateByLatitude(latitude);
+    }
+
+    //GET CANDIDATE BY LONGITUDE
+    @GetMapping("nemo/v1/candidate/longitude")
+    List<Candidate> candidateByLongitude(Double longitude){
+        return candidateRepository.findCandidateByLongitude(longitude);
+    }
+
+    //GET CANDIDATE BY PRETENTIONSALARY
+    @GetMapping("nemo/v1/candidate/pretentionsalary")
+    List<Candidate> candidateByPretentionSalary(String pretentionSalary){
+        return candidateRepository.findCandidateByPretentionSalary(pretentionSalary);
+    }
+
+    //GET CANDIDATE BY DESIREDJOURNEY
+    @GetMapping("nemo/v1/candidate/desiredjourney")
+    List<Candidate> candidateByDesiredJourney(@PathParam("desiredjourney") String desired_journey){
+        return candidateRepository.findCandidateByDesiredJourney(desired_journey);
+    }
+
+    //GET CANDIDATE BY AVAILABLEPERIOD
+    @GetMapping("nemo/v1/candidate/availableperiod")
+    List<Candidate> candidateByAvailablePeriod(String available_period){
+        return candidateRepository.findCandidateByAvailablePeriod(available_period);
+    }
+
+    //GET CANDIDATE BY WORKMODALITY
+    @GetMapping("nemo/v1/candidate/workmodality")
+    List<Candidate> candidateByWorkModality(String work_modality){
+        return candidateRepository.findCandidateByWorkModality(work_modality);
+    }
+
+
+
+}
