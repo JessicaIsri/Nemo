@@ -1,13 +1,16 @@
-image: maven:3-jdk-11
-
+image: docker:latest
 services:
-  - postgres:12.2-alpine
+  - docker:dind
 
 variables:
-  POSTGRES_DB: postgres
-  POSTGRES_USER: postgres
-  POSTGRES_PASSWORD: pg@123
-  POSTGRES_HOST_AUTH_METHOD: trust
+  DOCKER_DRIVER: overlay
+  SPRING_PROFILES_ACTIVE: gitlab-ci
+  REPOSITORY: pi-1sem-2021
+  NAME_PROJECT: nemo
+  REGISTRY: registry.gitlab.com/pi-1sem-2021
+  MAVEN_CLI_OPTS: "--batch-mode --errors --fail-at-end"
+  MAVEN_OPTS: "-Dhttps.protocols=TLSv1.2 -Dmaven.repo.local=.m2/pi-1sem-2021"
+  DOCKER_TLS_CERTDIR: ""
 
 stages:
   - build
@@ -16,9 +19,11 @@ stages:
   - deploy 
 
 maven-build:
+  image: maven:3-jdk-11
   stage: build
   script: "mvn -f nemo/pom.xml compile"
 
 maven-test:
+  image: maven:3-jdk-11
   stage: test
   script: "mvn -f nemo/pom.xml clean install"
