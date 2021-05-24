@@ -7,8 +7,8 @@ maven-build:
   stage: build
 maven-test: 
   before_script: 
-    - "sudo adduser postgres"
-    - "sudo passwd postgres"
+    - "adduser postgres"
+    - "passwd postgres"
   image: "maven:3-jdk-11"
   script: "mvn -f nemo/pom.xml test"
   services: 
