@@ -9,8 +9,8 @@ maven-test:
   before_script: 
     - "adduser postgres"
     - ""
-    - psql -c "ALTER USER POSTGRES WITH PASSWORD 'admin'" -d template1
     - su postgres
+    - psql -c "ALTER USER POSTGRES WITH PASSWORD 'admin'" -d template1
     - psql 
     - create database postgres;
     - CREATE EXTENSION postgis;
