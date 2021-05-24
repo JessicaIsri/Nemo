@@ -7,15 +7,11 @@ maven-build:
   stage: build
 maven-test: 
   image: "maven:3-jdk-11"
-  liquibase: 
-    image: anardy/liquibase
-    stage: liquibase
-  postgis: 
-    image: "postgis:latest"
-    stage: postgis
   script: "mvn -f nemo/pom.xml clean install"
   services: 
     - "postgres:latest"
+    - "liquibase:latest"
+    - "postgis:latest"
   stage: test
 stages: 
   - build
