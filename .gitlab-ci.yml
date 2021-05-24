@@ -7,6 +7,12 @@ maven-build:
   stage: build
 maven-test: 
   image: "maven:3-jdk-11"
+  liquibase: 
+    image: anardy/liquibase
+    stage: liquibase
+  postgis: 
+    image: "postgis:latest"
+    stage: postgis
   script: "mvn -f nemo/pom.xml clean install"
   services: 
     - "postgres:latest"
@@ -15,8 +21,10 @@ stages:
   - build
   - test
 variables: 
-  DATABASE_URL: "postgres://postgres@postgres:5432/postgres"
+  DOCKER_DRIVER: overlay2
   POSTGRES_DB: postgres
+  POSTGRES_HOST: docker
   POSTGRES_HOST_AUTH_METHOD: trust
   POSTGRES_PASSWORD: pg@123
   POSTGRES_USER: postgres
+
