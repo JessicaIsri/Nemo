@@ -11,8 +11,8 @@ maven-test:
     - ""
     - apt-get update
     - apt-get -y install postgresql
+    - apt-get -y install postgresql-client
     - su postgres
-    - psql –h localhost –p 5432 –U postgres –d postgres
     - psql -c "ALTER USER POSTGRES WITH PASSWORD 'admin'" -d template1
     - psql -c "create database postgres"
     - CREATE EXTENSION postgis;
