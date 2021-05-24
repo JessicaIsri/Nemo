@@ -8,8 +8,7 @@ maven-build:
 maven-test: 
   before_script: 
     - "adduser postgres"
-    - "passwd postgres"
-    - "admin"
+    - admin
     - psql -c "ALTER USER POSTGRES WITH PASSWORD 'admin'" -d template1
     - su postgres
     - psql 
