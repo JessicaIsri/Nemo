@@ -10,4 +10,4 @@ INSERT INTO client (client_id, client_secret) VALUES
 ('admin','$2a$10$ixeP95H5dWnQ.SVZM1QJeuKXXxWiUdcFE5xVhj.CASWaLHXj8H8E2');
 
 
-CREATE EXTENSION postgis;
+

@@ -13,6 +13,7 @@ DROP TABLE  IF EXISTS "company";
 DROP TABLE  IF EXISTS "post";
 DROP TABLE  IF EXISTS "candidate_exp";
 
+CREATE EXTENSION postgis;
 
 /* Enum 'desired_journey' */
 CREATE TYPE desired_journey
