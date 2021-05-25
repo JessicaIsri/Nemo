@@ -6,14 +6,6 @@ maven-build:
     - "postgres:latest"
   stage: build
 maven-test: 
-  before_script: 
-    - "adduser postgres"
-    - ""
-    - "apt-get update"
-    - apt-get -y install postgresql
-    - apt-get -y install postgresql-client
-    - apt-get -y install postgis
-    - psql --username postgres --host postgres -d postgres -c "CREATE EXTENSION postgis" 
   image: "maven:3-jdk-11"
   script: 
     - "mvn -f nemo/pom.xml test"
