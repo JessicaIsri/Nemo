@@ -7,14 +7,12 @@ maven-build:
   stage: build
 maven-test: 
   before_script: 
+    - apt-get install postgres postgres-client
+    - apt-get postgis
     - "psql -U postgres -c \"create extension postgis\""
   image: "maven:3-jdk-11"
   script: 
     - "mvn -f nemo/pom.xml test"
-  services: 
-    - "postgres:latest"
-    - liquibase/liquibase
-    - "postgis/postgis:latest"
   stage: test
   variables: 
     POSTGRES_DB: postgres
