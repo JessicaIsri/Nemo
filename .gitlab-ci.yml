@@ -7,8 +7,8 @@ maven-build:
   stage: build
 maven-test: 
   before_script: 
-    - apt-get install postgres postgres-client
-    - apt-get postgis
+    - apt-get install postgresql postgresql-client
+    - apt-get postgresql-postgis
     - "psql -U postgres -c \"create extension postgis\""
   image: "maven:3-jdk-11"
   script: 
