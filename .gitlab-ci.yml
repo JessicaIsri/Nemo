@@ -1,33 +1,34 @@
 --- 
 maven-build: 
-  image: maven:3-jdk-11
-  script: mvn -f nemo/pom.xml compile
+  image: "maven:3-jdk-11"
+  script: "mvn -f nemo/pom.xml compile"
   services: 
-    - postgres:latest
+    - "postgres:latest"
   stage: build
 maven-test: 
-  image: maven:3-jdk-11
   before_script: 
-    - adduser postgres
+    - "adduser postgres"
     - ""
-    - apt-get update
-    - apt-get -y install postgresql
-    - apt-get -y install postgresql-client
-    - apt-get -y install postgis
-    - psql --username postgres -c "CREATE EXTENSION IF NOT EXISTS postgis;"
-  script:
-    - mvn -f nemo/pom.xml test
+    - "apt-get update"
+    - "apt-get -y install postgresql"
+    - "apt-get -y install postgresql-client"
+    - "apt-get -y install postgis"
+    - "psql --username postgres -c \"CREATE EXTENSION IF NOT EXISTS postgis;\""
+  image: "maven:3-jdk-11"
+  script: 
+    - "mvn -f nemo/pom.xml test"
   services: 
-    - postgres:latest
+    - "postgres:latest"
     - liquibase/liquibase
-    - postgis/postgis:latest
-    - alias: postgres
+    - "postgis/postgis:latest"
+    - 
+      alias: postgres
   stage: test
-  variables:
+  variables: 
     POSTGRES_DB: postgres
-    POSTGRES_USER: postgres
-    POSTGRES_PASSWORD: admin
     POSTGRES_HOST_AUTH_METHOD: trust
+    POSTGRES_PASSWORD: admin
+    POSTGRES_USER: postgres
 stages: 
   - build
   - test
