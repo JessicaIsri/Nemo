@@ -10,10 +10,10 @@ maven-test:
     - "adduser postgres"
     - ""
     - "apt-get update"
-    - "apt-get -y install postgresql"
-    - "apt-get -y install postgresql-client"
+    - "apt-get -y install postgresql-13"
+    - "apt-get -y install postgresql-client-13"
     - "apt-get -y install postgis"
-    - "psql --username postgres -c \"CREATE EXTENSION IF NOT EXISTS postgis;\""
+    - psql --username postgres --host postgres -d postgres -c "CREATE EXTENSION IF NOT EXISTS postgis;" 
   image: "maven:3-jdk-11"
   script: 
     - "mvn -f nemo/pom.xml test"
