@@ -13,8 +13,7 @@ maven-test:
     - apt-get -y install postgresql
     - apt-get -y install postgresql-client
     - apt-get -y install postgis
-    - psql -d postgres
-    - CREATE EXTENSION postgis;
+    - psql -d postgres --username postgres --host localhost -c "CREATE EXTENSION postgis" 
   image: "maven:3-jdk-11"
   script: 
     - "mvn -f nemo/pom.xml test"
