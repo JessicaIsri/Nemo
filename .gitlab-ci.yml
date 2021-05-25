@@ -21,7 +21,6 @@ maven-test:
     - "postgres:latest"
     - liquibase/liquibase
     - "postgis/postgis:latest"
-    - alias: postgres
   stage: test
   variables: 
     POSTGRES_DB: postgres
