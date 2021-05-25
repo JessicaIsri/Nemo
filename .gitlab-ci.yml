@@ -10,8 +10,8 @@ maven-test:
     - "adduser postgres"
     - ""
     - "apt-get update"
-    - apt -y install postgresql-12 postgresql-client-12
-    - apt install postgis postgresql-12-postgis-3
+    - apt-get -y install postgresql-12 postgresql-client-12
+    - apt-get install postgis postgresql-12-postgis-3
     - apt-get install postgresql-12-postgis-3-scripts
   image: "maven:3-jdk-11"
   script: 
