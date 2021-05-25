@@ -12,6 +12,7 @@ maven-test:
     - apt-get update
     - apt-get -y install postgresql
     - apt-get -y install postgresql-client
+    - apt-get -y install postgis
   image: "maven:3-jdk-11"
   script:
     - export PGPASSWORD=admin
