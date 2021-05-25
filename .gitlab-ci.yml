@@ -6,23 +6,15 @@ maven-build:
     - "postgres:latest"
   stage: build
 maven-test: 
-  before_script: 
-    - "adduser postgres"
-    - ""
-    - apt-get update
-    - apt-get -y install postgresql
-    - apt-get -y install postgresql-client
-    - apt-get -y install postgis
   image: "maven:3-jdk-11"
   script:
-    - export PGPASSWORD=admin
-    - psql --username postgres --host postgres -d postgres -c "CREATE EXTENSION IF NOT EXISTS postgis;" 
+    - export PGPASSWORD=$POSTGRES_PASSWORD
+    - psql --username $POSTGRES_USER --host postgres -d $POSTGRES_DB -c "CREATE EXTENSION IF NOT EXISTS postgis;"
     - "mvn -f nemo/pom.xml test"
   services: 
     - "postgres:latest"
     - liquibase/liquibase
-    - name: postgis/postgis:latest
-      alias: postgres
+    - postgis/postgis:latest
   stage: test
   variables:
     POSTGRES_DB: postgres
