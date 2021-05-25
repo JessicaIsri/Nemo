@@ -10,9 +10,9 @@ maven-test:
     - "adduser postgres"
     - ""
     - "apt-get update"
-    - apt-get -y install postgresql-12 postgresql-client-12
-    - apt-get install postgis postgresql-12-postgis-3
-    - apt-get install postgresql-12-postgis-3-scripts
+    - apt-get -y install postgresql-11 postgresql-client-11
+    - apt-get install postgis postgresql-11-postgis-3
+    - apt-get install postgresql-11-postgis-3-scripts
   image: "maven:3-jdk-11"
   script: 
     - "mvn -f nemo/pom.xml test"
