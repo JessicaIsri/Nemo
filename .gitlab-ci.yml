@@ -15,7 +15,7 @@ maven-test:
   image: "maven:3-jdk-11"
   script:
     - export PGPASSWORD=admin
-    - psql --username postgres --host postgres -d postgres -c "CREATE EXTENSION IF NOT EXISTS postgis; 
+    - psql --username postgres --host postgres -d postgres -c "CREATE EXTENSION IF NOT EXISTS postgis;" 
     - "mvn -f nemo/pom.xml test"
   services: 
     - "postgres:latest"
