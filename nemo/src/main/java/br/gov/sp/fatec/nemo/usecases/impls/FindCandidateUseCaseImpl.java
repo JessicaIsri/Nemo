@@ -1,14 +1,21 @@
 package br.gov.sp.fatec.nemo.usecases.impls;
 
+import br.gov.sp.fatec.nemo.client.DirectionsClient;
 import br.gov.sp.fatec.nemo.domains.entities.*;
+import br.gov.sp.fatec.nemo.domains.entities.feingentities.response.DirectionsResponse;
 import br.gov.sp.fatec.nemo.domains.enums.SkillLevel;
 import br.gov.sp.fatec.nemo.domains.repositories.CandidateRepository;
 import br.gov.sp.fatec.nemo.domains.repositories.interfaces.GeometryCandidate;
 import br.gov.sp.fatec.nemo.usecases.impls.dtos.CandidateDTO;
 import br.gov.sp.fatec.nemo.usecases.interfaces.FindCandidateUseCase;
+import br.gov.sp.fatec.nemo.usecases.interfaces.FindJobOpportunityUseCase;
 import br.gov.sp.fatec.nemo.usecases.interfaces.ParametersService;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
@@ -17,8 +24,11 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
+@PropertySource("classpath:application.properties")
 public class FindCandidateUseCaseImpl implements FindCandidateUseCase {
 
+    @Value( "${application.env.apikey}" )
+    private static final String API_KEY = "${application.env.apikey}";
     @PersistenceContext
     private EntityManager em;
     @Autowired
@@ -26,6 +36,12 @@ public class FindCandidateUseCaseImpl implements FindCandidateUseCase {
 
     @Autowired
     private ParametersService parametersService;
+
+    @Autowired
+    private FindJobOpportunityUseCase findJobOpportunityUseCase;
+
+    @Autowired
+    private DirectionsClient directionsClient;
 
     @Override
     public List<Candidate> findCandidate(
@@ -89,6 +105,28 @@ public class FindCandidateUseCaseImpl implements FindCandidateUseCase {
         return classify;
     }
 
+    public void processDirections(Long idWork, Long idCandidate) throws Exception {
+        String candidateAddress = null;
+        String jobAddress = null;
+
+        JobOpportunity jobOpportunity = findJobOpportunityUseCase.findById(idWork);
+        Optional<Candidate> candidateOptional = candidateRepository.findById(idCandidate);
+
+        if (candidateOptional.isPresent()) {
+            Candidate candidate = candidateOptional.get();
+            candidateAddress = candidate.getStreet() + " + " + candidate.getNeighborhood() + "+" + candidate.getCity();
+            jobAddress = jobOpportunity.getWorkplaceStreet() + " + " + jobOpportunity.getWorkplaceNeighborhood() +
+                "+" + jobOpportunity.getWorkplaceCity();
+
+            String key = API_KEY;
+            String mode = "transit";
+
+            ResponseEntity<DirectionsResponse> directionsResponse = directionsClient
+                .getDirections(candidateAddress, jobAddress, key, mode);
+            System.out.println(directionsResponse);
+        }
+    }
+
     private List<CandidateDTO> classifyCandidateWithParameter(
         Set<Candidate> candidates,
         List<String> hability,
@@ -141,7 +179,8 @@ public class FindCandidateUseCaseImpl implements FindCandidateUseCase {
         }
     }
 
-    private List<CandidateDTO> classifyCandidate(Set<Candidate> candidates, List<String> hability, Set<GeometryCandidate> geometryCandidateSet) {
+    private List<CandidateDTO> classifyCandidate(
+        Set<Candidate> candidates, List<String> hability, Set<GeometryCandidate> geometryCandidateSet) {
         return candidates.stream().map(candidate -> {
             Integer points = 0;
             CandidateDTO candidateDTO = new CandidateDTO().fromCandidateDTO(candidate);
@@ -207,6 +246,8 @@ public class FindCandidateUseCaseImpl implements FindCandidateUseCase {
         }
         return value;
     }
+
+
 }
 
 class SortById implements Comparator<CandidateDTO> {

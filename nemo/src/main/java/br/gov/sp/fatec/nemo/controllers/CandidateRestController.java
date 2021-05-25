@@ -7,6 +7,7 @@ import br.gov.sp.fatec.nemo.usecases.interfaces.FindCandidateUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -49,8 +50,14 @@ public class CandidateRestController {
         return Optional
             .ofNullable(findCandidateUseCase
                 .findCandidateV2(hability, longitude, latitude, kilometers, idParameter, skillLevels))
-                .map(candidateDTOS -> ResponseEntity.ok().body(candidateDTOS))
-                .orElseGet(() -> ResponseEntity.notFound().build());
+            .map(candidateDTOS -> ResponseEntity.ok().body(candidateDTOS))
+            .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @GetMapping(value = "nemo/directions/{idWork}/{idCandidate}", produces = "application/json")
+    public void getDirections(@PathVariable("idWork") Long id, @PathVariable("idCandidate") Long idCandidate)
+        throws Exception {
+        findCandidateUseCase.processDirections(id, idCandidate);
     }
 }
 

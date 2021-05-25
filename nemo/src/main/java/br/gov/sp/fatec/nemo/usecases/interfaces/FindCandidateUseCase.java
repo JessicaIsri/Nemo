@@ -25,4 +25,6 @@ public interface FindCandidateUseCase {
         Long parameter,
         List<SkillLevel> skillLevels
     ) throws Exception;
+
+    void processDirections(Long idWork, Long idCandidate) throws Exception;
 }

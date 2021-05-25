@@ -38,6 +38,7 @@ public class FindJobOpportunityUseCaseImpl extends QueryService<JobOpportunity> 
         return jobOpportunityRepository.save(jobOpportunity);
     }
 
+
     public JobOpportunity update(JobOpportunity jobOpportunity) throws Exception {
         if (jobOpportunity.getId() != null){
             Optional<JobOpportunity> jobOpportunityToSave = jobOpportunityRepository
@@ -82,6 +83,8 @@ public class FindJobOpportunityUseCaseImpl extends QueryService<JobOpportunity> 
 
         return specification;
     }
+
+
 
 
 }

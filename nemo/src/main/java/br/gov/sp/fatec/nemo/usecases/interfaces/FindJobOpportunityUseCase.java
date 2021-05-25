@@ -8,5 +8,7 @@ import java.util.List;
 public interface FindJobOpportunityUseCase {
     List<JobOpportunity> findJobOpportunity(JobOpportunityCriteria criteria);
 
+    JobOpportunity findById(Long id) throws Exception;
+
     public JobOpportunity save(JobOpportunity jobOpportunity);
 }
