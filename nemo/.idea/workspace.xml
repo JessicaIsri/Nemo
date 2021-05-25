@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="579dd535-f088-4a01-9df3-096306a3912f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/db/changelog/extension_postgis.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/db.changelog-master.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/changelog/db.changelog-master.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/changelog/schema.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +68,9 @@
       <updated>1621866122706</updated>
     </task>
     <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.sql" />
   </component>
   <component name="WindowStateProjectService">
     <state x="203" y="41" width="1024" height="852" key="#Project_Structure" timestamp="1621868125607">
