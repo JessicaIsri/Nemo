@@ -14,14 +14,14 @@ maven-test:
     - apt-get -y install postgresql
     - apt-get -y install postgresql-client
     - apt-get -y install postgis
+    - psql --username postgres -c "CREATE EXTENSION IF NOT EXISTS postgis;"
   script:
-    - export PGPASSWORD=$POSTGRES_PASSWORD
-    - psql --username $POSTGRES_USER --host postgres -d $POSTGRES_DB -c "CREATE EXTENSION IF NOT EXISTS postgis;"
     - mvn -f nemo/pom.xml test
   services: 
     - postgres:latest
     - liquibase/liquibase
     - postgis/postgis:latest
+    - alias: postgres
   stage: test
   variables:
     POSTGRES_DB: postgres
