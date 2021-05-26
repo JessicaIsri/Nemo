@@ -17,20 +17,15 @@ maven-build:
   services: 
     - "postgres:latest"
   stage: build
+
 maven-test: 
-  addons:
-  postgresql: 9.6
-  apt:
-    packages:
-    - postgresql-9.6-postgis-2.3
-  before_script:
-    - psql -U postgres -c "create extension postgis"
   image: "maven:3-jdk-11"
   script: 
+    -  psql -h "postgres" -p "5432" -U postgres -d postgres -c "create extension postgis"
     - "mvn -f nemo/pom.xml test"
   services: 
     - "postgres:latest"
     - liquibase/liquibase
-    - postgis:postgres
+    - mdillon/postgis:latest
   stage: test
 
