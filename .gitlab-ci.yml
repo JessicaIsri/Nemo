@@ -11,16 +11,6 @@ stages:
   - build
   - test
 
-image: postgres:13
-
-.init_PG_instance: &init_PG_instance
-  before_script:
-    - mkdir -p $PGDATA
-    - mkdir -p $EXTDIR
-    - chown postgres $PGDATA
-
-
-
 maven-build: 
   image: "maven:3-jdk-11"
   script: "mvn -f nemo/pom.xml compile"
@@ -28,18 +18,13 @@ maven-build:
     - "postgres:latest"
   stage: build
 maven-test: 
-  before_script: 
-    - "adduser postgres"
-    - ""
-    - "apt-get update"
-    - "apt-get -y install postgresql"
-    - "apt-get -y install postgis"
-    - export PATH="$PATH:/usr/pgsql-11/bin"
-    - mkdir -p $PGDATA
-    - mkdir -p $EXTDIR
-    - touch "/usr/share/postgresql/13/extension/postgis.control"
-    - chown postgres $PGDATA
-    - psql -h "postgres" -p "5432" -U postgres -d postgres -c "create extension postgis"
+  addons:
+  postgresql: 9.6
+  apt:
+    packages:
+    - postgresql-9.6-postgis-2.3
+  before_script:
+    - psql -U postgres -c "create extension postgis"
   image: "maven:3-jdk-11"
   script: 
     - "mvn -f nemo/pom.xml test"
