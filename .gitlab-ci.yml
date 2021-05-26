@@ -46,6 +46,6 @@ maven-test:
   services: 
     - "postgres:latest"
     - liquibase/liquibase
-    - some-postgis:postgres
+    - postgis:postgres
   stage: test
 
