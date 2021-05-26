@@ -18,7 +18,7 @@ maven-test:
     - "mkdir -p $EXTDIR"
     - "chown postgres $PGDATA"
     - "psql -h \"postgres\" -U postgres -c \"ALTER USER postgres WITH PASSWORD 'admin'\" -d template1"
-    - "psql -h \"mdillon-postgis\" -U postgres -no--password -c \"ALTER USER postgres WITH PASSWORD 'admin'\" -d template1"
+    - "psql -h \"mdillon-postgis\" -U postgres --no-password -c \"ALTER USER postgres WITH PASSWORD 'admin'\" -d template1"
     - "psql -h \"mdillon-postgis\" -U postgres -d postgres -c \"create extension postgis;\""
     - "admin"
     - "mvn -f nemo/pom.xml test"
