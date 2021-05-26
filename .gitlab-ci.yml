@@ -21,9 +21,9 @@ maven-build:
 maven-test: 
   image: "maven:3-jdk-11"
   script:
-    - sudo apt-get install postgresql-9.1
-    - sudo apt-get install postgis
-    - sudo apt-get install postgresql-9.1-postgis
+    - apt-get install postgresql-9.1
+    - apt-get install postgis
+    - apt-get install postgresql-9.1-postgis
     - psql -h "postgres" -p "5432" -U postgres -d postgres -c "create extension postgis"
     - "mvn -f nemo/pom.xml test"
   services: 
