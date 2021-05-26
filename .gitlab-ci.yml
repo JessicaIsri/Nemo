@@ -1,11 +1,4 @@
-variables: 
-    POSTGRES_DB: postgres
-    POSTGRES_HOST_AUTH_METHOD: trust
-    POSTGRES_PASSWORD: admin
-    POSTGRES_USER: postgres
-    PGDATA: /var/lib/postgresql/data
-    EXTDIR: /usr/share/postgresql/13/extension/
-    PSQL: psql -v ON_ERROR_STOP=1
+
 
 stages: 
   - build
@@ -21,14 +14,22 @@ maven-build:
 maven-test: 
   image: "maven:3-jdk-11"
   script:
-    - apt-get install postgresql-9.1
+    - apt-get install postgresql
     - apt-get install postgis
-    - apt-get install postgresql-9.1-postgis
+    - apt-get install postgresql-11-postgis-3
     - psql -h "postgres" -p "5432" -U postgres -d postgres -c "create extension postgis"
     - "mvn -f nemo/pom.xml test"
   services: 
     - "postgres:latest"
     - liquibase/liquibase
     - mdillon/postgis:latest
+  variables: 
+    POSTGRES_DB: postgres
+    POSTGRES_HOST_AUTH_METHOD: trust
+    POSTGRES_PASSWORD: admin
+    POSTGRES_USER: postgres
+    PGDATA: /var/lib/postgresql/data
+    EXTDIR: /usr/share/postgresql/13/extension/
+    PSQL: psql -v ON_ERROR_STOP=1
   stage: test
 
