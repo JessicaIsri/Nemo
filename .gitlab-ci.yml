@@ -10,7 +10,6 @@ maven-test:
     - "adduser postgres"
     - ""
     - "apt-get update"
-    - "apt-get upgrade"
     - "apt-get -y install postgresql"
     - "apt-get -y install postgis"
     - "psql -U postgres -c \"create extension postgis\""
