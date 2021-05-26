@@ -36,6 +36,7 @@ maven-test:
     - "apt-get -y install postgis"
     - export PATH="$PATH:/usr/pgsql-11/bin"
     - mkdir -p $PGDATA
+    - mkdir -p $EXTDIR
     - chown postgres $PGDATA
     - psql -h "postgres" -p "5432" -U postgres -d postgres -c "create extension postgis"
   image: "maven:3-jdk-11"
