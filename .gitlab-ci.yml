@@ -1,5 +1,3 @@
-image: docker:latest
-
 variables: 
     POSTGRES_DB: postgres
     POSTGRES_HOST_AUTH_METHOD: trust
@@ -22,8 +20,11 @@ maven-build:
 
 maven-test: 
   image: "maven:3-jdk-11"
-  script: 
-    -  psql -h "postgres" -p "5432" -U postgres -d postgres -c "create extension postgis"
+  script:
+    - sudo apt-get install postgresql-9.1
+    - sudo apt-get install postgis
+    - sudo apt-get install postgresql-9.1-postgis
+    - psql -h "postgres" -p "5432" -U postgres -d postgres -c "create extension postgis"
     - "mvn -f nemo/pom.xml test"
   services: 
     - "postgres:latest"
