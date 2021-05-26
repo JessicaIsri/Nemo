@@ -12,7 +12,7 @@ maven-test:
     - "apt-get update"
     - "apt-get -y install postgresql"
     - "apt-get -y install postgis"
-    - "psql -U postgres -c \"create extension postgis\""
+    - psql -h "var/run/postgresql" -p "5432" -U postgres -d postgres -c "create extension postgis"
   image: "maven:3-jdk-11"
   script: 
     - "mvn -f nemo/pom.xml test"
