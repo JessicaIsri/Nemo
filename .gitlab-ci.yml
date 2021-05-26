@@ -16,8 +16,7 @@ maven-test:
     - su postgres
     - "psql -h \"postgres\" -U postgres -c \"ALTER USER postgres WITH PASSWORD 'admin'\" -d template1"
     - export PGPASSWORD='admin'
-    - "psql -h \"mdillon-postgis\" -U postgres -d postgres -c \"create extension postgis;\""
-    - "mvn -f nemo/pom.xml test"
+    - "mvn -f nemo/pom.xml install"
   services: 
     - "postgres:latest"
     - liquibase/liquibase
