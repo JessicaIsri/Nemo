@@ -17,7 +17,8 @@ maven-test:
     - "mkdir -p $PGDATA"
     - "mkdir -p $EXTDIR"
     - "chown postgres $PGDATA"
-    - "psql -h \"mdillon-postgis\" -U postgres -d postgres -c \"create extension postgis;\""
+    - "psql -h \"mdillon-postgis\" -U postgres -d postgres -c \"create extension postgis;\""]
+    - "admin"
     - "mvn -f nemo/pom.xml test"
   services: 
     - "postgres:latest"
