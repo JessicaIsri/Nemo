@@ -12,6 +12,10 @@ maven-test:
     - "apt-get update"
     - "apt-get -y install postgresql"
     - "apt-get -y install postgis"
+    - export PATH="$PATH:/usr/pgsql-11/bin"
+    - mkdir -p $PGDATA
+    - chown postgres $PGDATA
+    - su postgres -c "initdb $PGDATA"
     - psql -h "postgres" -p "5432" -U postgres -d postgres -c "create extension postgis"
   image: "maven:3-jdk-11"
   script: 
@@ -19,13 +23,28 @@ maven-test:
   services: 
     - "postgres:latest"
     - liquibase/liquibase
-    - "postgis/postgis:latest"
+    - "postgis/postgis"
   stage: test
   variables: 
     POSTGRES_DB: postgres
     POSTGRES_HOST_AUTH_METHOD: trust
     POSTGRES_PASSWORD: admin
     POSTGRES_USER: postgres
+    PGDATA: /var/lib/postgresql/data
+    EXTDIR: /usr/share/postgresql/13/extension/
+    PSQL: psql -v ON_ERROR_STOP=1
 stages: 
   - build
   - test
+
+image: postgres:13
+
+.init_PG_instance: &init_PG_instance
+  before_script:
+    - mkdir -p $PGDATA
+    - mkdir -p $EXTDIR
+    - chown postgres $PGDATA
+    - gosu postgres initdb
+    - gosu postgres pg_ctl start
+
+
