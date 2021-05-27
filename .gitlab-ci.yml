@@ -10,7 +10,7 @@ maven-build:
   stage: build
   
 maven-test: 
-  image: "ubuntu:20.04"
+  image: "ubuntu:18.04"
   script:
     - "adduser postgres"
     - ""
