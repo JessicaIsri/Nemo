@@ -20,8 +20,7 @@ maven-test:
     - apt-get -y install default-jdk
     - apt-get -y install maven
     - passwd postgres
-    - admin
-    - admin
+    - ""
     - su postgres
     - "psql -h localhost -U postgres -W admin -c \"ALTER USER postgres WITH PASSWORD 'admin'\" -d template1"
     - "psql -h localhost -U postgres -c \"create extension postgis;\""
