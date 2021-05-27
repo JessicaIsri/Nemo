@@ -22,9 +22,9 @@ maven-test:
     - apt-get -y install default-jdk
     - apt-get -y install maven
     - su postgres
-    - "psql -h \"postgres\" -U postgres -c \"ALTER USER postgres WITH PASSWORD 'admin'\" -d template1"
+    - "psql -U postgres -c \"ALTER USER postgres WITH PASSWORD 'admin'\" -d template1"
     - export PGPASSWORD='admin'
-    - "psql -h \"postgres\" -U postgres -d postgres -c \"create extension postgis;\""
+    - "psql -U postgres -d postgres -c \"create extension postgis;\""
     - "mvn -f nemo/pom.xml test"
   variables: 
     EXTDIR: /usr/share/postgresql/13/extension/
