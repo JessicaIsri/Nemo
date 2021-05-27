@@ -2,11 +2,15 @@ package br.gov.sp.fatec.nemo.usecases.impls;
 
 import br.gov.sp.fatec.nemo.domains.entities.Candidate;
 import br.gov.sp.fatec.nemo.domains.repositories.CandidateRepository;
-import br.gov.sp.fatec.nemo.usecases.interfaces.FindCandidateUseCase;
+import br.gov.sp.fatec.nemo.domains.repositories.interfaces.GeometryCandidate;
+import br.gov.sp.fatec.nemo.usecases.impls.dtos.CandidateDTO;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -45,17 +49,20 @@ public class FindCandidateUseCaseImpl {
             List<Long> ids = candidates.stream().map(Candidate::getId).collect(Collectors.toList());
             candidates = candidateRepository.findCandidateByCourseAndInstitutionAndId(ids, course, institution);
         }
+        if (latitude != null && longitude != null) {
+            List<Long> ids = candidates.stream().map(Candidate::getId).collect(Collectors.toList());
+            candidates = candidateRepository.findRadiusCandidate(longitude, latitude, ids, kilometers);
+        }
         return candidates;
     }
 
     @SneakyThrows
-    @Override
     public List<CandidateDTO> findCandidateV2(
         List<String> hability,
         Double longitude,
         Double latitude,
         Double kilometers) throws Exception {
-        Set<Candidate> candidates = null;
+        List<Candidate> candidates = null;
         Set<GeometryCandidate> geometryCandidates = null;
         if (hability != null) {
             candidates = candidateRepository.findAllBySkills_Skill_DescriptionIn(hability);
@@ -71,19 +78,19 @@ public class FindCandidateUseCaseImpl {
         }
 
         List<CandidateDTO> classify = classifyCandidate(candidates, hability, geometryCandidates);
-        Collections.sort(classify, new SortById());
+        classify.sort(new SortById());
         return classify;
     }
 
-    private List<CandidateDTO> classifyCandidate(Set<Candidate> candidates, List<String> hability, Set<GeometryCandidate> geometryCandidateSet) {
+    private List<CandidateDTO> classifyCandidate(List<Candidate> candidates, List<String> hability, Set<GeometryCandidate> geometryCandidateSet) {
         return candidates.stream().map(candidate -> {
-            Integer points = 0;
+            int points = 0;
             CandidateDTO candidateDTO = new CandidateDTO().fromCandidateDTO(candidate);
 
-            if (hability != null){
-                Integer skills = candidate.getSkills()
-                    .stream()
-                    .filter(f -> hability.contains(f.getSkill().getDescription())).collect(Collectors.toList()).size();
+            if (hability != null) {
+                int skills = (int) candidate.getSkills()
+                        .stream()
+                        .filter(f -> hability.contains(f.getSkill().getDescription())).count();
 
                 points += (skills * 50) / hability.size();
             } else {

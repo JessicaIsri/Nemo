@@ -1,12 +1,14 @@
 package br.gov.sp.fatec.nemo.domains.repositories;
 
 import br.gov.sp.fatec.nemo.domains.entities.Candidate;
+import br.gov.sp.fatec.nemo.domains.repositories.interfaces.GeometryCandidate;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Set;
 
 @Repository
 public interface CandidateRepository extends JpaRepository<Candidate, Long> {
@@ -61,13 +63,13 @@ public interface CandidateRepository extends JpaRepository<Candidate, Long> {
             @Param("skill") String skill
     );
 
-    @Query(value = "SELECT * FROM candidate where can_id in (:ids) and ST_Distance_Sphere(geom, ST_MakePoint(:longitude,:latitude))/1000 <= :kilometers",
-        nativeQuery = true )
-    Set<Candidate> findRadiusCandidate(
-        @Param("longitude") Double longitude,
-        @Param("latitude") Double latitude,
-        @Param("ids") List<Long> ids,
-        @Param("kilometers") Double kilometers
+    @Query(value = "SELECT DISTINCT * FROM candidate where can_id in (:ids) and ST_Distance_Sphere(geom, ST_MakePoint(:longitude,:latitude))/1000 <= :kilometers",
+            nativeQuery = true)
+    List<Candidate> findRadiusCandidate(
+            @Param("longitude") Double longitude,
+            @Param("latitude") Double latitude,
+            @Param("ids") List<Long> ids,
+            @Param("kilometers") Double kilometers
     );
 
     @Query(value = "SELECT can_id as id, ST_Distance_Sphere(geom, ST_MakePoint(:longitude,:latitude))/1000 as kilometer  FROM candidate where can_id in (:ids) and ST_Distance_Sphere(geom, ST_MakePoint(:longitude,:latitude))/1000 <= :kilometers",
@@ -79,5 +81,5 @@ public interface CandidateRepository extends JpaRepository<Candidate, Long> {
         @Param("kilometers") Double kilometers
     );
 
-    Set<Candidate> findAllBySkills_Skill_DescriptionIn(List<String> skills);
+    List<Candidate> findAllBySkills_Skill_DescriptionIn(List<String> skills);
 }
