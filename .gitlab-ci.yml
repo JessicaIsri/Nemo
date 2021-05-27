@@ -25,12 +25,6 @@ maven-test:
     - "postgres:latest"
     - liquibase/liquibase
     - mdillon/postgis:latest
-    - environment:
-        - POSTGRES_DB=postgres
-        - POSTGRES_USER=postgres
-        - POSTGRES_PASSWORD=admin
-    - ports:
-        - 5432:5432
   stage: test
   variables: 
     EXTDIR: /usr/share/postgresql/13/extension/
