@@ -16,8 +16,6 @@ maven-test:
     - ""
     - apt-get update
     - apt-get -y install postgresql-10
-    - apt-get -y postgresql-client-10
-    - apt-get -y postgresql-contrib
     - apt-get -y install postgresql-10-postgis-2.4
     - apt-get -y install postgresql-10-postgis-scripts
     - apt-get -y install postgis-2.4
