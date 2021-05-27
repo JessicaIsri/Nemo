@@ -2,7 +2,6 @@ image: docker:latest
 services:
   - docker:dind
 
---- 
 maven-build: 
   image: "maven:3-jdk-11"
   script: "mvn -f nemo/pom.xml compile"
