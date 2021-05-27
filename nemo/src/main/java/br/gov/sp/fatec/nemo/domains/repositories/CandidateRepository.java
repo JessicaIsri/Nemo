@@ -63,9 +63,9 @@ public interface CandidateRepository extends JpaRepository<Candidate, Long> {
             @Param("skill") String skill
     );
 
-    @Query(value = "SELECT DISTINCT * FROM candidate where can_id in (:ids) and ST_Distance_Sphere(geom, ST_MakePoint(:longitude,:latitude))/1000 <= :kilometers",
+    @Query(value = "SELECT * FROM candidate where can_id in (:ids) and ST_Distance_Sphere(geom, ST_MakePoint(:longitude,:latitude))/1000 <= :kilometers",
             nativeQuery = true)
-    List<Candidate> findRadiusCandidate(
+    Set<Candidate> findRadiusCandidate(
             @Param("longitude") Double longitude,
             @Param("latitude") Double latitude,
             @Param("ids") List<Long> ids,
@@ -81,5 +81,21 @@ public interface CandidateRepository extends JpaRepository<Candidate, Long> {
         @Param("kilometers") Double kilometers
     );
 
-    List<Candidate> findAllBySkills_Skill_DescriptionIn(List<String> skills);
+    Set<Candidate> findAllBySkills_Skill_DescriptionIn(List<String> skills);
+
+    Set<Candidate> findAllBySkills_Skill_DescriptionInAndSkills_SkillLevelIn(List<String> skills, List<SkillLevel> skillLevels);
+
+    @Query(value = "SELECT * from searchCandidate(array[:skills])", nativeQuery = true)
+    Set<Long> findCandidateWithoutGeom(
+        @Param("skills") String skills
+    );
+
+//    @Procedure(procedureName = "searchcandidate")
+//    Object[] findCandidateWithoutGeom(
+//        @Param("habilit_experience") List<String> skills,
+//        @Param("longitudePar") Double longitude,
+//        @Param("latitudePar") Double latitude,
+//        @Param("distanceLimit") Double kilometers
+//    );
+
 }

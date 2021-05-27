@@ -1,13 +1,7 @@
 package br.gov.sp.fatec.nemo.usecases.impls.dtos;
 
-import br.gov.sp.fatec.nemo.domains.entities.Candidate;
 import br.gov.sp.fatec.nemo.domains.entities.CandidateSkill;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.hibernate.annotations.TypeDef;
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
@@ -18,77 +12,83 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-public class CandidateDTO implements Serializable {
+@Entity
+@NamedStoredProcedureQuery(
+    name = "searchcandidate",
+    procedureName = "searchcandidate",
+    parameters = {
+        @StoredProcedureParameter(name = "habilit_experience", mode = ParameterMode.IN, type = String[].class),
+        @StoredProcedureParameter(name = "latitudePar", mode = ParameterMode.IN, type = Double.class),
+        @StoredProcedureParameter(name = "longitudePar", mode = ParameterMode.IN, type = Double.class),
+        @StoredProcedureParameter(name = "distanceLimit", mode = ParameterMode.IN, type = Double.class),
+
+    }
+)
+@Table(name = "candidate")
+public class CandidateFunction implements Serializable {
     private static final long serialVersionUID = 1L;
+
+    @Id
+    @Column(name = "can_id")
+    @JsonIgnore
     private Long id;
 
+    @NotBlank
+    @Column(name = "can_name")
     private String name;
 
+    @Email
     private String email;
 
+    @CPF
     private String cpf;
 
+    @NotBlank
     private String phone;
 
+    @NotBlank
     private String gender;
 
+    @NotNull
     private LocalDate birthday;
 
+    @NotBlank
     private String country;
 
+    @NotBlank
     private String city;
 
+    @NotBlank
     private String neighborhood;
 
+    @NotBlank
     private String street;
 
+    @NotBlank
+    @Column(name = "home_number")
     private String homeNumber;
 
+    @NotBlank
     private String complement;
 
+    @NotBlank
+    @Column(name = "zip_code")
     private String zipCode;
 
+    @NotNull
     private Float latitude;
 
+    @NotNull
     private Float longitude;
 
-    private List<CandidateSkill> skills;
-
-    private int points;
-
+    @NotBlank
+    @Column(name = "distance")
     private Double distance;
 
-
-    public CandidateDTO fromCandidateDTO(Candidate candidate){
-        CandidateDTO candidateDTO = new CandidateDTO();
-        candidateDTO.setId(candidate.getId());
-        candidateDTO.setName(candidate.getName());
-        candidateDTO.setEmail(candidate.getEmail());
-        candidateDTO.setCpf(candidate.getCpf());
-        candidateDTO.setPhone(candidate.getPhone());
-        candidateDTO.setGender(candidate.getGender());
-        candidateDTO.setBirthday(candidate.getBirthday());
-        candidateDTO.setCountry(candidate.getCountry());
-        candidateDTO.setCity(candidate.getCity());
-        candidateDTO.setNeighborhood(candidate.getNeighborhood());
-        candidateDTO.setStreet(candidate.getStreet());
-        candidateDTO.setHomeNumber(candidate.getHomeNumber());
-        candidateDTO.setComplement(candidate.getComplement());
-        candidateDTO.setZipCode(candidate.getZipCode());
-        candidateDTO.setLatitude(candidate.getLatitude());
-        candidateDTO.setLongitude(candidate.getLongitude());
-        candidateDTO.setSkills(candidate.getSkills());
-
-        return candidateDTO;
-    }
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
+    @OneToMany(mappedBy = "candidate",
+        cascade = CascadeType.ALL,
+        orphanRemoval = true)
+    private List<CandidateSkill> skills;
 
     public Long getId() {
         return id;
@@ -224,14 +224,6 @@ public class CandidateDTO implements Serializable {
 
     public void setSkills(List<CandidateSkill> skills) {
         this.skills = skills;
-    }
-
-    public int getPoints() {
-        return points;
-    }
-
-    public void setPoints(int points) {
-        this.points = points;
     }
 
     public Double getDistance() {
