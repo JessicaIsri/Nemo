@@ -12,15 +12,19 @@ maven-build:
 maven-test: 
   image: "ubuntu:20.04"
   script:
+    - "adduser postgres"
+    - ""
     - apt-get update
-    - apt-get -y install postgresql-13
-    - apt-get -y install postgresql-13-postgis-3.1.1
-    - apt-get -y install postgresql-13-postgis-scripts
+    - apt-get -y install postgresql-10
+    - apt-get -y install postgresql-10-postgis-2.4
+    - apt-get -y install postgresql-10-postgis-scripts
     - apt-get -y install postgis
     - apt-get -y install default-jdk
     - apt-get -y install maven
-    - "psql -h localhost -U postgres -c \"ALTER USER postgres WITH PASSWORD 'admin'\" -d template1"
-    - "psql -h localhost -U postgres -c \"create extension postgis;\""
+    - su postgres
+    - "psql -h \"postgres\" -U postgres -c \"ALTER USER postgres WITH PASSWORD 'admin'\" -d template1"
+    - export PGPASSWORD='admin'
+    - "psql -h \"postgres\" -U postgres -d postgres -c \"create extension postgis;\""
     - "mvn -f nemo/pom.xml test"
   services: 
     - "postgres:latest"
