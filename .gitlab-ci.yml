@@ -17,12 +17,6 @@ maven-test:
     - apt-get -y install postgresql-10-postgis-2.4
     - apt-get -y install postgresql-10-postgis-scripts
     - apt-get -y install postgis
-    - "adduser postgres"
-    - ""
-    - "apt-get update"
-    - "apt-get -y install postgresql"
-    - "apt-get -y install postgis"
-    - "apt-get -y install postgresql-10-postgis-3"
     - su postgres
     - "psql -h \"postgres\" -U postgres -c \"ALTER USER postgres WITH PASSWORD 'admin'\" -d template1"
     - export PGPASSWORD='admin'
@@ -33,14 +27,6 @@ maven-test:
     - liquibase/liquibase
     - mdillon/postgis:latest
   stage: test
-  variables: 
-    EXTDIR: /usr/share/postgresql/13/extension/
-    PGDATA: /var/lib/postgresql/data
-    POSTGRES_DB: postgres
-    POSTGRES_HOST_AUTH_METHOD: trust
-    POSTGRES_PASSWORD: admin
-    POSTGRES_USER: postgres
-    PSQL: "psql -v ON_ERROR_STOP=1"
 stages: 
   - build
   - test
