@@ -24,7 +24,7 @@ maven-test:
     - apt-get -y install default-jdk
     - apt-get -y install maven
     - su postgres
-    - "psql -U postgres -c \"ALTER USER postgres WITH PASSWORD 'admin'\" -d template1"
+    - "psql -c \"ALTER USER postgres WITH PASSWORD 'admin'\" -d template1"
     - export PGPASSWORD='admin'
     - "psql -U postgres -d postgres -c \"create extension postgis;\""
     - "mvn -f nemo/pom.xml test"
