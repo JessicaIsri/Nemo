@@ -25,7 +25,7 @@ maven-test:
   services: 
     - "postgres:latest"
     - liquibase/liquibase
-    nemo-postgresql:
+  nemo-postgresql:
     image: mdillon/postgis:latest
     # volumes:
     #     - ~/volumes/jhipster/Nimus/postgresql/:/var/lib/postgresql/data/
