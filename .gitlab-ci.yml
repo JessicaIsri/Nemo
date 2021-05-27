@@ -17,7 +17,7 @@ maven-test:
     - "apt-get update"
     - "apt-get -y install postgresql"
     - "apt-get -y install postgis"
-    - "apt-get -y install postgresql-13-postgis-scripts"
+    - "apt-get -y install postgresql-13-postgis"
     - su postgres
     - "psql -h \"postgres\" -U postgres -c \"ALTER USER postgres WITH PASSWORD 'admin'\" -d template1"
     - export PGPASSWORD='admin'
