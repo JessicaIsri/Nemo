@@ -19,7 +19,6 @@ maven-test:
     - su postgres
     - "psql -h \"postgres\" -U postgres -c \"ALTER USER postgres WITH PASSWORD 'admin'\" -d template1"
     - export PGPASSWORD='admin'
-    - "psql -h \"postgres\" -U postgres -c \"CREATE DATABASE postgres;\""
     - "psql -h \"postgres\" -U postgres -c \"create extension postgis;\""
     - "mvn -f nemo/pom.xml test"
   services: 
