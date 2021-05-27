@@ -10,12 +10,12 @@ maven-build:
   stage: build
   
 maven-test: 
-  image: "ubuntu:18.04"
+  image: "ubuntu:20.04"
   script:
     - apt-get update
-    - apt-get -y install postgresql-10
-    - apt-get -y install postgresql-10-postgis-2.4
-    - apt-get -y install postgresql-10-postgis-scripts
+    - apt-get -y install postgresql-13
+    - apt-get -y install postgresql-13-postgis-3.1.1
+    - apt-get -y install postgresql-13-postgis-scripts
     - apt-get -y install postgis
     - apt-get -y install default-jdk
     - apt-get -y install maven
