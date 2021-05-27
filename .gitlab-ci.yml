@@ -8,28 +8,13 @@ maven-build:
 maven-test: 
   image: "maven:3-jdk-11"
   script: 
-    - "adduser postgres"
-    - ""
-    - "apt-get update"
-    - "apt-get -y install postgresql"
-    - "apt-get -y install postgis"
-    - su postgres
-    - "psql -h \"postgres\" -U postgres -c \"ALTER USER postgres WITH PASSWORD 'admin'\" -d template1"
-    - export PGPASSWORD='admin'
+    - docker-compose up -d
     - "mvn -f nemo/pom.xml install"
   services: 
     - "postgres:latest"
     - liquibase/liquibase
     - "mdillon/postgis:latest"
   stage: test
-  variables: 
-    EXTDIR: /usr/share/postgresql/13/extension/
-    PGDATA: /var/lib/postgresql/data
-    POSTGRES_DB: postgres
-    POSTGRES_HOST_AUTH_METHOD: trust
-    POSTGRES_PASSWORD: admin
-    POSTGRES_USER: postgres
-    PSQL: "psql -v ON_ERROR_STOP=1"
 stages: 
   - build
   - test
