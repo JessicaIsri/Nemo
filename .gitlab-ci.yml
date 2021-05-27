@@ -8,8 +8,9 @@ maven-build:
   services: 
     - "postgres:latest"
   stage: build
+  
 maven-test: 
-  image: "maven:3-jdk-11"
+  image: "ubuntu:latest"
   script: 
     - "adduser postgres"
     - ""
