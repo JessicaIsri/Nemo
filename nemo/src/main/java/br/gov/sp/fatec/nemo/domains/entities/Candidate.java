@@ -1,11 +1,11 @@
 package br.gov.sp.fatec.nemo.domains.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.vividsolutions.jts.geom.Geometry;
+import br.gov.sp.fatec.nemo.domains.utils.PostgreSQLEnumType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.TypeDef;
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
@@ -22,13 +22,17 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "candidate")
+@TypeDef(
+        name = "pgsql_enum",
+        typeClass = PostgreSQLEnumType.class
+)
 public class Candidate implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @Column(name = "can_id")
-    @JsonIgnore
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank
@@ -64,7 +68,7 @@ public class Candidate implements Serializable {
 
     @NotBlank
     @Column(name = "home_number")
-    private String homeNumber;
+    private Integer homeNumber;
 
     @NotBlank
     private String complement;
@@ -79,144 +83,31 @@ public class Candidate implements Serializable {
     @NotNull
     private Float longitude;
 
+    @NotNull
+    @Column(name = "pretension_salary")
+    private Double pretensionSalary;
+
+    @Column(name = "desired_journey")
+    private String desiredJourney;
+
+    @Column(name = "availability")
+    private String availablePeriod;
+
+    @Column(name = "work_modality")
+    private String workModality;
+
     @OneToMany(mappedBy = "candidate",
             cascade = CascadeType.ALL,
             orphanRemoval = true)
     private List<CandidateSkill> skills;
 
-    public Long getId() {
-        return id;
-    }
+    @OneToMany(mappedBy = "candidate",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    private List<CandidateFormation> formations;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public LocalDate getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(LocalDate birthday) {
-        this.birthday = birthday;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getNeighborhood() {
-        return neighborhood;
-    }
-
-    public void setNeighborhood(String neighborhood) {
-        this.neighborhood = neighborhood;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getHomeNumber() {
-        return homeNumber;
-    }
-
-    public void setHomeNumber(String homeNumber) {
-        this.homeNumber = homeNumber;
-    }
-
-    public String getComplement() {
-        return complement;
-    }
-
-    public void setComplement(String complement) {
-        this.complement = complement;
-    }
-
-    public String getZipCode() {
-        return zipCode;
-    }
-
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
-    }
-
-    public Float getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(Float latitude) {
-        this.latitude = latitude;
-    }
-
-    public Float getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(Float longitude) {
-        this.longitude = longitude;
-    }
-
-    public List<CandidateSkill> getSkills() {
-        return skills;
-    }
-
-    public void setSkills(List<CandidateSkill> skills) {
-        this.skills = skills;
-    }
+    @OneToMany(mappedBy = "candidate",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    private List<CandidateExp> experiences;
 }

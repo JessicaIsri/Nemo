@@ -1,11 +1,13 @@
 package br.gov.sp.fatec.nemo.usecases.impls;
 
-import br.gov.sp.fatec.nemo.domains.entities.*;
+import br.gov.sp.fatec.nemo.domains.entities.Candidate;
+import br.gov.sp.fatec.nemo.domains.entities.CandidateSkill;
+import br.gov.sp.fatec.nemo.domains.entities.DistanceParameters;
+import br.gov.sp.fatec.nemo.domains.entities.Parameters;
 import br.gov.sp.fatec.nemo.domains.enums.SkillLevel;
 import br.gov.sp.fatec.nemo.domains.repositories.CandidateRepository;
 import br.gov.sp.fatec.nemo.domains.repositories.interfaces.GeometryCandidate;
 import br.gov.sp.fatec.nemo.usecases.impls.dtos.CandidateDTO;
-import br.gov.sp.fatec.nemo.usecases.interfaces.FindCandidateUseCase;
 import br.gov.sp.fatec.nemo.usecases.interfaces.ParametersService;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,34 +19,57 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-public class FindCandidateUseCaseImpl implements FindCandidateUseCase {
+public class FindCandidateUseCaseImpl {
 
     @PersistenceContext
     private EntityManager em;
+
     @Autowired
     private CandidateRepository candidateRepository;
 
     @Autowired
     private ParametersService parametersService;
 
-    @Override
     public List<Candidate> findCandidate(
-        String gender,
-        String country,
-        String city,
-        String zipCode,
-        String skill,
-        Double longitude,
-        Double latitude,
-        Double kilometers
+            String gender,
+            String country,
+            String city,
+            String zipCode,
+            String skill,
+            Double longitude,
+            Double latitude,
+            Double kilometers,
+            String availablePeriod,
+            String course,
+            String institution,
+            String workModality,
+            Double pretensionSalary,
+            String desiredJourney,
+            String companyName,
+            String postName
     ) {
-        List<Candidate> candidates = candidateRepository.findCandidateByAllParams(gender, country, city, zipCode, skill);
-
+        List<Candidate> candidates = candidateRepository.findCandidateByAnyParams(gender, country, city, zipCode, availablePeriod,
+                workModality,
+                pretensionSalary,
+                desiredJourney,
+                companyName,
+                postName);
+        if (skill != null) {
+            List<Long> ids = candidates.stream().map(Candidate::getId).collect(Collectors.toList());
+            candidates = candidateRepository.findCandidateBySkillAndId(ids, skill);
+        }
+        if (institution != null || course != null) {
+            List<Long> ids = candidates.stream().map(Candidate::getId).collect(Collectors.toList());
+            candidates = candidateRepository.findCandidateByCourseAndInstitutionAndId(ids, course, institution);
+        }
+        if (latitude != null && longitude != null) {
+            List<Long> ids = candidates.stream().map(Candidate::getId).collect(Collectors.toList());
+            candidates = candidateRepository.findRadiusCandidate(longitude, latitude, ids, kilometers);
+        }
         return candidates;
     }
 
     @SneakyThrows
-    @Override
     public List<CandidateDTO> findCandidateV2(
         List<String> hability,
         Double longitude,
