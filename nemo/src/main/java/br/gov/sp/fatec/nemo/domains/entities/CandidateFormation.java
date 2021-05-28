@@ -31,11 +31,13 @@ public class CandidateFormation implements Serializable {
     @JsonIgnore
     private Candidate candidate;
 
-    @Column(name = "institution")
-    private String institution;
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "fk_inst_id", referencedColumnName = "inst_id")
+    private Institution institution;
 
-    @Column(name = "course")
-    private String course;
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "fk_course_id", referencedColumnName = "course_id")
+    private Course course;
 
     @NotNull
     @Column(name = "dt_start")

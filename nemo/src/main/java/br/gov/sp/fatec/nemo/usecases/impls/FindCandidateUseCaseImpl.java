@@ -2,33 +2,34 @@ package br.gov.sp.fatec.nemo.usecases.impls;
 
 import br.gov.sp.fatec.nemo.domains.entities.Candidate;
 import br.gov.sp.fatec.nemo.domains.entities.CandidateSkill;
+import br.gov.sp.fatec.nemo.domains.entities.DistanceParameters;
+import br.gov.sp.fatec.nemo.domains.entities.Parameters;
+import br.gov.sp.fatec.nemo.domains.enums.SkillLevel;
 import br.gov.sp.fatec.nemo.domains.repositories.CandidateRepository;
 import br.gov.sp.fatec.nemo.domains.repositories.interfaces.GeometryCandidate;
 import br.gov.sp.fatec.nemo.usecases.impls.dtos.CandidateDTO;
-import br.gov.sp.fatec.nemo.usecases.interfaces.FindCandidateUseCase;
-
+import br.gov.sp.fatec.nemo.usecases.interfaces.ParametersService;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-public class FindCandidateUseCaseImpl implements FindCandidateUseCase {
+public class FindCandidateUseCaseImpl {
 
     @PersistenceContext
     private EntityManager em;
+
     @Autowired
     private CandidateRepository candidateRepository;
 
     @Autowired
     private ParametersService parametersService;
 
-    @Override
     public List<Candidate> findCandidate(
             String gender,
             String country,
@@ -44,13 +45,15 @@ public class FindCandidateUseCaseImpl implements FindCandidateUseCase {
             String workModality,
             Double pretensionSalary,
             String desiredJourney,
-            String companyName
+            String companyName,
+            String postName
     ) {
         List<Candidate> candidates = candidateRepository.findCandidateByAnyParams(gender, country, city, zipCode, availablePeriod,
                 workModality,
                 pretensionSalary,
                 desiredJourney,
-                companyName);
+                companyName,
+                postName);
         if (skill != null) {
             List<Long> ids = candidates.stream().map(Candidate::getId).collect(Collectors.toList());
             candidates = candidateRepository.findCandidateBySkillAndId(ids, skill);

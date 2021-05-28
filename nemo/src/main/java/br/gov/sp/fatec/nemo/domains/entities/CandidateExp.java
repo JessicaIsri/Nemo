@@ -27,18 +27,18 @@ public class CandidateExp implements Serializable {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @MapsId("candidateId") //This is the name of attr in EmployerDeliveryAgentPK class
+    @MapsId("candidateId")
     @JoinColumn(name = "fk_can_id")
     @JsonIgnore
     private Candidate candidate;
 
-    @NotBlank
-    @Column(name = "fk_company_id")
-    private String company;
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "fk_company_id", referencedColumnName = "company_id")
+    private Company company;
 
-    @NotBlank
-    @Column(name = "fk_post_id")
-    private String jobTitle;
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "fk_post_id", referencedColumnName = "post_id")
+    private Post post;
 
     @NotNull
     @Column(name = "dt_start")

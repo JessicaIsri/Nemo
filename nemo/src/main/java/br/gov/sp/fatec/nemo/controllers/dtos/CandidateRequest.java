@@ -1,10 +1,14 @@
-package br.gov.sp.fatec.nemo.controllers;
+package br.gov.sp.fatec.nemo.controllers.dtos;
 
-import br.gov.sp.fatec.nemo.domains.entities.*;
+import br.gov.sp.fatec.nemo.domains.entities.Candidate;
+import br.gov.sp.fatec.nemo.domains.enums.Availability;
+import br.gov.sp.fatec.nemo.domains.enums.DesiredJourney;
+import br.gov.sp.fatec.nemo.domains.enums.WorkModality;
 import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -22,18 +26,18 @@ public class CandidateRequest implements Serializable {
     private String city;
     private String neighborhood;
     private String street;
-    private String homeNumber;
+    private Integer homeNumber;
     private String complement;
     private String zipCode;
     private Float latitude;
     private Float longitude;
     private Double pretensionSalary;
     private DesiredJourney desiredJourney;
-    private AvailablePeriod availablePeriod;
+    private Availability availablePeriod;
     private WorkModality workModality;
-    private List<CandidateSkill> skills;
-    private List<CandidateFormation> formations;
-    private List<CandidateExp> experiences;
+    private List<CandidateSkillRequest> skills;
+    private List<CandidateFormationRequest> formations;
+    private List<CandidateExpRequest> experiences;
 
     public Candidate toCandidate() {
         Candidate newCandidate = new Candidate();
@@ -53,21 +57,12 @@ public class CandidateRequest implements Serializable {
         newCandidate.setLatitude(latitude);
         newCandidate.setLongitude(longitude);
         newCandidate.setPretensionSalary(pretensionSalary);
-        newCandidate.setDesiredJourney(desiredJourney);
-        newCandidate.setAvailablePeriod(availablePeriod);
-        newCandidate.setWorkModality(workModality);
-        newCandidate.setSkills(skills);
-        newCandidate.setFormations(formations);
-        newCandidate.setExperiences(experiences);
-        for (CandidateExp exp : experiences) {
-            exp.setCandidate(newCandidate);
-        }
-        for (CandidateFormation formation : formations) {
-            formation.setCandidate(newCandidate);
-        }
-        for (CandidateSkill skill : skills) {
-            skill.setCandidate(newCandidate);
-        }
+        newCandidate.setDesiredJourney(desiredJourney.name());
+        newCandidate.setAvailablePeriod(availablePeriod.name());
+        newCandidate.setWorkModality(workModality.name());
+        newCandidate.setSkills(new ArrayList<>());
+        newCandidate.setFormations(new ArrayList<>());
+        newCandidate.setExperiences(new ArrayList<>());
         return newCandidate;
     }
 }

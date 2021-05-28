@@ -1,8 +1,11 @@
 package br.gov.sp.fatec.nemo.controllers;
 
+import br.gov.sp.fatec.nemo.controllers.dtos.CandidateRequest;
 import br.gov.sp.fatec.nemo.domains.entities.Candidate;
 import br.gov.sp.fatec.nemo.domains.enums.SkillLevel;
-import br.gov.sp.fatec.nemo.domains.repositories.CandidateRepository;
+import br.gov.sp.fatec.nemo.domains.repositories.CandidateSkillRepository;
+import br.gov.sp.fatec.nemo.domains.repositories.SkillRepository;
+import br.gov.sp.fatec.nemo.usecases.impls.CreateCandidateUseCaseImpl;
 import br.gov.sp.fatec.nemo.usecases.impls.FindCandidateUseCaseImpl;
 import br.gov.sp.fatec.nemo.usecases.impls.dtos.CandidateDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +22,13 @@ public class CandidateRestController {
     private FindCandidateUseCaseImpl findCandidateUseCase;
 
     @Autowired
-    private CandidateRepository candidateRepository;
+    private CreateCandidateUseCaseImpl createCandidateUseCase;
+
+    @Autowired
+    private SkillRepository skillRepository;
+
+    @Autowired
+    private CandidateSkillRepository candidateSkillRepository;
 
     @GetMapping(value = "nemo/v1/candidate", produces = "application/json")
     public ResponseEntity<List<Candidate>> getCandidate(
@@ -37,11 +46,12 @@ public class CandidateRestController {
             @RequestParam(required = false) String workModality,
             @RequestParam(required = false) Double pretensionSalary,
             @RequestParam(required = false) String desiredJourney,
-            @RequestParam(required = false) String companyName
+            @RequestParam(required = false) String companyName,
+            @RequestParam(required = false) String postName
     ) {
         return Optional
                 .ofNullable(findCandidateUseCase.findCandidate(gender, country, city, zipCode, skill, longitude, latitude, kilometers, availablePeriod, course, institution, workModality, pretensionSalary, desiredJourney,
-                        companyName))
+                        companyName, postName))
                 .map(candidate -> ResponseEntity.ok().body(candidate))
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
@@ -66,10 +76,9 @@ public class CandidateRestController {
     @PostMapping("nemo/v1/candidate/")
     public ResponseEntity<Candidate> criarCandidate(@RequestBody CandidateRequest candidate) {
         try {
-            Candidate newCandidate = candidate.toCandidate();
-            candidateRepository.save(newCandidate);
-            return ResponseEntity.ok().body(newCandidate);
+            return ResponseEntity.ok().body(createCandidateUseCase.createCandidate(candidate));
         } catch (Exception e) {
+            e.printStackTrace();
             return ResponseEntity.badRequest().build();
         }
     }

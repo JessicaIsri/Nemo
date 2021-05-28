@@ -32,7 +32,7 @@ public class Candidate implements Serializable {
 
     @Id
     @Column(name = "can_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank
@@ -68,7 +68,7 @@ public class Candidate implements Serializable {
 
     @NotBlank
     @Column(name = "home_number")
-    private String homeNumber;
+    private Integer homeNumber;
 
     @NotBlank
     private String complement;
@@ -84,19 +84,17 @@ public class Candidate implements Serializable {
     private Float longitude;
 
     @NotNull
+    @Column(name = "pretension_salary")
     private Double pretensionSalary;
 
-    @OneToOne
-    @JoinColumn(name = "desired_journey_fk", referencedColumnName = "id")
-    private DesiredJourney desiredJourney;
+    @Column(name = "desired_journey")
+    private String desiredJourney;
 
-    @OneToOne
-    @JoinColumn(name = "available_period_fk", referencedColumnName = "id")
-    private AvailablePeriod availablePeriod;
+    @Column(name = "availability")
+    private String availablePeriod;
 
-    @OneToOne
-    @JoinColumn(name = "work_modality_fk", referencedColumnName = "id")
-    private WorkModality workModality;
+    @Column(name = "work_modality")
+    private String workModality;
 
     @OneToMany(mappedBy = "candidate",
             cascade = CascadeType.ALL,

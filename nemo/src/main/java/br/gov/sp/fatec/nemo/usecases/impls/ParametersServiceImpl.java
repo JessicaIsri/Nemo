@@ -1,16 +1,12 @@
 package br.gov.sp.fatec.nemo.usecases.impls;
 
-import br.gov.sp.fatec.nemo.domains.entities.Client;
 import br.gov.sp.fatec.nemo.domains.entities.Parameters;
 import br.gov.sp.fatec.nemo.domains.repositories.ParameterRepository;
 import br.gov.sp.fatec.nemo.usecases.interfaces.ParametersService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.lang.reflect.ParameterizedType;
 import java.util.List;
 import java.util.Optional;
 

@@ -1,6 +1,7 @@
 package br.gov.sp.fatec.nemo.domains.repositories;
 
 import br.gov.sp.fatec.nemo.domains.entities.Candidate;
+import br.gov.sp.fatec.nemo.domains.enums.SkillLevel;
 import br.gov.sp.fatec.nemo.domains.repositories.interfaces.GeometryCandidate;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -24,7 +25,8 @@ public interface CandidateRepository extends JpaRepository<Candidate, Long> {
             "(:workModality is null or c.workModality.name = :workModality) and " +
             "(:desiredJourney is null or c.desiredJourney.name = :desiredJourney) and " +
             "(:pretensionSalary is null or c.pretensionSalary <= :pretensionSalary) and " +
-            "(:companyName is null or e.company.companyName = :companyName) "
+            "(:companyName is null or e.company.name = :companyName) and " +
+            "(:postName is null or e.post.name = :postName)"
     )
     List<Candidate> findCandidateByAnyParams(
             @Param("gender") String gender,
@@ -35,15 +37,16 @@ public interface CandidateRepository extends JpaRepository<Candidate, Long> {
             @Param("workModality") String workModality,
             @Param("pretensionSalary") Double pretensionSalary,
             @Param("desiredJourney") String desiredJourney,
-            @Param("companyName") String companyName
+            @Param("companyName") String companyName,
+            @Param("postName") String postName
     );
 
     @Query("SELECT c FROM Candidate c " +
             "INNER JOIN FETCH c.formations f " +
             "WHERE " +
             "(id in :ids) and " +
-            "(:course is null or f.course.courseName = :course) and " +
-            "(:institution is null or f.institution.instName = :institution) "
+            "(:course is null or f.course.name = :course) and " +
+            "(:institution is null or f.institution.name = :institution) "
     )
     List<Candidate> findCandidateByCourseAndInstitutionAndId(
             @Param("ids") List<Long> ids,
@@ -63,9 +66,9 @@ public interface CandidateRepository extends JpaRepository<Candidate, Long> {
             @Param("skill") String skill
     );
 
-    @Query(value = "SELECT * FROM candidate where can_id in (:ids) and ST_Distance_Sphere(geom, ST_MakePoint(:longitude,:latitude))/1000 <= :kilometers",
+    @Query(value = "SELECT DISTINCT * FROM candidate where can_id in (:ids) and ST_Distance_Sphere(geom, ST_MakePoint(:longitude,:latitude))/1000 <= :kilometers",
             nativeQuery = true)
-    Set<Candidate> findRadiusCandidate(
+    List<Candidate> findRadiusCandidate(
             @Param("longitude") Double longitude,
             @Param("latitude") Double latitude,
             @Param("ids") List<Long> ids,
