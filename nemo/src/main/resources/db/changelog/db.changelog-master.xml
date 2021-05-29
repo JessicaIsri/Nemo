@@ -14,5 +14,5 @@ http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
     <include file="db/changelog/create_parameters_table.sql" relativeToChangelogFile="false"/>
     <include file="db/changelog/create_searchCandidate.sql" relativeToChangelogFile="false"/>
     <include file="db/changelog/cadastro_curriculo.sql" relativeToChangelogFile="false"/>
-
+    <include file="db/changelog/alter_cascade.sql" relativeToChangelogFile="false"/>
 </databaseChangeLog>

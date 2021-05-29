@@ -3,9 +3,8 @@ package br.gov.sp.fatec.nemo.controllers;
 import br.gov.sp.fatec.nemo.controllers.dtos.CandidateRequest;
 import br.gov.sp.fatec.nemo.domains.entities.Candidate;
 import br.gov.sp.fatec.nemo.domains.enums.SkillLevel;
-import br.gov.sp.fatec.nemo.domains.repositories.CandidateSkillRepository;
-import br.gov.sp.fatec.nemo.domains.repositories.SkillRepository;
 import br.gov.sp.fatec.nemo.usecases.impls.CreateCandidateUseCaseImpl;
+import br.gov.sp.fatec.nemo.usecases.impls.DeleteCandidateUseCaseImpl;
 import br.gov.sp.fatec.nemo.usecases.impls.FindCandidateUseCaseImpl;
 import br.gov.sp.fatec.nemo.usecases.impls.dtos.CandidateDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +24,7 @@ public class CandidateRestController {
     private CreateCandidateUseCaseImpl createCandidateUseCase;
 
     @Autowired
-    private SkillRepository skillRepository;
-
-    @Autowired
-    private CandidateSkillRepository candidateSkillRepository;
+    private DeleteCandidateUseCaseImpl deleteCandidateUseCase;
 
     @GetMapping(value = "nemo/v1/candidate", produces = "application/json")
     public ResponseEntity<List<Candidate>> getCandidate(
@@ -77,6 +73,17 @@ public class CandidateRestController {
     public ResponseEntity<Candidate> criarCandidate(@RequestBody CandidateRequest candidate) {
         try {
             return ResponseEntity.ok().body(createCandidateUseCase.createCandidate(candidate));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @DeleteMapping("nemo/v1/candidate/{id}")
+    public ResponseEntity<String> deleteCandidate(@PathVariable("id") Long id) {
+        try {
+            deleteCandidateUseCase.deleteCandidateById(id);
+            return ResponseEntity.ok("Candidato deletado com sucesso.");
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.badRequest().build();
