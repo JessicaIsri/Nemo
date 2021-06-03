@@ -4,9 +4,11 @@ import br.gov.sp.fatec.nemo.domains.entities.JobOpportunity;
 import br.gov.sp.fatec.nemo.usecases.dtos.JobOpportunityCriteria;
 import br.gov.sp.fatec.nemo.usecases.interfaces.FindJobOpportunityUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Optional;

@@ -173,6 +173,29 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get Candidate By Job Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/nemo/v1/selection/jobOpportunity/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"nemo",
+								"v1",
+								"selection",
+								"jobOpportunity",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
