@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS "client";
+DROP TABLE IF EXISTS "client" cascade ;
 
 /* Table 'client' */
 CREATE TABLE "client" (

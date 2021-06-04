@@ -1,21 +1,21 @@
 /* ************* DLL ************* */
 
-DROP TABLE IF EXISTS "candidate_skill";
-DROP TABLE IF EXISTS "candidate_exp";
-DROP TABLE IF EXISTS "candidate_formation";
-DROP TABLE IF EXISTS "candidate";
-DROP TABLE IF EXISTS "jo_skill_req";
-DROP TABLE IF EXISTS "jo_exp_req";
-DROP TABLE IF EXISTS "jo_formation_req";
-DROP TABLE IF EXISTS "job_opportunity";
-DROP TABLE IF EXISTS "skill";
-DROP TABLE IF EXISTS "institution";
-DROP TABLE IF EXISTS "course";
-DROP TABLE IF EXISTS "company";
-DROP TABLE IF EXISTS "post";
-DROP TYPE IF EXISTS "contract_type";
-DROP TYPE IF EXISTS "skill_level";
-DROP TYPE IF EXISTS "availability";
+DROP TABLE IF EXISTS "candidate_skill" CASCADE;
+DROP TABLE IF EXISTS "candidate_exp" CASCADE;
+DROP TABLE IF EXISTS "candidate_formation" CASCADE;
+DROP TABLE IF EXISTS "jo_skill_req" CASCADE;
+DROP TABLE IF EXISTS "jo_exp_req" CASCADE;
+DROP TABLE IF EXISTS "jo_formation_req" CASCADE;
+DROP TABLE IF EXISTS "skill" CASCADE;
+DROP TABLE IF EXISTS "institution" CASCADE;
+DROP TABLE IF EXISTS "course" CASCADE;
+DROP TABLE IF EXISTS "company" CASCADE;
+DROP TABLE IF EXISTS "post" CASCADE;
+DROP TYPE IF EXISTS "contract_type" CASCADE;
+DROP TYPE IF EXISTS "skill_level" CASCADE;
+DROP TYPE IF EXISTS "availability" CASCADE;
+DROP TABLE IF EXISTS "candidate" CASCADE;
+DROP TABLE IF EXISTS "job_opportunity" CASCADE;
 
 /* Enum 'availability' */
 CREATE TYPE availability

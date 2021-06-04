@@ -1,3 +1,4 @@
+
 create table  if not exists parameter(
     parameter_id int8 not null,
     hability integer not null,
@@ -6,7 +7,7 @@ create table  if not exists parameter(
 );
 
 create table if not exists distance_parameters (
-    distance_parameter_id int8 not null,
+    distance_parameter_id int8 not null unique,
     start_low_distance int8 not null,
     end_low_distance int8 not null,
     low_distance_value integer,

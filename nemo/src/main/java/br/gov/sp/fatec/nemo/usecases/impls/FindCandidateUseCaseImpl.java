@@ -10,6 +10,7 @@ import br.gov.sp.fatec.nemo.usecases.impls.dtos.CandidateDTO;
 import br.gov.sp.fatec.nemo.usecases.interfaces.FindCandidateUseCase;
 import br.gov.sp.fatec.nemo.usecases.interfaces.FindJobOpportunityUseCase;
 import br.gov.sp.fatec.nemo.usecases.interfaces.ParametersService;
+import br.gov.sp.fatec.nemo.usecases.services.DistanceMatrixService;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,8 +28,7 @@ import java.util.stream.Collectors;
 @PropertySource("classpath:application.properties")
 public class FindCandidateUseCaseImpl implements FindCandidateUseCase {
 
-    @Value( "${application.env.apikey}" )
-    private static final String API_KEY = "${application.env.apikey}";
+
     @PersistenceContext
     private EntityManager em;
     @Autowired
@@ -41,7 +41,9 @@ public class FindCandidateUseCaseImpl implements FindCandidateUseCase {
     private FindJobOpportunityUseCase findJobOpportunityUseCase;
 
     @Autowired
-    private DirectionsClient directionsClient;
+    private DistanceMatrixService distanceMatrixService;
+
+
 
     @Override
     public List<Candidate> findCandidate(
@@ -105,27 +107,7 @@ public class FindCandidateUseCaseImpl implements FindCandidateUseCase {
         return classify;
     }
 
-    public void processDirections(Long idWork, Long idCandidate) throws Exception {
-        String candidateAddress = null;
-        String jobAddress = null;
 
-        JobOpportunity jobOpportunity = findJobOpportunityUseCase.findById(idWork);
-        Optional<Candidate> candidateOptional = candidateRepository.findById(idCandidate);
-
-        if (candidateOptional.isPresent()) {
-            Candidate candidate = candidateOptional.get();
-            candidateAddress = candidate.getStreet() + " + " + candidate.getNeighborhood() + "+" + candidate.getCity();
-            jobAddress = jobOpportunity.getWorkplaceStreet() + " + " + jobOpportunity.getWorkplaceNeighborhood() +
-                "+" + jobOpportunity.getWorkplaceCity();
-
-            String key = API_KEY;
-            String mode = "transit";
-
-            ResponseEntity<DirectionsResponse> directionsResponse = directionsClient
-                .getDirections(candidateAddress, jobAddress, key, mode);
-            System.out.println(directionsResponse);
-        }
-    }
 
     private List<CandidateDTO> classifyCandidateWithParameter(
         Set<Candidate> candidates,
@@ -246,6 +228,19 @@ public class FindCandidateUseCaseImpl implements FindCandidateUseCase {
         }
         return value;
     }
+
+    @Override
+    public void processDirections(Long idWork, Long idCandidate) throws Exception {
+        Optional<JobOpportunity> jobOpportunity = findJobOpportunityUseCase.findById(idWork);
+        Optional<Candidate> candidateOptional = candidateRepository.findById(idCandidate);
+
+        if (jobOpportunity.isPresent() && candidateOptional.isPresent()){
+            distanceMatrixService.processDirections(candidateOptional.get(), jobOpportunity.get());
+        } else {
+            throw new Exception("Dados inexistente");
+        }
+
+    };
 
 
 }
