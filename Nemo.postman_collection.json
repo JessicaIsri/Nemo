@@ -196,6 +196,17 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Export Candidates By Job Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
 				}
 			]
 		}
