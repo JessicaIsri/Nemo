@@ -1,13 +1,11 @@
 package br.gov.sp.fatec.nemo.usecases.impls;
 
-import br.gov.sp.fatec.nemo.domains.entities.Candidate;
-import br.gov.sp.fatec.nemo.domains.entities.CandidateSkill;
-import br.gov.sp.fatec.nemo.domains.entities.DistanceParameters;
-import br.gov.sp.fatec.nemo.domains.entities.Parameters;
+import br.gov.sp.fatec.nemo.domains.entities.*;
 import br.gov.sp.fatec.nemo.domains.enums.SkillLevel;
 import br.gov.sp.fatec.nemo.domains.repositories.CandidateRepository;
 import br.gov.sp.fatec.nemo.domains.repositories.interfaces.GeometryCandidate;
 import br.gov.sp.fatec.nemo.usecases.impls.dtos.CandidateDTO;
+import br.gov.sp.fatec.nemo.usecases.interfaces.FindJobOpportunityUseCase;
 import br.gov.sp.fatec.nemo.usecases.interfaces.ParametersService;
 import br.gov.sp.fatec.nemo.usecases.services.DistanceMatrixService;
 import lombok.SneakyThrows;
@@ -44,7 +42,7 @@ public class FindCandidateUseCaseImpl {
 
 
 
-    @Override
+
     public List<Candidate> findCandidate(
             String gender,
             String country,
@@ -251,7 +249,7 @@ public class FindCandidateUseCaseImpl {
         return value;
     }
 
-    @Override
+
     public void processDirections(Long idWork, Long idCandidate) throws Exception {
         Optional<JobOpportunity> jobOpportunity = findJobOpportunityUseCase.findById(idWork);
         Optional<Candidate> candidateOptional = candidateRepository.findById(idCandidate);
