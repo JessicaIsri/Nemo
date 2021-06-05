@@ -46,17 +46,7 @@ maven-testes:
     - 'mvn -f nemo/pom.xml $MAVEN_CLI_OPTS install'
 
 
-staging:
-    type: deploy
-    stage: staging
-    image: maven:3-jdk-11
-    script:
-        - dpl --provider=heroku --app=$HEROKU_APP_STAGING --api-key=$HEROKU_API_KEY
-    only:
-        - staging
-
 production:
-    type: deploy
     stage: production
     image: maven:3-jdk-11
     script:
