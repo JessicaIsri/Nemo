@@ -2,18 +2,11 @@ package br.gov.sp.fatec.nemo.usecases.impls.dtos;
 
 import br.gov.sp.fatec.nemo.domains.entities.Candidate;
 import br.gov.sp.fatec.nemo.domains.entities.CandidateSkill;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.TypeDef;
-import org.hibernate.validator.constraints.br.CPF;
 
-import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
@@ -46,7 +39,7 @@ public class CandidateDTO implements Serializable {
 
     private String street;
 
-    private String homeNumber;
+    private Integer homeNumber;
 
     private String complement;
 
@@ -178,11 +171,11 @@ public class CandidateDTO implements Serializable {
         this.street = street;
     }
 
-    public String getHomeNumber() {
+    public Integer getHomeNumber() {
         return homeNumber;
     }
 
-    public void setHomeNumber(String homeNumber) {
+    public void setHomeNumber(Integer homeNumber) {
         this.homeNumber = homeNumber;
     }
 

@@ -26,9 +26,9 @@ Para cada semestre do curso de Banco de Dados é selecionado uma empresa que apr
 O projeto Nemo visa ser uma solução simples, versátil, escalável e open source para pessoas e empresas que precisam de um sistema escalável, simples e versátil para fazer a gestão dos currículos de candidatos relacionando eles às vagas disponíveis pela empresa.
 
 ### :camera: 1.2. Apresentação da Evolução do Projeto
-:heavy_check_mark: Sprint 1  | :heavy_check_mark: Sprint 2 | :information_source: Sprint 3 | Sprint 4 :checkered_flag:  
+:heavy_check_mark: Sprint 1  | :heavy_check_mark: Sprint 2 | :heavy_check_mark: Sprint 3 | Sprint 4 :information_source:  
 --------- |--------- |--------- |--------- |
-[Entrega](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/4-Entrega-Sprint-1) |[Entrega](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/6-Entrega-Sprint-2) |[Entrega]() |[Entrega]() |
+[Entrega](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/4-Entrega-Sprint-1) |[Entrega](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/6-Entrega-Sprint-2) |[Entrega](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/8-Entrega-Sprint-3) |[Entrega](https://gitlab.com/felipemessibraga/pi-1sem-2021/-/wikis/9.1-Entrega-Sprint-4-(Final)) |
 
 
 ### :clipboard: 1.3. Planejamento
@@ -48,7 +48,7 @@ Para fazer o planejamento foi utilizado a metodologia de "Design Thinking". Segu
 - [x] 28/02/2021 até 06/03/2021 - Kick Off do Projeto
 - [x] 08/03/2021 até 28/03/2021 - Sprint 1
 - [x] 29/03/2021 até 18/04/2021 - Sprint 2
-- [ ] 26/04/2021 até 16/05/2021 - Sprint 3
+- [x] 26/04/2021 até 16/05/2021 - Sprint 3
 - [ ] 17/05/2021 até 05/06/2021 - Sprint 4
 - [ ] 07/06/2021 até 11/06/2021 - Sprint Apresentação Final
 - [ ] 14/06/2021 até 18/06/2021 - Sprint Feira de Soluções
@@ -86,7 +86,7 @@ Este comando irá inicializar o banco de dados na sua máquina.
 
 ### 2.1 Na cloud do projeto
 
-- Siga os passos _2.1.5_ e _2.1.6_ porém com a url: http://3.139.101.230:8081/nemo/v1/authentication
+- Momentaneamente desativado
 
 
 <a name="arquitetura"></a>
@@ -123,19 +123,20 @@ Na descrição dos story cards, entende-se como usuário o recrutador ou respons
 
 <strong>RF_06</strong> - O usuário poderá cadastrar um currículo.
 
-####  :heavy_check_mark: 4.1.3 Sprint 3
-<strong>RF_07 - O usuário poderá escolher os parâmetros que ele quer receber de uma consulta de currículo e de vagas de acordo com sua necessidade;</strong>
+####  :white_check_mark: 4.1.3 Sprint 3
+<strong>RF_07 - O usuário poderá escolher os parâmetros de ranqueamento de currículo e de vagas de acordo com sua necessidade, podendo utilizar uma regra padrão ou definindo sua própria regra;</strong>
 
 <strong>RF_08 - O usuário poderá registrar e consultar a jornada do candidato na aplicação à uma vaga;</strong>
+
+#### :heavy_check_mark: 4.1.4 Sprint 4
+<strong>RF_10 - O usuário poderá exportar os dados dos candidatos à uma vaga;</strong>
+
+<strong>RF_11 - O usuário poderá fazer pesquisa por dados complexos de localização;</strong>
 
 <strong>RF_09</strong> - O usuário será capaz de consultar à que vagas um candidato se aplicou;
 
 <strong>RF_10</strong> - O candidato poderá consultar e apagar seus dados do sistema.
 
-#### :heavy_check_mark: 4.1.4 Sprint 4
-<strong>RF_10 - O usuário poderá exportar os dados dos candidatos à uma vaga;</strong>
-
-<strong>RF_11</strong> - O usuário poderá obter estatísticas sobre o perfil da base de candidatos e dos candidatos aplicados à uma vaga.
 
 ### :arrow_forward: 4.2. Requisitos não Funcionais
 
@@ -154,13 +155,9 @@ Na descrição dos story cards, entende-se como usuário o recrutador ou respons
 <a name="equipe"></a>
 ## 6. Equipe
 
-* André Lars da Cunha | Scrum Developer | [linkedIn](https://www.linkedin.com/in/andre-lars-da-cunha/)
+| André Lars | Daniel Delgado | Felipe Braga | Giovanni Guidace | Jéssica Isri  |
+|---|---|---|---|---|
+| [linkedIn](https://www.linkedin.com/in/andre-lars-da-cunha/) | [linkedIn](https://www.linkedin.com/in/daniel-delgado-274096194/) | [linkedIn](https://www.linkedin.com/in/felipegbraga/) |  [linkedIn](https://www.linkedin.com/in/giovanni-guidace-61982812a/) | [linkedIn](https://www.linkedin.com/in/jessica-dias1/) |
+| <img src="/uploads/6e46b1dc126eb671d33186f9d9c7fa09/WhatsApp_Image_2021-05-16_at_20.31.30.jpeg" width="100px"> | <img src="/uploads/2d4aea38bb9a385745b3e41d4215a10a/Design_sem_nome.jpg" width="100px"> | <img src="/uploads/ee6db8a1a1670e1dc9053729b7b9609a/Design_sem_nome.jpg" width="100px"> | <img src="/uploads/1cdb3a51a8986e89a8062bdc58ecd5c7/WhatsApp_Image_2021-05-16_at_20.58.08.jpeg" width="100px"> | <img src="/uploads/29f076952b263b95660b2fb532f5e5ef/WhatsApp_Image_2021-05-16_at_20.33.44.jpeg" width="100px"> |
 
-* Daniel | Scrum Developer | [linkedIn](https://www.linkedin.com/in/daniel-delgado-274096194/)
-
-* Felipe Gustavo Braga |  Product Owner | [linkedIn](https://www.linkedin.com/in/felipegbraga/)
-
-* Giovanni Guidace Marassi | Scrum Developer  | [linkedIn](https://www.linkedin.com/in/giovanni-guidace-61982812a/)
-
-* Jéssica Isri Dias | Scrum Master | [linkedIn](https://www.linkedin.com/in/jessica-dias1/)
 
