@@ -29,7 +29,7 @@ stages:
 maven-build:
   image: maven:3-jdk-11
   stage: build
-  script: "mvn -f nemo/pom.xml compile"
+  script: "mvn -f pom.xml compile"
   artifacts:
     name: $NAME_PROJECT
     paths:
@@ -42,7 +42,7 @@ maven-testes:
   before_script:
   - echo "Iniciando Testes da Aplicação"
   script: 
-    - 'mvn -f nemo/pom.xml $MAVEN_CLI_OPTS install'
+    - 'mvn -f pom.xml $MAVEN_CLI_OPTS install'
 
 
 production:
