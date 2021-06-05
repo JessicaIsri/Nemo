@@ -12,14 +12,17 @@ variables:
   MAVEN_OPTS: "-Dhttps.protocols=TLSv1.2 -Dmaven.repo.local=.m2/pi-1sem-2021"
   DOCKER_TLS_CERTDIR: ""
 
+before_script:
+  - echo "Iniciando Comandos CI/CD"
+  - gem install dpl
+
+
 stages:
   - build
   - test
-  - package
-  - deploy  
+  - staging
+  - production 
 
-before_script:
-  - echo "Iniciando Comandos CI/CD"
 
 
 maven-build:
@@ -39,3 +42,22 @@ maven-testes:
   - echo "Iniciando Testes da Aplicação"
   script: 
     - 'mvn -f nemo/pom.xml $MAVEN_CLI_OPTS install'
+
+
+staging:
+    type: deploy
+    stage: staging
+    image: maven:3-jdk-11
+    script:
+        - dpl --provider=heroku --app=$HEROKU_APP_STAGING --api-key=$HEROKU_API_KEY
+    only:
+        - staging
+
+production:
+    type: deploy
+    stage: production
+    image: maven:3-jdk-11
+    script:
+        - dpl --provider=heroku --app=$HEROKU_APP_PRODUCTION --api-key=$HEROKU_API_KEY
+    only:
+        - master
