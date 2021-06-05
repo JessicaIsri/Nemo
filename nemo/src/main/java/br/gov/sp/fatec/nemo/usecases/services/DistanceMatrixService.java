@@ -63,20 +63,23 @@ public class DistanceMatrixService {
 
     @Transactional
     public void saveDate(DirectionsResponse directionsResponse, Candidate candidate, JobOpportunity jobOpportunity) {
-        DistanceMatrix distanceMatrix = new DistanceMatrix();
-        distanceMatrix.setStartAddress(directionsResponse.getRoutes().get(0).getLegs().get(0).getStartAddresss());
-        distanceMatrix.setEndAddress(directionsResponse.getRoutes().get(0).getLegs().get(0).getStartAddresss());
-        distanceMatrix.setCandidate(candidate);
-        distanceMatrix.setJobOpportunity(jobOpportunity);
+        if (!distanceMatrixRepository.findByCandidateIdAndJobOpportunityId(candidate.getId(), jobOpportunity.getId()).isPresent()) {
+            DistanceMatrix distanceMatrix = new DistanceMatrix();
+            distanceMatrix.setStartAddress(directionsResponse.getRoutes().get(0).getLegs().get(0).getStartAddresss());
+            distanceMatrix.setEndAddress(directionsResponse.getRoutes().get(0).getLegs().get(0).getEndAddresss());
+            distanceMatrix.setCandidate(candidate);
+            distanceMatrix.setJobOpportunity(jobOpportunity);
 
-        distanceMatrix
-            .setTotalDistance(
-                calculateTotalDistance(
-                    directionsResponse.getRoutes().get(0).getLegs())
-            );
+            distanceMatrix
+                .setTotalDistance(
+                    calculateTotalDistance(
+                        directionsResponse.getRoutes().get(0).getLegs())
+                );
 
-        distanceMatrix =  distanceMatrixRepository.saveAndFlush(distanceMatrix);
-        distanceMatrix.setLegs(setLegsToEntity(directionsResponse.getRoutes().get(0).getLegs(), distanceMatrix));
+            distanceMatrix =  distanceMatrixRepository.saveAndFlush(distanceMatrix);
+            distanceMatrix.setLegs(setLegsToEntity(directionsResponse.getRoutes().get(0).getLegs(), distanceMatrix));
+        }
+
     }
 
     private List<LegsEntity> setLegsToEntity(List<Legs> legs, DistanceMatrix distanceMatrix) {

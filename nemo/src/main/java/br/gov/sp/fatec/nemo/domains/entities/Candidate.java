@@ -110,4 +110,10 @@ public class Candidate implements Serializable {
             cascade = CascadeType.ALL,
             orphanRemoval = true)
     private List<CandidateExp> experiences;
+
+    @OneToMany(mappedBy = "candidate",
+        cascade = CascadeType.ALL,
+        orphanRemoval = true)
+    private List<DistanceMatrix> distanceMatrices;
+
 }

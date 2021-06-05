@@ -19,6 +19,6 @@ http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
     <include file="db/changelog/alter_job_opportunity_table.sql" relativeToChangelogFile="false"/>
     <include file="db/changelog/triggers.sql" relativeToChangelogFile="false"/>
     <include file="db/changelog/insert_selection_process.sql" relativeToChangelogFile="false"/>
-    <include file="db/changelog/create_direction_tables.sql" relativeToChangelogFile="false"/>
+<!--    <include file="db/changelog/create_direction_tables.sql" relativeToChangelogFile="false"/>-->
 
 </databaseChangeLog>

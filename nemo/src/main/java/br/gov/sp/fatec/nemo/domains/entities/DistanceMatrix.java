@@ -24,15 +24,18 @@ public class DistanceMatrix {
     @Column(name = "total_distance")
     private Float totalDistance;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "can_id")
+    @JsonIgnore
     private Candidate candidate;
 
-    @OneToOne(fetch = FetchType.LAZY)
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "jo_id")
+    @JsonIgnore
     private JobOpportunity jobOpportunity;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "distanceMatrix")
     private List<LegsEntity> legs;
 
 

@@ -3,6 +3,7 @@ package br.gov.sp.fatec.nemo.domains.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -15,9 +16,11 @@ public class LegsEntity {
     private Long id;
 
     @Column(name = "start_address")
+    @JsonIgnore
     private String startAddress;
 
     @Column(name = "end_address")
+    @JsonIgnore
     private String endAddress;
 
     @Column(name = "distance")
@@ -28,8 +31,11 @@ public class LegsEntity {
 
     @ManyToOne(fetch =  FetchType.LAZY)
     @JoinColumn(name = "distance_matrix_id")
+    @JsonIgnore
     private DistanceMatrix distanceMatrix;
 
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "legsEntity")
+    private List<Steps> steps;
 
     public Long getId() {
         return id;
@@ -77,6 +83,14 @@ public class LegsEntity {
 
     public void setDistanceMatrix(DistanceMatrix distanceMatrix) {
         this.distanceMatrix = distanceMatrix;
+    }
+
+    public List<Steps> getSteps() {
+        return steps;
+    }
+
+    public void setSteps(List<Steps> steps) {
+        this.steps = steps;
     }
 
     @Override

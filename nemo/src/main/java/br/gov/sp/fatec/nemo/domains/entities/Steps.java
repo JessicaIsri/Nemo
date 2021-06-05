@@ -1,5 +1,7 @@
 package br.gov.sp.fatec.nemo.domains.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -24,7 +26,9 @@ public class Steps implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "leg_id")
+    @JsonIgnore
     private LegsEntity legsEntity;
+
 
     public Long getId() {
         return id;
