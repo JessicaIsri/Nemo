@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -22,8 +21,9 @@ public class CandidateFormation implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @EmbeddedId
-    private CandidateFormationPK id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("candidateId") //This is the name of attr in EmployerDeliveryAgentPK class
@@ -31,21 +31,21 @@ public class CandidateFormation implements Serializable {
     @JsonIgnore
     private Candidate candidate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @MapsId("institutionId") //This is the name of attr in EmployerDeliveryAgentPK class
-    @JoinColumn(name = "fk_inst_id")
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "fk_inst_id", referencedColumnName = "inst_id")
     private Institution institution;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @MapsId("courseId") //This is the name of attr in EmployerDeliveryAgentPK class
-    @JoinColumn(name = "fk_course_id")
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "fk_course_id", referencedColumnName = "course_id")
     private Course course;
 
     @NotNull
-    private LocalDate dt_start;
+    @Column(name = "dt_start")
+    private LocalDate dtStart;
 
     @NotNull
-    private LocalDate dt_end;
+    @Column(name = "dt_end")
+    private LocalDate dtEnd;
 
     @Override
     public String toString() {

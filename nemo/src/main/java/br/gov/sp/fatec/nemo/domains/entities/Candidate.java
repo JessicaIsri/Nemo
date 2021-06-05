@@ -1,17 +1,10 @@
 package br.gov.sp.fatec.nemo.domains.entities;
 
-import br.gov.sp.fatec.nemo.domains.enums.AvailablePeriod;
-import br.gov.sp.fatec.nemo.domains.enums.DesiredJourney;
-import br.gov.sp.fatec.nemo.domains.enums.SkillLevel;
-import br.gov.sp.fatec.nemo.domains.enums.WorkModality;
 import br.gov.sp.fatec.nemo.domains.utils.PostgreSQLEnumType;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.vividsolutions.jts.geom.Geometry;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 import org.hibernate.validator.constraints.br.CPF;
 
@@ -21,7 +14,6 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -40,6 +32,7 @@ public class Candidate implements Serializable {
 
     @Id
     @Column(name = "can_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank
@@ -75,7 +68,7 @@ public class Candidate implements Serializable {
 
     @NotBlank
     @Column(name = "home_number")
-    private String homeNumber;
+    private Integer homeNumber;
 
     @NotBlank
     private String complement;
@@ -91,22 +84,17 @@ public class Candidate implements Serializable {
     private Float longitude;
 
     @NotNull
-    private String pretentionSalary;
+    @Column(name = "pretension_salary")
+    private Double pretensionSalary;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "desired_journey", columnDefinition = "desired_journey")
-    @Type(type = "pgsql_enum")
-    private DesiredJourney desired_journey;
+    @Column(name = "desired_journey")
+    private String desiredJourney;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "available_period", columnDefinition = "available_period")
-    @Type(type = "pgsql_enum")
-    private AvailablePeriod available_period;
+    @Column(name = "availability")
+    private String availablePeriod;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "work_modality", columnDefinition = "work_modality")
-    @Type(type = "pgsql_enum")
-    private WorkModality work_modality;
+    @Column(name = "work_modality")
+    private String workModality;
 
     @OneToMany(mappedBy = "candidate",
             cascade = CascadeType.ALL,
@@ -122,65 +110,4 @@ public class Candidate implements Serializable {
             cascade = CascadeType.ALL,
             orphanRemoval = true)
     private List<CandidateExp> experiences;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Candidate)) return false;
-
-        Candidate candidate = (Candidate) o;
-
-        if (getId() != null ? !getId().equals(candidate.getId()) : candidate.getId() != null) return false;
-        if (getName() != null ? !getName().equals(candidate.getName()) : candidate.getName() != null) return false;
-        if (getEmail() != null ? !getEmail().equals(candidate.getEmail()) : candidate.getEmail() != null) return false;
-        if (getCpf() != null ? !getCpf().equals(candidate.getCpf()) : candidate.getCpf() != null) return false;
-        if (getPhone() != null ? !getPhone().equals(candidate.getPhone()) : candidate.getPhone() != null) return false;
-        if (getGender() != null ? !getGender().equals(candidate.getGender()) : candidate.getGender() != null)
-            return false;
-        if (getBirthday() != null ? !getBirthday().equals(candidate.getBirthday()) : candidate.getBirthday() != null)
-            return false;
-        if (getCountry() != null ? !getCountry().equals(candidate.getCountry()) : candidate.getCountry() != null)
-            return false;
-        if (getCity() != null ? !getCity().equals(candidate.getCity()) : candidate.getCity() != null) return false;
-        if (getNeighborhood() != null ? !getNeighborhood().equals(candidate.getNeighborhood()) : candidate.getNeighborhood() != null)
-            return false;
-        if (getStreet() != null ? !getStreet().equals(candidate.getStreet()) : candidate.getStreet() != null)
-            return false;
-        if (getHomeNumber() != null ? !getHomeNumber().equals(candidate.getHomeNumber()) : candidate.getHomeNumber() != null)
-            return false;
-        if (getComplement() != null ? !getComplement().equals(candidate.getComplement()) : candidate.getComplement() != null)
-            return false;
-        if (getZipCode() != null ? !getZipCode().equals(candidate.getZipCode()) : candidate.getZipCode() != null)
-            return false;
-        if (getLatitude() != null ? !getLatitude().equals(candidate.getLatitude()) : candidate.getLatitude() != null)
-            return false;
-        if (getLongitude() != null ? !getLongitude().equals(candidate.getLongitude()) : candidate.getLongitude() != null)
-            return false;
-        return getSkills() != null ? getSkills().equals(candidate.getSkills()) : candidate.getSkills() == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = getId() != null ? getId().hashCode() : 0;
-        result = 31 * result + (getName() != null ? getName().hashCode() : 0);
-        result = 31 * result + (getEmail() != null ? getEmail().hashCode() : 0);
-        result = 31 * result + (getCpf() != null ? getCpf().hashCode() : 0);
-        result = 31 * result + (getPhone() != null ? getPhone().hashCode() : 0);
-        result = 31 * result + (getGender() != null ? getGender().hashCode() : 0);
-        result = 31 * result + (getBirthday() != null ? getBirthday().hashCode() : 0);
-        result = 31 * result + (getCountry() != null ? getCountry().hashCode() : 0);
-        result = 31 * result + (getCity() != null ? getCity().hashCode() : 0);
-        result = 31 * result + (getNeighborhood() != null ? getNeighborhood().hashCode() : 0);
-        result = 31 * result + (getStreet() != null ? getStreet().hashCode() : 0);
-        result = 31 * result + (getHomeNumber() != null ? getHomeNumber().hashCode() : 0);
-        result = 31 * result + (getComplement() != null ? getComplement().hashCode() : 0);
-        result = 31 * result + (getZipCode() != null ? getZipCode().hashCode() : 0);
-        result = 31 * result + (getLatitude() != null ? getLatitude().hashCode() : 0);
-        result = 31 * result + (getLongitude() != null ? getLongitude().hashCode() : 0);
-        result = 31 * result + (getSkills() != null ? getSkills().hashCode() : 0);
-        return result;
-    }
-
-
-
 }

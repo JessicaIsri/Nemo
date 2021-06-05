@@ -2,40 +2,40 @@ image: docker:latest
 services:
   - docker:dind
 
-maven-build: 
-  image: "maven:3-jdk-11"
-  script: "mvn -f nemo/pom.xml compile"
-  services: 
-    - "postgres:latest"
-  stage: build
-  
-maven-test: 
-  image: "ubuntu:18.04"
-  script:
-    - "adduser postgres"
-    - ""
-    - apt-get update
-    - apt-get -y install postgresql-10
-    - systemctl start postgresql
-    - apt-get -y install postgresql-10-postgis-2.4
-    - apt-get -y install postgresql-10-postgis-scripts
-    - apt-get -y install postgis-2.4
-    - apt-get -y install default-jdk
-    - apt-get -y install maven
-    - su postgres
-    - "psql -h 127.0.0.1 -c \"ALTER USER postgres WITH PASSWORD 'admin'\" -d template1"
-    - export PGPASSWORD='admin'
-    - "psql -U postgres -d postgres -c \"create extension postgis;\""
-    - "mvn -f nemo/pom.xml test"
-  variables: 
-    EXTDIR: /usr/share/postgresql/13/extension/
-    PGDATA: /var/lib/postgresql/data
-    POSTGRES_DB: postgres
-    POSTGRES_HOST_AUTH_METHOD: trust
-    POSTGRES_PASSWORD: admin
-    POSTGRES_USER: postgres
-    PSQL: "psql -v ON_ERROR_STOP=1"
-  stage: test
-stages: 
+variables:
+  DOCKER_DRIVER: overlay
+  SPRING_PROFILES_ACTIVE: gitlab-ci
+  REPOSITORY: pi-1sem-2021
+  NAME_PROJECT: nemo
+  REGISTRY: registry.gitlab.com/pi-1sem-2021
+  MAVEN_CLI_OPTS: "--batch-mode --errors --fail-at-end"
+  MAVEN_OPTS: "-Dhttps.protocols=TLSv1.2 -Dmaven.repo.local=.m2/pi-1sem-2021"
+  DOCKER_TLS_CERTDIR: ""
+
+stages:
   - build
   - test
+  - package
+  - deploy  
+
+before_script:
+  - echo "Iniciando Comandos CI/CD"
+
+
+maven-build:
+  image: maven:3-jdk-11
+  stage: build
+  script: "mvn -f nemo/pom.xml compile"
+  artifacts:
+    name: $NAME_PROJECT
+    paths:
+      - teste_nemo.jar
+
+
+maven-testes:
+  image: maven:3-jdk-11
+  stage: test 
+  before_script:
+  - echo "Iniciando Testes da Aplicação"
+  script: 
+    - 'mvn -f nemo/pom.xml $MAVEN_CLI_OPTS install'
