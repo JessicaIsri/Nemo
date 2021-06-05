@@ -22,8 +22,7 @@ before_script:
 stages:
   - build
   - test
-  - staging
-  - production 
+  - deploy 
 
 
 
@@ -47,9 +46,8 @@ maven-testes:
 
 
 production:
-    stage: production
-    image: maven:3-jdk-11
-    script:
-        - dpl --provider=heroku --app=$HEROKU_APP_PRODUCTION --api-key=$HEROKU_API_KEY
-    only:
-        - master
+  stage: deploy
+  image: maven:3-jdk-11
+  script:
+    - dpl --provider=heroku --app=$HEROKU_APP_PRODUCTION --api-key=$HEROKU_API_KEY
+
