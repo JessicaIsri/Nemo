@@ -14,6 +14,8 @@ variables:
 
 before_script:
   - echo "Iniciando Comandos CI/CD"
+  - apt-get update -qy
+  - apt-get install -y ruby-dev
   - gem install dpl
 
 
