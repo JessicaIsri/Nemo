@@ -107,6 +107,12 @@ public class JobOpportunity implements Serializable {
     @Column(name = "divulgation_end")
     private LocalDateTime divulgationEnd;
 
+    @OneToMany(mappedBy = "jobOpportunity",
+        cascade = CascadeType.ALL,
+        orphanRemoval = true)
+    private List<DistanceMatrix> distanceMatrices;
+
+
     @NotBlank
     @Column(name = "create_dt")
     private LocalDateTime createDt;

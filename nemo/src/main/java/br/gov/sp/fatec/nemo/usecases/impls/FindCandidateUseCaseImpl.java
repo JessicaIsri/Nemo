@@ -1,16 +1,19 @@
 package br.gov.sp.fatec.nemo.usecases.impls;
 
-import br.gov.sp.fatec.nemo.domains.entities.Candidate;
-import br.gov.sp.fatec.nemo.domains.entities.CandidateSkill;
-import br.gov.sp.fatec.nemo.domains.entities.DistanceParameters;
-import br.gov.sp.fatec.nemo.domains.entities.Parameters;
+import br.gov.sp.fatec.nemo.domains.entities.*;
 import br.gov.sp.fatec.nemo.domains.enums.SkillLevel;
 import br.gov.sp.fatec.nemo.domains.repositories.CandidateRepository;
 import br.gov.sp.fatec.nemo.domains.repositories.interfaces.GeometryCandidate;
 import br.gov.sp.fatec.nemo.usecases.impls.dtos.CandidateDTO;
+import br.gov.sp.fatec.nemo.usecases.interfaces.FindJobOpportunityUseCase;
 import br.gov.sp.fatec.nemo.usecases.interfaces.ParametersService;
+import br.gov.sp.fatec.nemo.usecases.services.DistanceMatrixService;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
@@ -21,6 +24,7 @@ import java.util.stream.Collectors;
 @Service
 public class FindCandidateUseCaseImpl {
 
+
     @PersistenceContext
     private EntityManager em;
 
@@ -29,6 +33,15 @@ public class FindCandidateUseCaseImpl {
 
     @Autowired
     private ParametersService parametersService;
+
+    @Autowired
+    private FindJobOpportunityUseCase findJobOpportunityUseCase;
+
+    @Autowired
+    private DistanceMatrixService distanceMatrixService;
+
+
+
 
     public List<Candidate> findCandidate(
             String gender,
@@ -114,6 +127,8 @@ public class FindCandidateUseCaseImpl {
         return classify;
     }
 
+
+
     private List<CandidateDTO> classifyCandidateWithParameter(
         Set<Candidate> candidates,
         List<String> hability,
@@ -166,7 +181,8 @@ public class FindCandidateUseCaseImpl {
         }
     }
 
-    private List<CandidateDTO> classifyCandidate(Set<Candidate> candidates, List<String> hability, Set<GeometryCandidate> geometryCandidateSet) {
+    private List<CandidateDTO> classifyCandidate(
+        Set<Candidate> candidates, List<String> hability, Set<GeometryCandidate> geometryCandidateSet) {
         return candidates.stream().map(candidate -> {
             Integer points = 0;
             CandidateDTO candidateDTO = new CandidateDTO().fromCandidateDTO(candidate);
@@ -232,6 +248,21 @@ public class FindCandidateUseCaseImpl {
         }
         return value;
     }
+
+
+    public void processDirections(Long idWork, Long idCandidate) throws Exception {
+        Optional<JobOpportunity> jobOpportunity = findJobOpportunityUseCase.findById(idWork);
+        Optional<Candidate> candidateOptional = candidateRepository.findById(idCandidate);
+
+        if (jobOpportunity.isPresent() && candidateOptional.isPresent()){
+            distanceMatrixService.processDirections(candidateOptional.get(), jobOpportunity.get());
+        } else {
+            throw new Exception("Dados inexistente");
+        }
+
+    };
+
+
 }
 
 class SortById implements Comparator<CandidateDTO> {

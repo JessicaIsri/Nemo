@@ -29,14 +29,14 @@ public class FindJobOpportunityUseCaseImpl extends QueryService<JobOpportunity> 
         return jobOpportunityRepository.findAll(specification);
     }
 
-    public JobOpportunity findById(Long id) throws Exception {
-        return jobOpportunityRepository.findById(id)
-            .orElseThrow(() -> new Exception("Job not found"));
+    public Optional<JobOpportunity> findById(Long id) throws Exception {
+        return jobOpportunityRepository.findById(id);
     }
 
     public JobOpportunity save(JobOpportunity jobOpportunity){
         return jobOpportunityRepository.save(jobOpportunity);
     }
+
 
     public JobOpportunity update(JobOpportunity jobOpportunity) throws Exception {
         if (jobOpportunity.getId() != null){
@@ -82,6 +82,8 @@ public class FindJobOpportunityUseCaseImpl extends QueryService<JobOpportunity> 
 
         return specification;
     }
+
+
 
 
 }

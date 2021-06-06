@@ -65,8 +65,14 @@ public class CandidateRestController {
         return Optional
             .ofNullable(findCandidateUseCase
                 .findCandidateV2(hability, longitude, latitude, kilometers, idParameter, skillLevels))
-                .map(candidateDTOS -> ResponseEntity.ok().body(candidateDTOS))
-                .orElseGet(() -> ResponseEntity.notFound().build());
+            .map(candidateDTOS -> ResponseEntity.ok().body(candidateDTOS))
+            .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @GetMapping(value = "nemo/directions/{idWork}/{idCandidate}", produces = "application/json")
+    public void getDirections(@PathVariable("idWork") Long id, @PathVariable("idCandidate") Long idCandidate)
+        throws Exception {
+        findCandidateUseCase.processDirections(id, idCandidate);
     }
 
     @PostMapping("nemo/v1/candidate/")
