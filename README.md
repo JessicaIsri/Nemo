@@ -49,7 +49,7 @@ Para fazer o planejamento foi utilizado a metodologia de "Design Thinking". Segu
 - [x] 08/03/2021 até 28/03/2021 - Sprint 1
 - [x] 29/03/2021 até 18/04/2021 - Sprint 2
 - [x] 26/04/2021 até 16/05/2021 - Sprint 3
-- [ ] 17/05/2021 até 05/06/2021 - Sprint 4
+- [x] 17/05/2021 até 05/06/2021 - Sprint 4
 - [ ] 07/06/2021 até 11/06/2021 - Sprint Apresentação Final
 - [ ] 14/06/2021 até 18/06/2021 - Sprint Feira de Soluções
 
@@ -128,14 +128,12 @@ Na descrição dos story cards, entende-se como usuário o recrutador ou respons
 
 <strong>RF_08 - O usuário poderá registrar e consultar a jornada do candidato na aplicação à uma vaga;</strong>
 
-#### :heavy_check_mark: 4.1.4 Sprint 4
+#### :white_check_mark: 4.1.4 Sprint 4
 <strong>RF_10 - O usuário poderá exportar os dados dos candidatos à uma vaga;</strong>
 
 <strong>RF_11 - O usuário poderá fazer pesquisa por dados complexos de localização;</strong>
 
 <strong>RF_09</strong> - O usuário será capaz de consultar à que vagas um candidato se aplicou;
-
-<strong>RF_10</strong> - O candidato poderá consultar e apagar seus dados do sistema.
 
 
 ### :arrow_forward: 4.2. Requisitos não Funcionais
